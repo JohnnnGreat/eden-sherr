@@ -1,7 +1,5 @@
 import { Figtree, Outfit } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 
 const figtree = Figtree({
   weight: ["600", "700", "800"],
@@ -27,9 +25,9 @@ export default function RootLayout({ children }) {
       className={`${figtree.variable} ${outfit.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-cream text-charcoal-900">
-        <Navbar />
-        {children}
-        <Footer />
+        <main className="flex-1 flex flex-col">
+          {children}
+        </main>
       </body>
     </html>
   );
