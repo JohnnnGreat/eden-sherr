@@ -1,12 +1,12 @@
-import { Nunito, Outfit } from "next/font/google";
+import { Figtree, Outfit } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const nunito = Nunito({
+const figtree = Figtree({
   weight: ["600", "700", "800"],
   subsets: ["latin"],
-  variable: "--font-nunito",
+  variable: "--font-figtree",
 });
 
 const outfit = Outfit({
@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${nunito.variable} ${outfit.variable} h-full antialiased`}
+      className={`${figtree.variable} ${outfit.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-cream text-charcoal-900">
         <Navbar />
