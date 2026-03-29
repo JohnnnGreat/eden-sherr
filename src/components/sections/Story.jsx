@@ -56,7 +56,7 @@ export default function Story() {
                 transform: 'translateX(-50%)',
                 fontSize: '7rem',
                 lineHeight: 1,
-                color: '#f78154',
+                color: '#c0345f',
                 opacity: 0.15,
                 userSelect: 'none',
                 pointerEvents: 'none',

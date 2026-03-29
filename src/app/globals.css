@@ -18,18 +18,18 @@
   --color-charcoal-900: #3a3335;
   --color-charcoal-950: #201c1e;
 
-  /* ── Orange ── */
-  --color-orange-50: #fff4ee;
-  --color-orange-100: #ffe6d5;
-  --color-orange-200: #fec9aa;
-  --color-orange-300: #fda47a;
-  --color-orange-400: #fb7d4c;
-  --color-orange-500: #f78154;
-  --color-orange-600: #e8601f;
-  --color-orange-700: #c34a16;
-  --color-orange-800: #9b3d1a;
-  --color-orange-900: #7d3319;
-  --color-orange-950: #43180a;
+  /* ── Brand (raspberry from logo) ── */
+  --color-orange-50:  #fef1f5;
+  --color-orange-100: #fde2ec;
+  --color-orange-200: #fbc5d8;
+  --color-orange-300: #f897b8;
+  --color-orange-400: #f35f90;
+  --color-orange-500: #c0345f;
+  --color-orange-600: #a52852;
+  --color-orange-700: #8c2044;
+  --color-orange-800: #731b39;
+  --color-orange-900: #5e1830;
+  --color-orange-950: #380d1c;
 
   /* ── Green ── */
   --color-green-50: #f3f8ee;
@@ -71,7 +71,7 @@
   --color-berry-950: #3f1124;
 
   /* ── Flat tokens ── */
-  --color-cream: #faf7f4;
+  --color-cream: #faf5ec;
   --color-ivory: #f5f1ec;
 }
 
@@ -79,7 +79,8 @@
   html {
     font-family: var(--font-body);
     color: #3a3335;
-    background-color: #faf7f4;
+    background: radial-gradient(ellipse 100% 60% at 50% 0%, #fffdf9 0%, #faf5ec 45%, #f2e9da 100%) fixed;
+    background-color: #f2e9da;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -108,21 +109,21 @@
     line-height: 1.05;
     font-family: var(--font-display);
     letter-spacing: -0.025em;
-    font-weight: 400;
+    font-weight: 600;
   }
   .text-display-lg {
     font-size: clamp(2.25rem, 4vw, 3.5rem);
     line-height: 1.1;
     font-family: var(--font-display);
     letter-spacing: -0.02em;
-    font-weight: 400;
+    font-weight: 600;
   }
   .text-display-md {
     font-size: clamp(1.75rem, 3vw, 2.5rem);
     line-height: 1.15;
     font-family: var(--font-display);
     letter-spacing: -0.015em;
-    font-weight: 400;
+    font-weight: 600;
   }
   .text-heading-lg {
     font-size: clamp(1.25rem, 2vw, 1.75rem);
@@ -159,7 +160,7 @@
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #f78154;
+    color: #c0345f;
   }
   .text-caption {
     font-size: 0.75rem;
@@ -174,7 +175,7 @@
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #f78154;
+    color: #c0345f;
   }
   .section-body {
     font-size: 1.125rem;
@@ -191,20 +192,20 @@
     justify-content: center;
     gap: 0.5rem;
     padding: 0.875rem 2rem;
-    background-color: #f78154;
+    background-color: #c0345f;
     color: #ffffff;
     font-weight: 500;
     font-size: 0.9375rem;
     border-radius: 9999px;
-    box-shadow: 0 4px 24px -4px rgba(247, 129, 84, 0.45);
+    box-shadow: 0 4px 24px -4px rgba(192, 52, 95, 0.45);
     transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
     text-decoration: none;
     border: none;
     cursor: pointer;
   }
   .btn-primary:hover {
-    background-color: #e8601f;
-    box-shadow: 0 8px 32px -4px rgba(247, 129, 84, 0.55);
+    background-color: #a52852;
+    box-shadow: 0 8px 32px -4px rgba(192, 52, 95, 0.55);
     transform: translateY(-1px);
   }
 
@@ -237,7 +238,7 @@
     gap: 0.5rem;
     padding: 0.75rem 1.25rem;
     background-color: transparent;
-    color: #f78154;
+    color: #c0345f;
     font-weight: 500;
     font-size: 0.9375rem;
     border-radius: 9999px;
@@ -247,7 +248,7 @@
     cursor: pointer;
   }
   .btn-ghost:hover {
-    background-color: rgba(247, 129, 84, 0.1);
+    background-color: rgba(192, 52, 95, 0.1);
   }
 
   /* ── Cards ── */
@@ -287,8 +288,8 @@
     display: inline-flex;
     align-items: center;
     padding: 0.25rem 0.75rem;
-    background-color: rgba(247, 129, 84, 0.12);
-    color: #c34a16;
+    background-color: rgba(192, 52, 95, 0.12);
+    color: #8c2044;
     font-size: 0.6875rem;
     font-weight: 600;
     letter-spacing: 0.05em;
@@ -325,7 +326,7 @@
     color: #ffffff;
   }
   .footer-link-accent:hover {
-    color: #f78154;
+    color: #c0345f;
   }
 
   /* ── Social Icon Button ── */
@@ -366,7 +367,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.375rem;
-    color: #f78154;
+    color: #c0345f;
     font-weight: 500;
     font-size: 0.9375rem;
     text-decoration: none;

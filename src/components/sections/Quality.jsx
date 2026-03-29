@@ -99,7 +99,7 @@ export default function Quality() {
               <div
                 aria-hidden="true"
                 className="absolute top-0 left-0 right-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-                style={{ height: 2, backgroundColor: '#f78154' }}
+                style={{ height: 2, backgroundColor: '#c0345f' }}
               />
 
               {/* Icon container */}

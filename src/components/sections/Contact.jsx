@@ -97,7 +97,7 @@ export default function Contact() {
                   width: 48,
                   height: 48,
                   borderRadius: '0.625rem',
-                  backgroundColor: 'rgba(247, 129, 84, 0.1)',
+                  backgroundColor: 'rgba(192, 52, 95, 0.1)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -105,7 +105,7 @@ export default function Contact() {
                   flexShrink: 0,
                 }}
               >
-                <Icon size={20} aria-hidden="true" style={{ color: '#f78154' }} />
+                <Icon size={20} aria-hidden="true" style={{ color: '#c0345f' }} />
               </div>
 
               <p
@@ -125,7 +125,7 @@ export default function Contact() {
                     textDecoration: 'none',
                     transition: 'color 0.15s ease',
                   }}
-                  onMouseEnter={e => (e.currentTarget.style.color = '#f78154')}
+                  onMouseEnter={e => (e.currentTarget.style.color = '#c0345f')}
                   onMouseLeave={e => (e.currentTarget.style.color = '#6e5b67')}
                 >
                   {content}

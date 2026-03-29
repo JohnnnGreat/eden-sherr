@@ -1,10 +1,10 @@
-import { DM_Serif_Display, Outfit } from "next/font/google";
+import { Cormorant_Garamond, Outfit } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const dmSerifDisplay = DM_Serif_Display({
-  weight: ["400"],
+const cormorantGaramond = Cormorant_Garamond({
+  weight: ["400", "500", "600"],
   style: ["normal", "italic"],
   subsets: ["latin"],
   variable: "--font-dm-serif",
@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${dmSerifDisplay.variable} ${outfit.variable} h-full antialiased`}
+      className={`${cormorantGaramond.variable} ${outfit.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-cream text-charcoal-900">
         <Navbar />

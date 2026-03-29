@@ -10,37 +10,21 @@ const ease = [0.25, 0.1, 0.25, 1];
 export default function Hero() {
   return (
     <section
-      className="relative bg-cream overflow-hidden"
+      className="relative overflow-hidden"
       aria-label="Hero"
+      style={{
+        background: `
+          radial-gradient(ellipse 120% 90% at 62% 40%, #fffdf9 0%, #faf5ec 38%, #f2e9da 72%, #e8deca 100%)
+        `,
+      }}
     >
-      {/* ── Background radial gradients ─────────────────────── */}
-      {/* Green circle — top right */}
+      {/* Subtle green warmth — top left */}
       <div
         aria-hidden="true"
         style={{
           position: 'absolute',
-          top: '-15%',
-          right: '-8%',
-          width: '55vw',
-          height: '55vw',
-          borderRadius: '50%',
-          background:
-            'radial-gradient(circle at center, rgba(117, 168, 93, 0.06) 0%, transparent 68%)',
-          pointerEvents: 'none',
-        }}
-      />
-      {/* Orange circle — bottom left */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: 'absolute',
-          bottom: '-12%',
-          left: '-6%',
-          width: '45vw',
-          height: '45vw',
-          borderRadius: '50%',
-          background:
-            'radial-gradient(circle at center, rgba(247, 129, 84, 0.04) 0%, transparent 68%)',
+          inset: 0,
+          background: 'radial-gradient(ellipse 60% 55% at 8% 15%, rgba(117,168,93,0.07) 0%, transparent 70%)',
           pointerEvents: 'none',
         }}
       />

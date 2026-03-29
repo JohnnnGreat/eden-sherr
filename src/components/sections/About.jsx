@@ -34,8 +34,8 @@ const highlights = [
     Icon: Globe,
     title: 'Export-Ready Compliance',
     description: 'NAFDAC, NEPC, and phytosanitary documentation in place for EU, US, and Asian market entry.',
-    bg: 'rgba(247, 129, 84, 0.12)',
-    color: '#f78154',
+    bg: 'rgba(192, 52, 95, 0.12)',
+    color: '#c0345f',
   },
 ];
 
