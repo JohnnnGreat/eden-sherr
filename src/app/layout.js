@@ -122,9 +122,7 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <main className="flex-1 flex flex-col">
-          {children}
-        </main>
+        {children}
       </body>
     </html>
   );

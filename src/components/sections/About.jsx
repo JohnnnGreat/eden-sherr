@@ -44,7 +44,7 @@ export default function About() {
   const isInView = useInView(ref, { once: true, margin: '0px 0px -100px 0px' });
 
   return (
-    <section className="py-section-y bg-white" ref={ref}>
+    <section id="about" className="py-section-y bg-white" ref={ref} aria-labelledby="about-heading">
       <div className="container-site">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
 
@@ -98,6 +98,7 @@ export default function About() {
               transition={{ duration: 0.65, delay: 0.15, ease }}
             >
               <SectionHeader
+                id="about-heading"
                 label="About Us"
                 title="Unlocking the Full Value of Nigerian Ginger"
               />

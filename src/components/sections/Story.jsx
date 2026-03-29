@@ -21,7 +21,7 @@ export default function Story() {
   const isInView = useInView(ref, { once: true, margin: '0px 0px -80px 0px' });
 
   return (
-    <section className="py-section-y bg-cream" ref={ref}>
+    <section id="story" className="py-section-y bg-cream" ref={ref} aria-labelledby="story-heading">
       <div className="container-site">
         <div className="max-w-content mx-auto">
 

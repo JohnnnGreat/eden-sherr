@@ -38,7 +38,7 @@ export default function Quality() {
   const isInView = useInView(ref, { once: true, margin: '0px 0px -80px 0px' });
 
   return (
-    <section id="quality" className="py-section-y bg-charcoal-900" ref={ref}>
+    <section id="quality" className="py-section-y bg-charcoal-900" ref={ref} aria-labelledby="quality-heading">
       <div className="container-site">
 
         {/* ── Section header ── */}
@@ -50,6 +50,7 @@ export default function Quality() {
         >
           <p className="section-label">Our Standards</p>
           <h2
+            id="quality-heading"
             className="font-display text-display-md"
             style={{
               color: '#ffffff',
