@@ -108,7 +108,7 @@ export default function About() {
               >
                 Edan &amp; Sherr was founded on a simple conviction: Nigerian ginger is
                 among the finest in the world, yet it has long been undervalued in global
-                markets. We exist to change that — by building a supply chain that honours
+                markets. We exist to change that by building a supply chain that honours
                 the farmer, respects the crop, and delivers a product worthy of the world&apos;s
                 most discerning buyers.
               </p>
@@ -117,7 +117,7 @@ export default function About() {
                 className="text-body-md mt-4"
                 style={{ color: '#6e5b67', lineHeight: 1.75 }}
               >
-                Operating from Southern Kaduna — Nigeria&apos;s premier ginger belt — we work
+                Operating from Southern Kaduna, Nigeria&apos;s premier ginger belt, we work
                 directly with over 200 smallholder farming families, providing technical
                 support, fair farm-gate pricing, and guaranteed offtake. Our processing
                 facilities then transform that raw material into export-grade dried ginger,

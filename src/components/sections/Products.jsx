@@ -305,7 +305,7 @@ export default function Products() {
           <SectionHeader
             label="Our Products"
             title="Premium Ginger for Global Markets"
-            description="From whole dried root to precision-milled powder — every product we ship meets the rigorous standards of international food safety and buyer specification."
+            description="From whole dried root to precision-milled powder, every product we ship meets the rigorous standards of international food safety and buyer specification."
             align="center"
           />
         </motion.div>
@@ -343,7 +343,7 @@ export default function Products() {
           <div>
             <p className="section-label">Coming Soon</p>
             <p className="text-body-sm" style={{ color: '#6e5b67', marginTop: '0.25rem' }}>
-              New product lines in development — available for advance inquiry.
+              New product lines in development, available for advance inquiry.
             </p>
           </div>
 

@@ -7,11 +7,11 @@ import SectionHeader from '@/components/SectionHeader';
 const ease = [0.25, 0.1, 0.25, 1];
 
 const PARAGRAPHS = [
-  "Nigeria is home to some of the world's finest ginger — prized for its rich aroma, bold flavour, and exceptional oil content. But for me, this is more than a fact. It is a story I have lived.",
+  "Nigeria is home to some of the world's finest ginger, prized for its rich aroma, bold flavour, and exceptional oil content. But for me, this is more than a fact. It is a story I have lived.",
 
-  "I grew up watching generations of ginger farmers shape this legacy. My grandfather, one of the finest farmers of his time, devoted his life to the land. After him came my parents, uncles, cousins, and countless others — men and women who worked tirelessly in rich red soils under open skies, cultivating a crop that carries both heritage and pride.",
+  "I grew up watching generations of ginger farmers shape this legacy. My grandfather, one of the finest farmers of his time, devoted his life to the land. After him came my parents, uncles, cousins, and countless others: men and women who worked tirelessly in rich red soils under open skies, cultivating a crop that carries both heritage and pride.",
 
-  "Season after season, they produced ginger of remarkable strength and character — what I still believe to be the boldest ginger in the world. Yet despite its quality, much of its true value remained unrealised. The world had not fully experienced it as it should. I watched as each generation, in its own way, tried to bring this extraordinary resource to the global stage — often constrained by limitations beyond their control.",
+  "Season after season, they produced ginger of remarkable strength and character. What I still believe to be the boldest ginger in the world. Yet despite its quality, much of its true value remained unrealised. The world had not fully experienced it as it should. I watched as each generation, in its own way, tried to bring this extraordinary resource to the global stage, often constrained by limitations beyond their control.",
 
   "That is where the story begins to change. Edan & Sherr Limited was founded with a clear vision: to unlock the full value of Nigeria's world-class ginger and share its true potential with the world.",
 ];
@@ -81,7 +81,7 @@ export default function Story() {
             >
               I grew up watching generations of ginger farmers shape this legacy.
               Season after season, they produced ginger of remarkable strength and
-              character — what I still believe to be the boldest ginger in the world.
+              character. What I still believe to be the boldest ginger in the world.
             </blockquote>
           </motion.div>
 

@@ -2,7 +2,7 @@
 
 @theme {
   /* ── Font Families ── */
-  --font-display: var(--font-dm-serif), "DM Serif Display", Georgia, serif;
+  --font-display: var(--font-nunito), "Nunito", system-ui, sans-serif;
   --font-body: var(--font-outfit), "Outfit", system-ui, sans-serif;
 
   /* ── Charcoal ── */
@@ -106,24 +106,24 @@
   /* ── Text Scale ── */
   .text-display-xl {
     font-size: clamp(3rem, 6vw, 5rem);
-    line-height: 1.05;
+    line-height: 1.08;
     font-family: var(--font-display);
-    letter-spacing: -0.025em;
-    font-weight: 600;
+    letter-spacing: -0.02em;
+    font-weight: 800;
   }
   .text-display-lg {
     font-size: clamp(2.25rem, 4vw, 3.5rem);
-    line-height: 1.1;
+    line-height: 1.12;
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
-    font-weight: 600;
+    letter-spacing: -0.015em;
+    font-weight: 700;
   }
   .text-display-md {
     font-size: clamp(1.75rem, 3vw, 2.5rem);
-    line-height: 1.15;
+    line-height: 1.18;
     font-family: var(--font-display);
-    letter-spacing: -0.015em;
-    font-weight: 600;
+    letter-spacing: -0.01em;
+    font-weight: 700;
   }
   .text-heading-lg {
     font-size: clamp(1.25rem, 2vw, 1.75rem);

@@ -11,7 +11,7 @@ const cards = [
     Icon: Factory,
     title: 'Hygienic Processing',
     description:
-      'Strict hygiene protocols govern every stage — from raw root intake and washing through to final packaging — ensuring a clean, safe product from start to finish.',
+      'Strict hygiene protocols govern every stage, from raw root intake and washing through to final packaging, ensuring a clean, safe product from start to finish.',
   },
   {
     Icon: CheckCircle,

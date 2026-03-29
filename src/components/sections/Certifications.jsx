@@ -24,7 +24,7 @@ const certs = [
     dot: { bg: '#ffffff', border: '#c0345f' },
     title: 'ISO 22000 / FSSC 22000',
     description:
-      'Food Safety Management System certification planned as the next milestone — enabling direct access to major European retail and food service chains.',
+      'Food Safety Management System certification planned as the next milestone, enabling direct access to major European retail and food service chains.',
   },
   {
     step: '03',
