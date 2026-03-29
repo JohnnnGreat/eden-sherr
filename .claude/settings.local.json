@@ -4,6 +4,9 @@
       "Bash(python3.exe --version)",
       "Bash(python.exe --version)",
       "Bash(py --version)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\JohnOssai\\edan-and-sherr\\src\\app"
     ]
   }
 }
