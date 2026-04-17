@@ -6,6 +6,8 @@ import SectionHeader from '@/components/SectionHeader';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
+import Image from 'next/image';
+
 const ease = [0.25, 0.1, 0.25, 1];
 
 const PARAGRAPHS = [
@@ -20,9 +22,13 @@ const PARAGRAPHS = [
   "That is where the story begins to change. Edan & Sherr Limited was founded with a clear vision: to unlock the full value of Nigeria's world-class ginger and share its true potential with the world.",
 ];
 
-export default function Story({ isPreview = false }) {
+export default function Story({ isPreview = false, detailed = false }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '0px 0px -80px 0px' });
+
+  // Separate paragraphs for gallery insertion
+  const firstBlock = PARAGRAPHS.slice(0, 2);
+  const secondBlock = PARAGRAPHS.slice(2);
 
   return (
     <section id="story" className="py-section-y bg-cream" ref={ref} aria-labelledby="story-heading">
@@ -49,7 +55,6 @@ export default function Story({ isPreview = false }) {
             transition={{ duration: 0.65, delay: 0.15, ease }}
             style={{ position: 'relative', marginTop: '3.5rem', textAlign: 'center' }}
           >
-            {/* Decorative oversized quotation mark */}
             <span
               aria-hidden="true"
               className="font-display"
@@ -70,7 +75,6 @@ export default function Story({ isPreview = false }) {
               &ldquo;
             </span>
 
-            {/* Quote text */}
             <blockquote
               className="font-display text-charcoal-900"
               style={{
@@ -106,12 +110,12 @@ export default function Story({ isPreview = false }) {
             />
           </motion.div>
 
-          {/* ── Story paragraphs — staggered ── */}
+          {/* ── Story Content Block 1 ── */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            {(isPreview ? PARAGRAPHS.slice(0, 2) : PARAGRAPHS).map((text, i) => (
+            {firstBlock.map((text, i) => (
               <motion.p
                 key={i}
-                className="text-body-md"
+                className={detailed ? "text-body-lg" : "text-body-md"}
                 style={{ color: '#6e5b67', lineHeight: 1.85 }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -121,6 +125,52 @@ export default function Story({ isPreview = false }) {
               </motion.p>
             ))}
           </div>
+
+          {/* ── Editorial Gallery (Detailed Mode Only) ── */}
+          {detailed && (
+             <motion.div 
+               className="grid grid-cols-1 md:grid-cols-12 gap-8 my-16 items-center"
+               initial={{ opacity: 0, y: 30 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true }}
+               transition={{ duration: 0.8 }}
+             >
+                <div className="md:col-span-7 relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
+                   <Image 
+                     src="/founder-1.png" 
+                     alt="Founder heritage and land"
+                     fill
+                     className="object-cover"
+                   />
+                </div>
+                <div className="md:col-span-5 relative aspect-[5/7] rounded-2xl overflow-hidden shadow-xl md:-translate-y-12">
+                   <Image 
+                     src="/funder-2.png" 
+                     alt="Processing heritage"
+                     fill
+                     className="object-cover"
+                   />
+                </div>
+             </motion.div>
+          )}
+
+          {/* ── Story Content Block 2 ── */}
+          {!isPreview && (
+             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+               {secondBlock.map((text, i) => (
+                 <motion.p
+                   key={i}
+                   className={detailed ? "text-body-lg" : "text-body-md"}
+                   style={{ color: '#6e5b67', lineHeight: 1.85 }}
+                   initial={{ opacity: 0, y: 20 }}
+                   animate={isInView ? { opacity: 1, y: 0 } : {}}
+                   transition={{ duration: 0.55, delay: 0.2 + i * 0.12, ease }}
+                 >
+                   {text}
+                 </motion.p>
+               ))}
+             </div>
+          )}
 
           {isPreview && (
             <div className="mt-10 text-center">

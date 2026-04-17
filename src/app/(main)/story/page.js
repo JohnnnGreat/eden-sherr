@@ -12,10 +12,10 @@ export default function StoryPage() {
     <main>
       <PageHero 
         label="The Founder"
-        title="A Legacy of the Land"
-        description="A story of generations of farming families and a vision to share Nigeria's extraordinary ginger with the world."
+        title="A Legacy of Ginger, A Vision for the World"
+        description="She did not come to ginger through business. She came through the land — through a grandfather who devoted his life to it, and generations of farming families who understood, long before the world did, just how extraordinary Nigeria's ginger truly is."
       />
-      <Story />
+      <Story detailed={true} />
       <Contact />
     </main>
   );
