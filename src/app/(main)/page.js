@@ -19,7 +19,6 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <GingerOrigin />
       <About isPreview={true} />
       <Products isPreview={true} />
       <Story isPreview={true} />
