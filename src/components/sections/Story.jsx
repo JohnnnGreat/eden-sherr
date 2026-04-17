@@ -3,20 +3,24 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import SectionHeader from '@/components/SectionHeader';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 
 const ease = [0.25, 0.1, 0.25, 1];
 
 const PARAGRAPHS = [
-  "Nigeria is home to some of the world's finest ginger, prized for its rich aroma, bold flavour, and exceptional oil content. But for me, this is more than a fact. It is a story I have lived.",
+  "She did not come to ginger through business. She came through the land — through a grandfather who devoted his life to it, and generations of farming families who understood, long before the world did, just how extraordinary Nigeria's ginger truly is.",
 
-  "I grew up watching generations of ginger farmers shape this legacy. My grandfather, one of the finest farmers of his time, devoted his life to the land. After him came my parents, uncles, cousins, and countless others: men and women who worked tirelessly in rich red soils under open skies, cultivating a crop that carries both heritage and pride.",
+  "Nigeria is home to some of the world's finest ginger, prized for its rich aroma, bold flavour, and exceptional oil content. For me, this is not a market opportunity. It is the land I grew up in, and the story of the people who shaped it.",
 
-  "Season after season, they produced ginger of remarkable strength and character. What I still believe to be the boldest ginger in the world. Yet despite its quality, much of its true value remained unrealised. The world had not fully experienced it as it should. I watched as each generation, in its own way, tried to bring this extraordinary resource to the global stage, often constrained by limitations beyond their control.",
+  "My grandfather, one of the finest farmers of his time, devoted his life to the land. After him came my parents, uncles, cousins, and countless others — men and women who worked tirelessly in rich red soils under open skies, cultivating a crop that carries both heritage and pride. Season after season, they produced ginger of remarkable strength and character. What I still believe to be the boldest ginger in the world.",
+
+  "Yet despite its quality, much of its true value remained unrealised. The world had not fully experienced it as it should. I watched as each generation, in its own way, tried to bring this extraordinary resource to the global stage — often constrained by limitations beyond their control.",
 
   "That is where the story begins to change. Edan & Sherr Limited was founded with a clear vision: to unlock the full value of Nigeria's world-class ginger and share its true potential with the world.",
 ];
 
-export default function Story() {
+export default function Story({ isPreview = false }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '0px 0px -80px 0px' });
 
@@ -32,7 +36,7 @@ export default function Story() {
             transition={{ duration: 0.6, ease }}
           >
             <SectionHeader
-              label="Our Story"
+              label="Founder's Story"
               title="A Legacy of Ginger, A Vision for the World"
               align="center"
             />
@@ -79,9 +83,9 @@ export default function Story() {
                 paddingInline: '1rem',
               }}
             >
-              I grew up watching generations of ginger farmers shape this legacy.
-              Season after season, they produced ginger of remarkable strength and
-              character. What I still believe to be the boldest ginger in the world.
+              She did not come to ginger through business. She came through the land
+              — through a grandfather who devoted his life to it, and generations of
+              farming families.
             </blockquote>
           </motion.div>
 
@@ -104,7 +108,7 @@ export default function Story() {
 
           {/* ── Story paragraphs — staggered ── */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            {PARAGRAPHS.map((text, i) => (
+            {(isPreview ? PARAGRAPHS.slice(0, 2) : PARAGRAPHS).map((text, i) => (
               <motion.p
                 key={i}
                 className="text-body-md"
@@ -117,6 +121,17 @@ export default function Story() {
               </motion.p>
             ))}
           </div>
+
+          {isPreview && (
+            <div className="mt-10 text-center">
+              <Link
+                href="/story"
+                className="link-arrow text-green-700 font-bold uppercase tracking-widest text-xs"
+              >
+                Read Full Story <ArrowRight size={14} className="ml-1" />
+              </Link>
+            </div>
+          )}
 
         </div>
       </div>

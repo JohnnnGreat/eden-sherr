@@ -2,7 +2,8 @@
 
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Factory, CheckCircle, FlaskConical, FileSearch } from 'lucide-react';
+import { Factory, CheckCircle, FlaskConical, FileSearch, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 const ease = [0.25, 0.1, 0.25, 1];
 
@@ -27,13 +28,13 @@ const cards = [
   },
   {
     Icon: FileSearch,
-    title: 'Full Traceability',
+    title: 'Traceability',
     description:
-      'GPS-registered farms, batch-coded processing records, and chain-of-custody documentation provide complete, auditable farm-to-factory transparency.',
+      'Batch-coded processing records and chain-of-custody documentation provide complete, auditable farm-to-factory transparency.',
   },
 ];
 
-export default function Quality() {
+export default function Quality({ isPreview = false }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '0px 0px -80px 0px' });
 
@@ -138,6 +139,17 @@ export default function Quality() {
             </motion.div>
           ))}
         </div>
+
+        {isPreview && (
+          <div className="mt-12 text-center">
+            <Link
+              href="/standards"
+              className="link-arrow text-white font-bold uppercase tracking-widest text-xs opacity-70 hover:opacity-100"
+            >
+              View Detailed Standards & Certifications <ArrowRight size={14} className="ml-1" />
+            </Link>
+          </div>
+        )}
 
       </div>
     </section>

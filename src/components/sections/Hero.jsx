@@ -59,7 +59,7 @@ export default function Hero() {
                            flexShrink: 0,
                         }}
                      />
-                     <span className="text-body-sm font-medium">Nigerian Ginger Excellence</span>
+                     <span className="text-body-sm font-medium">Premium Nigerian Ginger</span>
                   </div>
 
                   {/* Headline */}
@@ -80,8 +80,8 @@ export default function Hero() {
 
                   {/* Subtitle */}
                   <p className="section-body mt-6">
-                     A Nigerian agro-processing company dedicated to producing premium, traceable
-                     ginger products for local and international markets.
+                     We produce premium ginger products for buyers who demand consistency,
+                     traceability, and exceptional quality — from farm to freight.
                   </p>
 
                   {/* CTA buttons */}
@@ -162,28 +162,7 @@ export default function Hero() {
                         </p>
                      </div>
 
-                     {/* ── Floating card: top-right ── */}
-                     <div
-                        style={{
-                           position: "absolute",
-                           top: 28,
-                           right: 0,
-                           backgroundColor: "#ffffff",
-                           borderRadius: "0.75rem",
-                           padding: "1rem 1.25rem",
-                           boxShadow:
-                              "0 8px 32px -4px rgba(58, 51, 53, 0.14), 0 2px 8px rgba(58, 51, 53, 0.06)",
-                           minWidth: 148,
-                        }}
-                     >
-                        <p className="text-label-md">Quality</p>
-                        <p
-                           className="text-charcoal-900"
-                           style={{ fontWeight: 600, fontSize: "1rem", marginTop: "0.25rem" }}
-                        >
-                           EU Compliant
-                        </p>
-                     </div>
+
                   </div>
                </motion.div>
             </div>

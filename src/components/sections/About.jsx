@@ -3,8 +3,9 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
-import { Leaf, Settings, FlaskConical, Globe } from "lucide-react";
+import { Leaf, Settings, FlaskConical, Globe, ArrowRight } from "lucide-react";
 import SectionHeader from "@/components/SectionHeader";
+import Link from "next/link";
 
 const ease = [0.25, 0.1, 0.25, 1];
 
@@ -43,7 +44,7 @@ const highlights = [
    },
 ];
 
-export default function About() {
+export default function About({ isPreview = false }) {
    const ref = useRef(null);
    const isInView = useInView(ref, { once: true, margin: "0px 0px -100px 0px" });
 
@@ -115,70 +116,41 @@ export default function About() {
                         style={{ color: "#6e5b67", lineHeight: 1.75 }}
                      >
                         Edan &amp; Sherr was founded on a simple conviction: Nigerian ginger is
-                        among the finest in the world, yet it has long been undervalued in global
-                        markets. We exist to change that by building a supply chain that honours the
-                        farmer, respects the crop, and delivers a product worthy of the world&apos;s
-                        most discerning buyers.
+                        among the best in the world — yet its full potential has often 
+                        gone unrealised. What was missing was a reliable bridge: a processing 
+                        facility capable of meeting international specifications, and a 
+                        supply chain built for global commerce. That is what Edan &amp; Sherr 
+                        was created to provide — a processing and supply chain that honours 
+                        the farmer, respects the crop, and delivers a product worthy of 
+                        the global market.
                      </p>
+ 
+                     {!isPreview && (
+                        <p
+                           className="text-body-md mt-4"
+                           style={{ color: "#6e5b67", lineHeight: 1.75 }}
+                        >
+                           From Southern Kaduna, Nigeria&apos;s premier ginger belt, we work directly
+                           with smallholder farming families providing fair farm-gate pricing
+                           and transparent trade. Our processing facilities transform raw
+                           material into agricultural products that meet international safety 
+                           and quality standards.
+                        </p>
+                     )}
 
-                     <p
-                        className="text-body-md mt-4"
-                        style={{ color: "#6e5b67", lineHeight: 1.75 }}
-                     >
-                        Operating from Southern Kaduna, Nigeria&apos;s premier ginger belt, we work
-                        directly with over 200 smallholder farming families, providing technical
-                        support, fair farm-gate pricing, and guaranteed offtake. Our processing
-                        facilities then transform that raw material into export-grade dried ginger,
-                        powder, and steam-treated product that meets EU, US, and Asian regulatory
-                        standards.
-                     </p>
+                     {isPreview && (
+                        <div className="mt-8">
+                           <Link
+                              href="/about"
+                              className="link-arrow text-green-700 font-bold uppercase tracking-widest text-xs"
+                           >
+                              Learn More About Our Mission <ArrowRight size={14} className="ml-1" />
+                           </Link>
+                        </div>
+                     )}
                   </motion.div>
 
-                  {/* ── 2×2 Highlight grid ── */}
-                  <div className="grid grid-cols-2 gap-6 mt-10">
-                     {highlights.map(({ Icon, title, description, bg, color }, i) => (
-                        <motion.div
-                           key={title}
-                           initial={{ opacity: 0, y: 20 }}
-                           animate={isInView ? { opacity: 1, y: 0 } : {}}
-                           transition={{ duration: 0.5, delay: 0.3 + i * 0.1, ease }}
-                        >
-                           {/* Icon square */}
-                           <div
-                              style={{
-                                 width: 40,
-                                 height: 40,
-                                 borderRadius: "0.5rem",
-                                 backgroundColor: bg,
-                                 display: "flex",
-                                 alignItems: "center",
-                                 justifyContent: "center",
-                                 marginBottom: "0.75rem",
-                                 color,
-                                 flexShrink: 0,
-                              }}
-                           >
-                              <Icon
-                                 size={18}
-                                 aria-hidden="true"
-                              />
-                           </div>
 
-                           <p
-                              className="font-body text-body-sm"
-                              style={{ fontWeight: 600, color: "#3a3335" }}
-                           >
-                              {title}
-                           </p>
-                           <p
-                              className="text-caption mt-1"
-                              style={{ lineHeight: 1.6 }}
-                           >
-                              {description}
-                           </p>
-                        </motion.div>
-                     ))}
-                  </div>
                </div>
             </div>
          </div>

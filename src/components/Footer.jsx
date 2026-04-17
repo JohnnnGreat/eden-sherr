@@ -2,18 +2,19 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const COMPANY_LINKS = [
-  { label: 'About Us', href: '#about' },
-  { label: 'Our Story', href: '#story' },
-  { label: 'Quality & Safety', href: '#quality' },
-  { label: 'Certifications', href: '#certifications' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'About Us', href: '/about' },
+  { label: 'Why Ginger', href: '/origin' },
+  { label: 'Our Story', href: '/story' },
+  { label: 'Products', href: '/products' },
+  { label: 'Standards', href: '/standards' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 const PRODUCT_LINKS = [
-  { label: 'Dried Split Ginger', href: '#products' },
-  { label: 'Ginger Powder', href: '#products' },
-  { label: 'Crystallised Ginger', href: '#products' },
-  { label: 'Ginger Oil', href: '#products' },
+  { label: 'Dried Split Ginger', href: '/products' },
+  { label: 'Ginger Powder', href: '/products' },
+  { label: 'Ginger Oil', href: '/products' },
+  { label: 'Enquire', href: '/contact' },
 ];
 
 function InstagramIcon() {
@@ -189,12 +190,12 @@ export default function Footer() {
             <ul className="list-none m-0 p-0" style={{ display: 'flex', flexDirection: 'column', gap: '0.875rem' }}>
               {COMPANY_LINKS.map(({ label, href }) => (
                 <li key={label}>
-                  <a
+                  <Link
                     href={href}
                     className="text-body-sm footer-link"
                   >
                     {label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

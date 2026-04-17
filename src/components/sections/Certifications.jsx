@@ -35,15 +35,6 @@ const certs = [
     description:
       'Farm-level Good Agricultural Practice certification in development with partner farms to verify responsible sourcing and traceability standards.',
   },
-  {
-    step: '04',
-    tag: 'Under Consideration',
-    tagVariant: 'berry',
-    dot: { bg: '#ffffff', border: 'rgba(58,51,53,0.2)' },
-    title: 'Organic Certification',
-    description:
-      'Exploring USDA/EU organic certification for select farm clusters, subject to soil testing and transition period requirements.',
-  },
 ];
 
 export default function Certifications() {
@@ -79,8 +70,8 @@ export default function Certifications() {
           {/*
            * Desktop: horizontal timeline
            * The track line sits at the dot center.
-           * Dot center = step-label height (18px) + gap (10px) + half dot (10px) = 38px from grid top.
-           * We offset inward by 12.5% (1/8 width) so the line starts/ends at each dot center.
+           * Dot center = 1/6, 1/2, 5/6 for 3 columns.
+           * Let's use 16.6%, 50%, 83.3%
            */}
           <div className="relative">
 
@@ -90,22 +81,22 @@ export default function Certifications() {
               className="hidden md:block absolute"
               style={{
                 top: 38,
-                left: '12.5%',
-                right: '12.5%',
+                left: '16.6%',
+                right: '16.6%',
                 height: 2,
                 backgroundColor: 'rgba(58,51,53,0.1)',
                 borderRadius: 9999,
               }}
             />
 
-            {/* Progress fill — first segment (step 01 active) */}
+            {/* Progress fill — first segment (step 01 to 02) */}
             <div
               aria-hidden="true"
               className="hidden md:block absolute"
               style={{
                 top: 38,
-                left: '12.5%',
-                width: '25%',
+                left: '16.6%',
+                width: '33.3%',
                 height: 2,
                 backgroundColor: '#c0345f',
                 borderRadius: 9999,
@@ -113,7 +104,7 @@ export default function Certifications() {
             />
 
             {/* Items */}
-            <div className="grid md:grid-cols-4 gap-0">
+            <div className="grid md:grid-cols-3 gap-0">
               {certs.map(({ step, tag, tagVariant, dot, title, description }, i) => (
                 <motion.div
                   key={title}
@@ -123,7 +114,7 @@ export default function Certifications() {
                   transition={{ duration: 0.5, delay: 0.25 + i * 0.13, ease }}
                 >
 
-                  {/* ── DESKTOP layout: stack vertically, centered ── */}
+                  {/* ── DESKTOP layout ── */}
                   <div className="hidden md:flex flex-col items-center text-center px-4">
 
                     {/* Step number */}
@@ -166,7 +157,7 @@ export default function Certifications() {
                     </div>
                   </div>
 
-                  {/* ── MOBILE layout: vertical timeline, dot left + content right ── */}
+                  {/* ── MOBILE layout ── */}
                   <div className="md:hidden flex items-start gap-5 pb-10 relative">
 
                     {/* Left: dot + vertical connector */}

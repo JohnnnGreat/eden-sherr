@@ -5,11 +5,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const NAV_LINKS = [
-  { label: 'About', href: '#about' },
-  { label: 'Our Story', href: '#story' },
-  { label: 'Products', href: '#products' },
-  { label: 'Quality', href: '#quality' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'About', href: '/about' },
+  { label: 'Origin', href: '/origin' },
+  { label: 'Our Story', href: '/story' },
+  { label: 'Products', href: '/products' },
+  { label: 'Standards', href: '/standards' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 function LeafIcon() {
@@ -190,13 +191,13 @@ export default function Navbar() {
           </ul>
 
           {/* Desktop CTA */}
-          <a
-            href="#contact"
+          <Link
+            href="/contact"
             className="btn-primary hidden md:inline-flex"
             style={{ padding: '0.625rem 1.375rem', fontSize: '0.875rem' }}
           >
             Get in Touch
-          </a>
+          </Link>
 
           {/* Mobile hamburger */}
           <button
@@ -267,9 +268,13 @@ export default function Navbar() {
             </ul>
 
             <div className="mt-10 flex flex-col gap-4">
-              <a href="#contact" onClick={() => setMenuOpen(false)} className="btn-primary text-center">
-                Get in Touch
-              </a>
+            <Link 
+              href="/contact" 
+              onClick={() => setMenuOpen(false)} 
+              className="btn-primary text-center"
+            >
+              Get in Touch
+            </Link>
               <div className="flex flex-col gap-2 mt-2">
                 <a
                   href="mailto:info@edanandsherr.com"
