@@ -64,17 +64,17 @@ export default function Hero() {
 
                   {/* Headline */}
                   <h1
-                     className="text-display-xl text-charcoal-900"
+                     className="text-display-lg text-charcoal-900"
                      style={{ textWrap: "balance" }}
                   >
-                     Nature&apos;s Finest Ginger,
+                     Premium Nigerian Ginger,
                      <br />
                      Processed to{" "}
                      <em
                         className="text-green-500"
                         style={{ fontStyle: "italic" }}
                      >
-                        Perfection
+                        Excellence
                      </em>
                   </h1>
 

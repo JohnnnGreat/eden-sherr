@@ -13,9 +13,9 @@ const ease = [0.25, 0.1, 0.25, 1];
 const PARAGRAPHS = [
   "She did not come to ginger through business. She came through the land — through a grandfather who devoted his life to it, and generations of farming families who understood, long before the world did, just how extraordinary Nigeria's ginger truly is.",
 
-  "Nigeria is home to some of the world's finest ginger, prized for its rich aroma, bold flavour, and exceptional oil content. For me, this is not a market opportunity. It is the land I grew up in, and the story of the people who shaped it.",
+  "Nigeria is home to some of the world's highest quality ginger, prized for its rich aroma, bold flavour, and exceptional oil content. For me, this is not a market opportunity. It is the land I grew up in, and the story of the people who shaped it.",
 
-  "My grandfather, one of the finest farmers of his time, devoted his life to the land. After him came my parents, uncles, cousins, and countless others — men and women who worked tirelessly in rich red soils under open skies, cultivating a crop that carries both heritage and pride. Season after season, they produced ginger of remarkable strength and character. What I still believe to be the boldest ginger in the world.",
+  "My grandfather, one of the most dedicated farmers of his time, devoted his life to the land. After him came my parents, uncles, cousins, and countless others — men and women who worked tirelessly in rich red soils under open skies, cultivating a crop that carries both heritage and pride. Season after season, they produced ginger of remarkable strength and character. What I still believe to be some of the boldest and most aromatic ginger in the world.",
 
   "Yet despite its quality, much of its true value remained unrealised. The world had not fully experienced it as it should. I watched as each generation, in its own way, tried to bring this extraordinary resource to the global stage — often constrained by limitations beyond their control.",
 
@@ -129,26 +129,28 @@ export default function Story({ isPreview = false, detailed = false }) {
           {/* ── Editorial Gallery (Detailed Mode Only) ── */}
           {detailed && (
              <motion.div 
-               className="grid grid-cols-1 md:grid-cols-12 gap-8 my-16 items-center"
+               className="grid grid-cols-1 md:grid-cols-2 gap-8 my-16 items-start"
                initial={{ opacity: 0, y: 30 }}
                whileInView={{ opacity: 1, y: 0 }}
                viewport={{ once: true }}
                transition={{ duration: 0.8 }}
              >
-                <div className="md:col-span-7 relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
+                <div className="relative rounded-xl overflow-hidden shadow-lg bg-white/50 p-2">
                    <Image 
                      src="/founder-1.png" 
                      alt="Founder heritage and land"
-                     fill
-                     className="object-cover"
+                     width={800}
+                     height={1000}
+                     className="w-full h-auto"
                    />
                 </div>
-                <div className="md:col-span-5 relative aspect-[5/7] rounded-2xl overflow-hidden shadow-xl md:-translate-y-12">
+                <div className="relative rounded-xl overflow-hidden shadow-lg bg-white/50 p-2 md:translate-y-20">
                    <Image 
                      src="/funder-2.png" 
                      alt="Processing heritage"
-                     fill
-                     className="object-cover"
+                     width={800}
+                     height={1100}
+                     className="w-full h-auto"
                    />
                 </div>
              </motion.div>

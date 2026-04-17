@@ -66,7 +66,7 @@ export default function GingerOrigin() {
                   </div>
 
                   <p className="text-body-md mt-10" style={{ color: "#3e642e", fontWeight: 600 }}>
-                     Edan &amp; Sherr brings you the finest of the region.
+                     Edan &amp; Sherr brings you the highest quality of the region.
                   </p>
                </motion.div>
 
