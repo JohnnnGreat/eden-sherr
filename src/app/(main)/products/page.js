@@ -3,13 +3,13 @@ import Contact from "@/components/sections/Contact";
 import PageHero from "@/components/PageHero";
 
 export const metadata = {
-  title: "Our Products | Edan & Sherr Limited",
+  title: "Our Products",
   description: "Explore our premium ginger products, including fresh rhizomes, dried split ginger, and ginger powder.",
 };
 
 export default function ProductsPage() {
   return (
-    <main>
+    <>
       <PageHero 
         label="Our Products"
         title="Premium Ginger Solutions"
@@ -17,6 +17,6 @@ export default function ProductsPage() {
       />
       <Products />
       <Contact />
-    </main>
+    </>
   );
 }

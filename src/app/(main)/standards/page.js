@@ -4,13 +4,13 @@ import Contact from "@/components/sections/Contact";
 import PageHero from "@/components/PageHero";
 
 export const metadata = {
-  title: "Quality Standards | Edan & Sherr Limited",
+  title: "Quality Standards",
   description: "Learn about our rigorous quality control, traceability systems, and our roadmap to global certifications.",
 };
 
 export default function StandardsPage() {
   return (
-    <main>
+    <>
       <PageHero 
         label="Excellence"
         title="Quality You Can Verify"
@@ -20,6 +20,6 @@ export default function StandardsPage() {
       <Quality />
       <Certifications />
       <Contact />
-    </main>
+    </>
   );
 }

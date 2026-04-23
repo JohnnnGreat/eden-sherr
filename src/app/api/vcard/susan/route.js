@@ -1,22 +1,24 @@
+import { siteConfig } from '@/config/site';
+
 export async function GET() {
-   const vcardData = `BEGIN:VCARD
+  const vcardData = `BEGIN:VCARD
 VERSION:3.0
 N:Essien;Susan;;Ms.;
 FN:Susan Essien
 TITLE:C.E.O.
-ORG:Edan & Sherr Limited
-TEL;TYPE=WORK,VOICE:+2348065321577
-EMAIL;TYPE=WORK:sessien@edanandsherr.com
-URL:https://www.edanandsherr.com
-ADR;TYPE=WORK:;;No. 3 Okemisi Crescent\\, Off Oro Ago Street;Garki II\\, Abuja;;;Nigeria
+ORG:${siteConfig.companyName}
+TEL;TYPE=WORK,VOICE:${siteConfig.contact.phoneE164}
+EMAIL;TYPE=WORK:${siteConfig.contact.salesEmail}
+URL:${siteConfig.siteUrl}
+ADR;TYPE=WORK:;;${siteConfig.address.streetLine1}\\, ${siteConfig.address.streetLine2};${siteConfig.address.city};;;${siteConfig.address.country}
 END:VCARD`;
 
-   return new Response(vcardData, {
-      status: 200,
-      headers: {
-         "Content-Type": "text/vcard; charset=utf-8",
-         "Content-Disposition": 'attachment; filename="Susan_Essien.vcf"',
-         "Cache-Control": "s-maxage=86400, stale-while-revalidate",
-      },
-   });
+  return new Response(vcardData, {
+    status: 200,
+    headers: {
+      'Content-Type': 'text/vcard; charset=utf-8',
+      'Content-Disposition': 'attachment; filename="Susan_Essien.vcf"',
+      'Cache-Control': 's-maxage=86400, stale-while-revalidate',
+    },
+  });
 }

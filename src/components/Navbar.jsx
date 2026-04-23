@@ -1,8 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useId, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+import { siteConfig } from '@/config/site';
 
 const NAV_LINKS = [
   { label: 'About', href: '/about' },
@@ -13,36 +15,9 @@ const NAV_LINKS = [
   { label: 'Contact', href: '/contact' },
 ];
 
-function LeafIcon() {
-  return (
-    <svg
-      width="14"
-      height="14"
-      viewBox="0 0 14 14"
-      fill="none"
-      aria-hidden="true"
-      className="text-green-500"
-    >
-      <path
-        d="M7 13V7M7 7C7 4 4 2 1 1.5c0 3 1.5 5.5 4.5 5.5H7zm0 0c0-3 3-5 6-5.5 0 3-1.5 5.5-4.5 5.5H7z"
-        stroke="currentColor"
-        strokeWidth="1.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
 function MenuIcon() {
   return (
-    <svg
-      width="22"
-      height="22"
-      viewBox="0 0 22 22"
-      fill="none"
-      aria-hidden="true"
-    >
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
       <path
         d="M3 6h16M3 11h16M3 16h16"
         stroke="currentColor"
@@ -55,13 +30,7 @@ function MenuIcon() {
 
 function CloseIcon() {
   return (
-    <svg
-      width="22"
-      height="22"
-      viewBox="0 0 22 22"
-      fill="none"
-      aria-hidden="true"
-    >
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
       <path
         d="M4 4l14 14M18 4L4 18"
         stroke="currentColor"
@@ -110,6 +79,8 @@ function MailIcon() {
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const menuId = useId();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -117,57 +88,85 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!menuOpen) {
+      return undefined;
+    }
+
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
   }, [menuOpen]);
 
   return (
     <>
-      {/* ── Topbar ────────────────────────────────────────────── */}
       <div className="bg-charcoal-900 text-white">
-        <div className="container-site flex items-center justify-between h-8">
-          <p className="text-caption" style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.6875rem' }}>
-            Rooted in Nigeria. Crafted for the world.
+        <div className="container-site flex items-center justify-between h-9">
+          <p
+            className="text-caption"
+            style={{ color: 'rgba(255,255,255,0.65)', fontSize: '0.75rem' }}
+          >
+            {siteConfig.tagline}
           </p>
           <div className="hidden sm:flex items-center gap-5">
             <a
-              href="mailto:info@edanandsherr.com"
+              href={`mailto:${siteConfig.contact.email}`}
               className="flex items-center gap-1.5 text-caption hover:text-white transition-colors"
-              style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.6875rem', textDecoration: 'none' }}
+              style={{
+                color: 'rgba(255,255,255,0.7)',
+                fontSize: '0.75rem',
+                textDecoration: 'none',
+              }}
             >
               <MailIcon />
-              info@edanandsherr.com
+              {siteConfig.contact.email}
             </a>
             <a
-              href="tel:+2348065321577"
+              href={`tel:${siteConfig.contact.phoneE164}`}
               className="flex items-center gap-1.5 text-caption hover:text-white transition-colors"
-              style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.6875rem', textDecoration: 'none' }}
+              style={{
+                color: 'rgba(255,255,255,0.7)',
+                fontSize: '0.75rem',
+                textDecoration: 'none',
+              }}
             >
               <PhoneIcon />
-              +234 806 532 1577
+              {siteConfig.contact.phoneDisplay}
             </a>
           </div>
         </div>
       </div>
 
-      {/* ── Main Nav ──────────────────────────────────────────── */}
       <header
         className="sticky top-0 z-40 transition-all duration-300"
         style={{
-          backgroundColor: scrolled ? 'rgba(250, 247, 244, 0.95)' : '#ffffff',
-          backdropFilter: scrolled ? 'blur(12px)' : 'none',
+          backgroundColor: scrolled ? 'rgba(250, 245, 236, 0.96)' : '#ffffff',
+          backdropFilter: scrolled ? 'blur(10px)' : 'none',
           borderBottom: '1px solid rgba(58, 51, 53, 0.08)',
           boxShadow: scrolled ? '0 1px 20px rgba(58, 51, 53, 0.06)' : 'none',
         }}
       >
-        <nav className="container-site flex items-center justify-between h-16">
-          {/* Logo */}
+        <nav className="container-site flex items-center justify-between h-16" aria-label="Main">
           <Link href="/" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}>
             <Image
               src="/Edan-%26-Sherr-Presentation-3.png"
-              alt="Edan & Sherr Limited"
+              alt={siteConfig.companyName}
               width={130}
               height={48}
               style={{ objectFit: 'contain', objectPosition: 'left' }}
@@ -175,22 +174,28 @@ export default function Navbar() {
             />
           </Link>
 
-          {/* Desktop nav links */}
           <ul className="hidden md:flex items-center gap-7 list-none m-0 p-0">
-            {NAV_LINKS.map(({ label, href }) => (
-              <li key={label}>
-                <a
-                  href={href}
-                  className="text-body-sm font-medium text-charcoal-600 hover:text-charcoal-900 transition-colors duration-150"
-                  style={{ textDecoration: 'none', fontWeight: 500 }}
-                >
-                  {label}
-                </a>
-              </li>
-            ))}
+            {NAV_LINKS.map(({ label, href }) => {
+              const isActive = pathname === href;
+              return (
+                <li key={label}>
+                  <Link
+                    href={href}
+                    aria-current={isActive ? 'page' : undefined}
+                    className="text-body-sm font-medium transition-colors duration-150"
+                    style={{
+                      textDecoration: 'none',
+                      fontWeight: 500,
+                      color: isActive ? '#3a3335' : '#6e5b67',
+                    }}
+                  >
+                    {label}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
 
-          {/* Desktop CTA */}
           <Link
             href="/contact"
             className="btn-primary hidden md:inline-flex"
@@ -199,43 +204,41 @@ export default function Navbar() {
             Get in Touch
           </Link>
 
-          {/* Mobile hamburger */}
           <button
+            type="button"
             className="md:hidden flex items-center justify-center text-charcoal-900"
-            onClick={() => setMenuOpen(true)}
-            aria-label="Open menu"
+            onClick={() => setMenuOpen((state) => !state)}
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+            aria-controls={menuId}
             style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '0.25rem' }}
           >
-            <MenuIcon />
+            {menuOpen ? <CloseIcon /> : <MenuIcon />}
           </button>
         </nav>
       </header>
 
-      {/* ── Mobile Full-screen Overlay ─────────────────────────── */}
       {menuOpen && (
         <div
+          id={menuId}
           className="fixed inset-0 z-50 flex flex-col bg-cream"
           style={{ overflowY: 'auto' }}
         >
-          {/* Overlay header */}
           <div
             className="flex items-center justify-between px-6 h-16"
             style={{ borderBottom: '1px solid rgba(58,51,53,0.08)' }}
           >
-            <Link
-              href="/"
-              onClick={() => setMenuOpen(false)}
-              style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}
-            >
+            <Link href="/" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}>
               <Image
                 src="/Edan-%26-Sherr-Presentation-3.png"
-                alt="Edan & Sherr Limited"
+                alt={siteConfig.companyName}
                 width={120}
                 height={44}
                 style={{ objectFit: 'contain', objectPosition: 'left' }}
               />
             </Link>
             <button
+              type="button"
               className="flex items-center justify-center text-charcoal-900"
               onClick={() => setMenuOpen(false)}
               aria-label="Close menu"
@@ -245,52 +248,51 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Overlay links */}
-          <nav className="flex flex-col px-6 py-10 flex-1">
+          <nav className="flex flex-col px-6 py-10 flex-1" aria-label="Mobile">
             <ul className="list-none m-0 p-0 space-y-1">
-              {NAV_LINKS.map(({ label, href }) => (
-                <li key={label}>
-                  <a
-                    href={href}
-                    onClick={() => setMenuOpen(false)}
-                    className="font-display text-charcoal-900 block py-3"
-                    style={{
-                      fontSize: 'clamp(1.75rem, 6vw, 2.25rem)',
-                      letterSpacing: '-0.015em',
-                      textDecoration: 'none',
-                      borderBottom: '1px solid rgba(58,51,53,0.07)',
-                    }}
-                  >
-                    {label}
-                  </a>
-                </li>
-              ))}
+              {NAV_LINKS.map(({ label, href }) => {
+                const isActive = pathname === href;
+                return (
+                  <li key={label}>
+                    <Link
+                      href={href}
+                      aria-current={isActive ? 'page' : undefined}
+                      className="font-display block py-3"
+                      style={{
+                        fontSize: 'clamp(1.75rem, 6vw, 2.25rem)',
+                        letterSpacing: '-0.015em',
+                        textDecoration: 'none',
+                        borderBottom: '1px solid rgba(58,51,53,0.07)',
+                        color: isActive ? '#3a3335' : '#5a4a55',
+                      }}
+                    >
+                      {label}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
 
             <div className="mt-10 flex flex-col gap-4">
-            <Link 
-              href="/contact" 
-              onClick={() => setMenuOpen(false)} 
-              className="btn-primary text-center"
-            >
-              Get in Touch
-            </Link>
+              <Link href="/contact" className="btn-primary text-center">
+                Get in Touch
+              </Link>
               <div className="flex flex-col gap-2 mt-2">
                 <a
-                  href="mailto:info@edanandsherr.com"
+                  href={`mailto:${siteConfig.contact.email}`}
                   className="flex items-center gap-2 text-body-sm text-charcoal-600"
                   style={{ textDecoration: 'none' }}
                 >
                   <MailIcon />
-                  info@edanandsherr.com
+                  {siteConfig.contact.email}
                 </a>
                 <a
-                  href="tel:+2348065321577"
+                  href={`tel:${siteConfig.contact.phoneE164}`}
                   className="flex items-center gap-2 text-body-sm text-charcoal-600"
                   style={{ textDecoration: 'none' }}
                 >
                   <PhoneIcon />
-                  +234 806 532 1577
+                  {siteConfig.contact.phoneDisplay}
                 </a>
               </div>
             </div>

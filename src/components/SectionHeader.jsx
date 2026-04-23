@@ -7,7 +7,7 @@
  *   description  {string=}           — section-body (optional)
  *   align        {'left'|'center'}   — default 'left'
  */
-export default function SectionHeader({ label, title, description, align = 'left' }) {
+export default function SectionHeader({ id, label, title, description, align = 'left' }) {
   const isCenter = align === 'center';
 
   return (
@@ -15,6 +15,7 @@ export default function SectionHeader({ label, title, description, align = 'left
       {label && <p className="section-label">{label}</p>}
 
       <h2
+        id={id}
         className="text-display-md text-charcoal-900"
         style={{
           marginTop: label ? '0.75rem' : 0,

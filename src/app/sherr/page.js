@@ -1,7 +1,7 @@
 import BusinessCardClient from "./BusinessCardClient";
 
 export const metadata = {
-  title: "Susan Essien | Edan & Sherr Limited",
+  title: "Susan Essien",
   description: "Digital business card for Susan Essien, C.E.O. of Edan & Sherr Limited.",
   robots: {
     index: false,

@@ -3,13 +3,13 @@ import Contact from "@/components/sections/Contact";
 import PageHero from "@/components/PageHero";
 
 export const metadata = {
-  title: "About Us | Edan & Sherr Limited",
+  title: "About Us",
   description: "Learn about Edan & Sherr, our commitment to premium Nigerian ginger, and our mission to unlock its full potential.",
 };
 
 export default function AboutPage() {
   return (
-    <main>
+    <>
       <PageHero 
         label="Our Company"
         title="Unlocking the Potential of Nigerian Ginger"
@@ -17,6 +17,6 @@ export default function AboutPage() {
       />
       <About />
       <Contact />
-    </main>
+    </>
   );
 }

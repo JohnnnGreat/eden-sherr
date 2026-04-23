@@ -1,12 +1,12 @@
-export default function sitemap() {
-  const siteUrl = "https://www.edanandsherr.com";
+import { siteConfig } from '@/config/site';
 
-  return [
-    {
-      url: siteUrl,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 1,
-    },
-  ];
+export default function sitemap() {
+  const lastModified = new Date();
+
+  return siteConfig.primaryRoutes.map((route, index) => ({
+    url: `${siteConfig.siteUrl}${route}`,
+    lastModified,
+    changeFrequency: index === 0 ? 'weekly' : 'monthly',
+    priority: index === 0 ? 1 : 0.8,
+  }));
 }

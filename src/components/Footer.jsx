@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { siteConfig } from '@/config/site';
 
 const COMPANY_LINKS = [
   { label: 'About Us', href: '/about' },
@@ -13,7 +14,7 @@ const COMPANY_LINKS = [
 const PRODUCT_LINKS = [
   { label: 'Dried Split Ginger', href: '/products' },
   { label: 'Ginger Powder', href: '/products' },
-  { label: 'Ginger Oil', href: '/products' },
+  { label: 'Fresh Rhizomes', href: '/products' },
   { label: 'Enquire', href: '/contact' },
 ];
 
@@ -45,17 +46,17 @@ function XIcon() {
   );
 }
 
-const SOCIAL = [
-  { label: 'Instagram', href: '#', Icon: InstagramIcon },
-  { label: 'LinkedIn', href: '#', Icon: LinkedInIcon },
-  { label: 'X', href: '#', Icon: XIcon },
-];
+const ICON_MAP = {
+  Instagram: InstagramIcon,
+  LinkedIn: LinkedInIcon,
+  X: XIcon,
+};
 
 export default function Footer() {
+  const activeSocialLinks = siteConfig.socialLinks.filter((item) => Boolean(item.href));
+
   return (
     <footer style={{ backgroundColor: '#1e1a1c' }}>
-
-      {/* ── CTA strip ── */}
       <div
         className="container-site"
         style={{
@@ -65,12 +66,8 @@ export default function Footer() {
         }}
       >
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
-          {/* Left: statement */}
           <div style={{ maxWidth: 560 }}>
-            <p
-              className="section-label"
-              style={{ color: '#75a85d' }}
-            >
+            <p className="section-label" style={{ color: '#75a85d' }}>
               Start Sourcing
             </p>
             <h2
@@ -84,12 +81,12 @@ export default function Footer() {
                 marginTop: '0.75rem',
               }}
             >
-              Premium Nigerian ginger,<br />
+              Premium Nigerian ginger,
+              <br />
               ready for the world.
             </h2>
           </div>
 
-          {/* Right: actions */}
           <div
             style={{
               display: 'flex',
@@ -98,41 +95,32 @@ export default function Footer() {
               alignItems: 'flex-start',
             }}
           >
-            <a
-              href="mailto:info@edanandsherr.com"
-              className="btn-primary"
-            >
-              info@edanandsherr.com
+            <a href={`mailto:${siteConfig.contact.email}`} className="btn-primary">
+              {siteConfig.contact.email}
             </a>
             <a
-              href="tel:+2348065321577"
+              href={`tel:${siteConfig.contact.phoneE164}`}
               className="text-body-sm"
               style={{
-                color: 'rgba(255,255,255,0.4)',
+                color: 'rgba(255,255,255,0.6)',
                 textDecoration: 'none',
                 paddingLeft: '0.25rem',
                 transition: 'color 0.15s',
               }}
             >
-              +234 806 532 1577
+              {siteConfig.contact.phoneDisplay}
             </a>
           </div>
         </div>
       </div>
 
-      {/* ── Main grid ── */}
-      <div
-        className="container-site"
-        style={{ paddingBlock: 'clamp(2.5rem, 5vw, 4rem)' }}
-      >
+      <div className="container-site" style={{ paddingBlock: 'clamp(2.5rem, 5vw, 4rem)' }}>
         <div className="grid lg:grid-cols-[2fr_1fr_1fr] gap-10 lg:gap-16">
-
-          {/* Brand col */}
           <div>
             <Link href="/" style={{ textDecoration: 'none', display: 'inline-block' }}>
               <Image
                 src="/Edan-%26-Sherr-Presentation-3.png"
-                alt="Edan & Sherr Limited"
+                alt={siteConfig.companyName}
                 width={160}
                 height={64}
                 style={{ objectFit: 'contain', objectPosition: 'left' }}
@@ -142,58 +130,60 @@ export default function Footer() {
             <p
               className="text-body-sm"
               style={{
-                color: 'rgba(255,255,255,0.35)',
+                color: 'rgba(255,255,255,0.6)',
                 lineHeight: 1.75,
                 marginTop: '1.5rem',
-                maxWidth: 280,
+                maxWidth: 310,
               }}
             >
-              Nigeria&apos;s premier ginger agro-processor. From the red soils of
-              Southern Kaduna to food factories and kitchens across three continents.
+              Nigeria&apos;s premier ginger agro-processor. From the red soils of Southern Kaduna to food factories and kitchens across global markets.
             </p>
 
-            {/* Social */}
-            <div style={{ display: 'flex', gap: '0.5rem', marginTop: '1.75rem' }}>
-              {SOCIAL.map(({ label, href, Icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  aria-label={label}
-                  style={{
-                    width: 34,
-                    height: 34,
-                    borderRadius: '0.5rem',
-                    border: '1px solid rgba(255,255,255,0.1)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: 'rgba(255,255,255,0.45)',
-                    textDecoration: 'none',
-                    transition: 'border-color 0.15s, color 0.15s',
-                  }}
-                  className="social-btn"
-                >
-                  <Icon />
-                </a>
-              ))}
-            </div>
+            {activeSocialLinks.length > 0 && (
+              <div style={{ display: 'flex', gap: '0.5rem', marginTop: '1.75rem' }}>
+                {activeSocialLinks.map(({ label, href }) => {
+                  const Icon = ICON_MAP[label];
+                  if (!Icon) {
+                    return null;
+                  }
+
+                  return (
+                    <a
+                      key={label}
+                      href={href}
+                      aria-label={label}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        width: 34,
+                        height: 34,
+                        borderRadius: '0.5rem',
+                        border: '1px solid rgba(255,255,255,0.1)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: 'rgba(255,255,255,0.55)',
+                        textDecoration: 'none',
+                        transition: 'border-color 0.15s, color 0.15s',
+                      }}
+                      className="social-btn"
+                    >
+                      <Icon />
+                    </a>
+                  );
+                })}
+              </div>
+            )}
           </div>
 
-          {/* Company links */}
           <div>
-            <p
-              className="text-label-md"
-              style={{ color: 'rgba(255,255,255,0.25)', marginBottom: '1.25rem' }}
-            >
+            <p className="text-label-md" style={{ color: 'rgba(255,255,255,0.35)', marginBottom: '1.25rem' }}>
               Company
             </p>
             <ul className="list-none m-0 p-0" style={{ display: 'flex', flexDirection: 'column', gap: '0.875rem' }}>
               {COMPANY_LINKS.map(({ label, href }) => (
                 <li key={label}>
-                  <Link
-                    href={href}
-                    className="text-body-sm footer-link"
-                  >
+                  <Link href={href} className="text-body-sm footer-link">
                     {label}
                   </Link>
                 </li>
@@ -201,38 +191,29 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Products links */}
           <div>
-            <p
-              className="text-label-md"
-              style={{ color: 'rgba(255,255,255,0.25)', marginBottom: '1.25rem' }}
-            >
+            <p className="text-label-md" style={{ color: 'rgba(255,255,255,0.35)', marginBottom: '1.25rem' }}>
               Products
             </p>
             <ul className="list-none m-0 p-0" style={{ display: 'flex', flexDirection: 'column', gap: '0.875rem' }}>
               {PRODUCT_LINKS.map(({ label, href }) => (
                 <li key={label}>
-                  <a
-                    href={href}
-                    className="text-body-sm footer-link"
-                  >
+                  <Link href={href} className="text-body-sm footer-link">
                     {label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
-
         </div>
       </div>
 
-      {/* ── Bottom bar ── */}
       <div
         className="container-site"
         style={{
           paddingBottom: '2rem',
           paddingTop: '1.5rem',
-          borderTop: '1px solid rgba(255,255,255,0.06)',
+          borderTop: '1px solid rgba(255,255,255,0.08)',
           display: 'flex',
           flexWrap: 'wrap',
           alignItems: 'center',
@@ -240,43 +221,39 @@ export default function Footer() {
           gap: '0.75rem',
         }}
       >
-        <p
-          className="text-caption"
-          style={{ color: 'rgba(255,255,255,0.22)' }}
-        >
-          &copy; 2026 Edan &amp; Sherr Limited. All rights reserved.
+        <p className="text-caption" style={{ color: 'rgba(255,255,255,0.38)' }}>
+          &copy; 2026 {siteConfig.companyName}. All rights reserved.
         </p>
 
         <div style={{ display: 'flex', gap: '1.5rem' }}>
-          {['Privacy Policy', 'Terms of Trade'].map((item) => (
-            <a
-              key={item}
-              href="#"
+          {siteConfig.legalLinks.map((item) => (
+            <Link
+              key={item.label}
+              href={item.href}
               className="text-caption"
               style={{
-                color: 'rgba(255,255,255,0.22)',
+                color: 'rgba(255,255,255,0.38)',
                 textDecoration: 'none',
                 transition: 'color 0.15s',
               }}
             >
-              {item}
-            </a>
+              {item.label}
+            </Link>
           ))}
         </div>
 
         <p
           className="font-display"
           style={{
-            color: 'rgba(255,255,255,0.12)',
-            fontSize: '0.8125rem',
+            color: 'rgba(255,255,255,0.22)',
+            fontSize: '0.875rem',
             fontStyle: 'italic',
             letterSpacing: '-0.01em',
           }}
         >
-          Rooted in Nigeria. Crafted for the world.
+          {siteConfig.tagline}
         </p>
       </div>
-
     </footer>
   );
 }

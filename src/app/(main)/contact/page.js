@@ -2,13 +2,13 @@ import Contact from "@/components/sections/Contact";
 import PageHero from "@/components/PageHero";
 
 export const metadata = {
-  title: "Contact Us | Edan & Sherr Limited",
+  title: "Contact Us",
   description: "Get in touch with us for inquiries, partnerships, or to request product specifications.",
 };
 
 export default function ContactPage() {
   return (
-    <main>
+    <>
        <PageHero 
         label="Inquire"
         title="Get in Touch"
@@ -16,6 +16,6 @@ export default function ContactPage() {
         bgVariant="green"
       />
       <Contact />
-    </main>
+    </>
   );
 }

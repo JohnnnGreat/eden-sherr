@@ -3,7 +3,7 @@
 import { useRef } from 'react';
 import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
-import { ArrowRight, Clock, Beaker, Leaf, Info } from 'lucide-react';
+import { ArrowRight, Clock3, FlaskConical, Leaf } from 'lucide-react';
 import SectionHeader from '@/components/SectionHeader';
 import Link from 'next/link';
 
@@ -13,155 +13,178 @@ const ALL_PRODUCTS = [
   {
     id: 'rhizomes',
     title: 'Fresh Ginger Rhizomes',
-    description: 'Harvested at peak maturity from Southern Kaduna farms. Available in bulk volumes with custom sizing. Ideal for fresh produce importers and food processing companies.',
-    image: '/images/ginger-hero.jpg', // Placeholder for fresh
-    status: 'active',
+    description:
+      'Harvested at peak maturity from Southern Kaduna farms. Available in bulk volumes with custom sizing for fresh produce importers and processors.',
+    image: '/images/ginger-hero.jpg',
+    status: 'available',
     specs: [
       { key: 'Form', value: 'Whole rhizomes' },
-      { key: 'Origin', value: 'Southern Kaduna' }
+      { key: 'Origin', value: 'Southern Kaduna' },
+      { key: 'Packing', value: 'Buyer specification' },
     ],
+    badges: ['Traceable', 'Export Ready'],
     cta: 'Enquire',
   },
   {
     id: 'dried',
     title: 'Dried Split Ginger',
-    description: 'Sourced from carefully selected fresh ginger roots in Southern Kaduna, dried through a controlled process that preserves the natural potency, colour, and characteristic heat that makes Nigerian ginger exceptional.',
+    description:
+      'Produced through controlled drying to preserve pungency, colour, and aroma. Suitable for industrial food ingredient sourcing.',
     image: '/images/dried-ginger.jpg',
-    status: 'active',
+    status: 'available',
     specs: [
-      { key: 'Moisture', value: '≤ 10–12%' },
-      { key: 'Foreign matter', value: '≤ 1%' },
-      { key: 'Packaging', value: '25 / 50 kg PP bags' }
+      { key: 'Moisture', value: '<= 10-12%' },
+      { key: 'Foreign matter', value: '<= 1%' },
+      { key: 'Packaging', value: '25 / 50kg PP bags' },
     ],
-    badges: ['EU Pesticide Tested', 'Aflatoxin Tested', 'Lab Certified'],
+    badges: ['EU Tested', 'Aflatoxin Tested', 'Lab Verified'],
     cta: 'Request Specifications',
   },
   {
     id: 'powder',
     title: 'Ginger Powder',
-    description: 'Finely milled from premium dried ginger. Used by spice blenders, food manufacturers, and nutraceutical processors globally. Mesh size to buyer specification.',
+    description:
+      'Finely milled from premium dried ginger for spice blenders, food manufacturers, and nutraceutical processors.',
     image: '/images/ginger-powder.jpg',
-    status: 'active',
+    status: 'available',
     specs: [
-      { key: 'Moisture', value: '≤ 10%' },
-      { key: 'Gingerol', value: '≥ 1.5%' },
-      { key: 'Mesh size', value: 'As required' }
+      { key: 'Moisture', value: '<= 10%' },
+      { key: 'Gingerol', value: '>= 1.5%' },
+      { key: 'Mesh size', value: 'As required' },
     ],
-    badges: ['Low Microbial Count', 'Lab Certified', 'Traceable'],
+    badges: ['Low Microbial', 'Lab Certified', 'Traceable'],
     cta: 'Request Specifications',
   },
   {
     id: 'oil',
     title: 'Ginger Oil',
-    description: 'Steam-distilled essential oil from Nigerian ginger. High in zingiberene and volatile compounds. Used in flavour manufacturing, cosmetics, and pharmaceutical applications.',
-    image: '/images/ginger-hero.jpg', // Placeholder
+    description:
+      'Steam-distilled essential oil from Nigerian ginger for flavour, cosmetic, and specialty ingredient applications.',
+    image: '/images/ginger-about.jpg',
     status: 'coming-soon',
     specs: [
       { key: 'Method', value: 'Steam distillation' },
-      { key: 'Grade', value: 'Food & cosmetic' }
+      { key: 'Grade', value: 'Food and cosmetic' },
+      { key: 'Availability', value: 'Roadmap batch' },
     ],
-    cta: 'Register Interest',
-  },
-  {
-    id: 'oleoresin',
-    title: 'Ginger Oleoresin',
-    description: 'Concentrated extract with high gingerol content and consistent batch-to-batch profile. Available in food and pharmaceutical grades for flavour manufacturers and nutraceutical producers.',
-    image: '/images/ginger-hero.jpg', // Placeholder
-    status: 'coming-soon',
-    specs: [
-      { key: 'Gingerol content', value: 'High — food grade' },
-      { key: 'Application', value: 'Food & pharma' }
-    ],
-    cta: 'Register Interest',
-  },
-  {
-    id: 'crystallised',
-    title: 'Crystallised Ginger',
-    description: 'Candied ginger produced from premium Nigerian rhizomes. Sought after by confectionery manufacturers, premium food brands, and specialty ingredient distributors worldwide.',
-    image: '/images/ginger-hero.jpg', // Placeholder
-    status: 'coming-soon',
-    specs: [
-      { key: 'Form', value: 'Pieces / slices' },
-      { key: 'Application', value: 'Confectionery & food' }
-    ],
+    badges: ['Upcoming'],
     cta: 'Register Interest',
   },
 ];
+
+function ProductIcon({ productId }) {
+  if (productId === 'rhizomes') {
+    return <Leaf size={18} className="text-green-700" />;
+  }
+
+  if (productId === 'dried') {
+    return <Clock3 size={18} className="text-green-700" />;
+  }
+
+  return <FlaskConical size={18} className="text-green-700" />;
+}
 
 function ProductCard({ product, index, isInView }) {
   const isComingSoon = product.status === 'coming-soon';
 
   return (
-    <motion.div
+    <motion.article
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: 0.1 + index * 0.1, ease }}
-      className={`relative flex flex-col h-full rounded-2xl overflow-hidden border transition-all duration-300 ${
-        isComingSoon 
-          ? 'bg-charcoal-900 border-charcoal-800 text-white' 
-          : 'bg-white border-charcoal-100/50 hover:shadow-xl hover:shadow-charcoal-900/5'
-      }`}
+      className="relative flex flex-col h-full rounded-2xl overflow-hidden border bg-white transition-all duration-300"
+      style={{
+        borderColor: isComingSoon ? 'rgba(58, 51, 53, 0.2)' : 'rgba(58, 51, 53, 0.1)',
+      }}
     >
-      {/* Header Info */}
-      <div className="p-6 pb-4">
-        <div className="flex justify-between items-start mb-4">
-          <div className={`p-2 rounded-lg ${isComingSoon ? 'bg-white/10' : 'bg-green-50'}`}>
-            {product.id === 'rhizomes' && <Leaf size={20} className={isComingSoon ? 'text-white' : 'text-green-600'} />}
-            {product.id === 'dried' && <Clock size={20} className={isComingSoon ? 'text-white' : 'text-green-600'} />}
-            {product.id === 'powder' && <Beaker size={20} className={isComingSoon ? 'text-white' : 'text-green-600'} />}
-            {isComingSoon && <Info size={20} className="text-white" />}
-          </div>
-          {isComingSoon && (
-            <span className="text-[10px] font-bold uppercase tracking-widest bg-white/10 px-2 py-1 rounded text-white/70 border border-white/10">
-              Coming Soon
-            </span>
-          )}
-        </div>
-        
-        <h3 className={`text-xl font-display ${isComingSoon ? 'text-white' : 'text-charcoal-900'}`}>
-          {product.title}
-        </h3>
-        
-        <p className={`text-sm mt-3 leading-relaxed mb-6 ${isComingSoon ? 'text-white/60' : 'text-charcoal-500'}`}>
-          {product.description}
-        </p>
+      <div className="relative aspect-[16/10] overflow-hidden">
+        <Image
+          src={product.image}
+          alt={product.title}
+          fill
+          sizes="(max-width: 1024px) 100vw, 33vw"
+          style={{ objectFit: 'cover' }}
+        />
+        <span
+          className="text-label-sm"
+          style={{
+            position: 'absolute',
+            top: 12,
+            left: 12,
+            padding: '0.25rem 0.6rem',
+            borderRadius: '9999px',
+            backgroundColor: isComingSoon ? 'rgba(32, 28, 30, 0.85)' : 'rgba(255, 255, 255, 0.9)',
+            color: isComingSoon ? '#f5f1ec' : '#5a4a55',
+            border: '1px solid rgba(255,255,255,0.4)',
+          }}
+        >
+          {isComingSoon ? 'Coming Soon' : 'Available'}
+        </span>
+      </div>
 
-        {/* Specs List */}
-        <div className={`border-t pt-4 ${isComingSoon ? 'border-white/10' : 'border-charcoal-50'}`}>
-          {product.specs.map(spec => (
-            <div key={spec.key} className="flex justify-between text-[11px] py-1">
-              <span className={isComingSoon ? 'text-white/40' : 'text-charcoal-400'}>{spec.key}</span>
-              <span className={`font-semibold ${isComingSoon ? 'text-white/80' : 'text-charcoal-800'}`}>{spec.value}</span>
+      <div className="p-6 pb-4 flex items-start gap-3">
+        <div
+          style={{
+            width: 34,
+            height: 34,
+            borderRadius: '0.5rem',
+            backgroundColor: 'rgba(117, 168, 93, 0.16)',
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexShrink: 0,
+          }}
+        >
+          <ProductIcon productId={product.id} />
+        </div>
+
+        <div>
+          <h3 className="text-heading-md text-charcoal-900">{product.title}</h3>
+          <p className="text-body-sm mt-2 text-charcoal-600" style={{ lineHeight: 1.7 }}>
+            {product.description}
+          </p>
+        </div>
+      </div>
+
+      <div className="px-6 pb-4">
+        <div className="border-t border-charcoal-100 pt-3">
+          {product.specs.map((spec) => (
+            <div key={spec.key} className="flex justify-between text-body-sm py-1">
+              <span className="text-charcoal-500">{spec.key}</span>
+              <span className="font-medium text-charcoal-800 text-right">{spec.value}</span>
             </div>
           ))}
         </div>
 
-        {/* Badges */}
-        {product.badges && (
-          <div className="flex flex-wrap gap-1.5 mt-4">
-            {product.badges.map(badge => (
-              <span key={badge} className={`text-[9px] font-bold uppercase tracking-tight px-1.5 py-0.5 rounded ${
-                isComingSoon ? 'bg-white/5 text-white/50 border border-white/10' : 'bg-green-50 text-green-700 border border-green-100'
-              }`}>
-                {badge}
-              </span>
-            ))}
-          </div>
-        )}
+        <div className="flex flex-wrap gap-2 mt-3">
+          {product.badges.map((badge) => (
+            <span
+              key={badge}
+              className="text-label-sm"
+              style={{
+                backgroundColor: 'rgba(117, 168, 93, 0.12)',
+                color: '#3e642e',
+                border: '1px solid rgba(117, 168, 93, 0.2)',
+                borderRadius: '9999px',
+                padding: '0.2rem 0.5rem',
+              }}
+            >
+              {badge}
+            </span>
+          ))}
+        </div>
       </div>
 
-      <div className="mt-auto p-6 pt-0">
-        <a 
+      <div className="mt-auto px-6 pb-6">
+        <a
           href="#contact"
-          className={`group inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest transition-colors ${
-            isComingSoon ? 'text-white hover:text-green-400' : 'text-green-600 hover:text-green-700'
-          }`}
+          className="group inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest transition-colors text-green-700 hover:text-green-800"
         >
           {product.cta}
           <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
         </a>
       </div>
-    </motion.div>
+    </motion.article>
   );
 }
 
@@ -174,7 +197,6 @@ export default function Products({ isPreview = false }) {
   return (
     <section id="products" className="py-section-y bg-white" ref={ref}>
       <div className="container-site">
-
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -183,7 +205,7 @@ export default function Products({ isPreview = false }) {
           <SectionHeader
             label="Our Products"
             title="Premium Ginger Solutions"
-            description="From industrial inputs to specialized extracts, we provide high-grade Nigerian ginger across its diverse forms, all with complete traceability."
+            description="From industrial inputs to specialized extracts, we provide high-grade Nigerian ginger in commercially reliable formats with full traceability."
             align="center"
           />
         </motion.div>
@@ -201,10 +223,7 @@ export default function Products({ isPreview = false }) {
 
         {isPreview && (
           <div className="mt-12 text-center">
-            <Link
-              href="/products"
-              className="btn-primary"
-            >
+            <Link href="/products" className="btn-primary">
               View Full Product Catalog
             </Link>
           </div>
@@ -213,4 +232,3 @@ export default function Products({ isPreview = false }) {
     </section>
   );
 }
-

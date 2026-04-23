@@ -1,10 +1,12 @@
-import { Figtree, Outfit } from "next/font/google";
+import { DM_Serif_Display, Outfit } from "next/font/google";
 import "./globals.css";
+import { siteConfig } from "@/config/site";
 
-const figtree = Figtree({
-  weight: ["600", "700", "800"],
+const dmSerifDisplay = DM_Serif_Display({
+  weight: "400",
+  style: ["normal", "italic"],
   subsets: ["latin"],
-  variable: "--font-figtree",
+  variable: "--font-dm-serif",
 });
 
 const outfit = Outfit({
@@ -12,13 +14,13 @@ const outfit = Outfit({
   variable: "--font-outfit",
 });
 
-const siteUrl = "https://www.edanandsherr.com";
+const siteUrl = siteConfig.siteUrl;
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Edan & Sherr Limited | Premium Nigerian Ginger",
-    template: "%s | Edan & Sherr Limited",
+    default: `${siteConfig.companyName} | Premium Nigerian Ginger`,
+    template: `%s | ${siteConfig.companyName}`,
   },
   description:
     "Nigeria's premier ginger agro-processor. We supply premium dried split ginger and ginger powder to global buyers. EU-compliant, NAFDAC registered, fully traceable from farm to factory.",
@@ -33,9 +35,9 @@ export const metadata = {
     "EU compliant ginger",
     "Edan and Sherr",
   ],
-  authors: [{ name: "Edan & Sherr Limited", url: siteUrl }],
-  creator: "Edan & Sherr Limited",
-  publisher: "Edan & Sherr Limited",
+  authors: [{ name: siteConfig.companyName, url: siteUrl }],
+  creator: siteConfig.companyName,
+  publisher: siteConfig.companyName,
   robots: {
     index: true,
     follow: true,
@@ -43,10 +45,10 @@ export const metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "en_GB",
+    locale: "en_NG",
     url: siteUrl,
-    siteName: "Edan & Sherr Limited",
-    title: "Edan & Sherr Limited | Premium Nigerian Ginger",
+    siteName: siteConfig.companyName,
+    title: `${siteConfig.companyName} | Premium Nigerian Ginger`,
     description:
       "Nigeria's premier ginger agro-processor supplying premium dried split ginger and ginger powder to global markets.",
     images: [
@@ -54,13 +56,13 @@ export const metadata = {
         url: "/Edan-%26-Sherr-Presentation-3.png",
         width: 2040,
         height: 1442,
-        alt: "Edan & Sherr Limited — Premium Nigerian Ginger",
+        alt: "Edan & Sherr Limited - Premium Nigerian Ginger",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Edan & Sherr Limited | Premium Nigerian Ginger",
+    title: `${siteConfig.companyName} | Premium Nigerian Ginger`,
     description:
       "Nigeria's premier ginger agro-processor supplying premium dried split ginger and ginger powder to global markets.",
     images: ["/Edan-%26-Sherr-Presentation-3.png"],
@@ -73,7 +75,7 @@ const jsonLd = {
     {
       "@type": "Organization",
       "@id": `${siteUrl}/#organization`,
-      name: "Edan & Sherr Limited",
+      name: siteConfig.companyName,
       url: siteUrl,
       logo: {
         "@type": "ImageObject",
@@ -81,16 +83,16 @@ const jsonLd = {
       },
       contactPoint: {
         "@type": "ContactPoint",
-        telephone: "+2348065321577",
-        email: "info@edanandsherr.com",
+        telephone: siteConfig.contact.phoneE164,
+        email: siteConfig.contact.email,
         contactType: "sales",
         areaServed: "Worldwide",
       },
       address: {
         "@type": "PostalAddress",
-        streetAddress: "No. 3 Okemisi Crescent, Off Oro Ago Street, Garki II",
-        addressLocality: "Abuja",
-        addressCountry: "NG",
+        streetAddress: siteConfig.address.streetAddress,
+        addressLocality: siteConfig.address.city,
+        addressCountry: siteConfig.address.countryCode,
       },
       description:
         "Nigeria's premier ginger agro-processor, processing and exporting premium dried split ginger and ginger powder to global markets.",
@@ -105,7 +107,7 @@ const jsonLd = {
       "@type": "WebSite",
       "@id": `${siteUrl}/#website`,
       url: siteUrl,
-      name: "Edan & Sherr Limited",
+      name: siteConfig.companyName,
       publisher: { "@id": `${siteUrl}/#organization` },
     },
   ],
@@ -115,9 +117,15 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${figtree.variable} ${outfit.variable} h-full antialiased`}
+      className={`${dmSerifDisplay.variable} ${outfit.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-cream text-charcoal-900">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[999] focus:bg-white focus:px-3 focus:py-2 focus:rounded-md"
+        >
+          Skip to main content
+        </a>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
