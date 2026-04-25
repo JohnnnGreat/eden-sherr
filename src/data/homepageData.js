@@ -88,21 +88,21 @@ export const complianceProof = [
 export const procurementFlow = [
   {
     step: "01",
-    title: "Share Your Specification",
+    title: "Tell Us What You Need",
     detail:
-      "Send required format, target quality parameters, destination market, and projected volumes.",
+      "Share the product type, how much you need, where it's going, and any special requirements.",
   },
   {
     step: "02",
-    title: "Review Sample and Terms",
+    title: "We Send You a Sample & Price",
     detail:
-      "We align on sample standard, packaging format, lead windows, and documentation requirements.",
+      "We'll get you a sample to check, show you packaging options, give you a timeline, and answer any questions.",
   },
   {
     step: "03",
-    title: "Confirm Production Slot",
+    title: "Place Your Order",
     detail:
-      "Approved orders move into production and quality release scheduling with shipment prep support.",
+      "Once you approve, we schedule production and keep you updated on when your shipment will arrive.",
   },
 ];
 
@@ -115,7 +115,7 @@ export const aboutImages = [
     alt: "Southern Kaduna farm zone supplying premium ginger",
   },
   {
-    src: "/images/v2/ginger-new2.jpg",
+    src: "/images/ginger-new2.jpg",
     alt: "Ginger processing and quality control",
   },
   {

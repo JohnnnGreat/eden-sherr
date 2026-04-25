@@ -88,7 +88,7 @@ export default function Navbar() {
 
           <div className="hidden md:block">
             <Link href="/contact" className="btn-primary">
-              Request RFQ
+              Contact Us
             </Link>
           </div>
 
@@ -145,7 +145,7 @@ export default function Navbar() {
 
             <div className="mt-8">
               <Link href="/contact" className="btn-primary w-full" onClick={() => setOpen(false)}>
-                Request RFQ
+                Contact Us
               </Link>
             </div>
 

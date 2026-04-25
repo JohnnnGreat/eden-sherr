@@ -87,7 +87,7 @@ export const routeMetadata = {
   "/contact": {
     title: "Contact",
     description:
-      "Send RFQ and specification requests to Edan & Sherr's procurement support team.",
+      "Get a quote or place an order. Contact Edan & Sherr to buy premium Nigerian ginger.",
   },
 };
 

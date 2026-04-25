@@ -115,7 +115,7 @@
 
 @layer utilities {
   .container-shell {
-    width: min(1200px, 100% - clamp(1.25rem, 4vw, 4rem));
+    width: min(1280px, 100% - clamp(1.25rem, 4vw, 4rem));
     margin-inline: auto;
   }
 

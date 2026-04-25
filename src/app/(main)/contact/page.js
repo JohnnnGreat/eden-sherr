@@ -14,9 +14,9 @@ export default function ContactPage() {
   return (
     <main>
       <PageHero
-        label="Contact / RFQ"
-        title="Start your procurement conversation"
-        description="Share your specification and destination market. We will respond with practical supply guidance and next-step options."
+        label="Contact Us"
+        title="Get a Quote or Place an Order"
+        description="Tell us what you need and we'll help. Share the product, quantity, and where it's going, and we'll get back to you with pricing and options."
       />
       <Contact />
     </main>

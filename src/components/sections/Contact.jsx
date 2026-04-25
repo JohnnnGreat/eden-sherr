@@ -10,32 +10,83 @@ export default function Contact({ showFlow = true }) {
         {showFlow && (
           <>
             <SectionHeader
-              label="Contact / RFQ"
-              title="Procurement-focused engagement flow"
-              description="Whether you need a specification sheet, sample alignment, or commercial discussion, our team responds with clear next steps."
+              label="Contact Us"
+              title="Get a Quote"
+              description="Fill out the form below with what you need. Tell us which product, how much, where it's going, and any special requirements. We'll get back to you with options and pricing."
               align="center"
             />
 
-            <div className="mt-9 grid lg:grid-cols-[1.1fr_0.9fr] gap-5">
-              <article className="surface-card p-5 md:p-7">
-                <h3 className="text-xl text-ink-900">How we work with buyers</h3>
-                <ol className="mt-5 grid gap-4">
-                  {procurementFlow.map((item) => (
-                    <li key={item.step} className="rounded-xl p-4 border border-light">
-                      <p className="kicker">{item.step}</p>
-                      <p className="mt-2 text-base font-bold text-ink-900">{item.title}</p>
-                      <p className="mt-2 text-sm leading-7 text-ink-600">{item.detail}</p>
-                    </li>
-                  ))}
-                </ol>
-              </article>
+            <div className="mt-9 grid lg:grid-cols-[1.1fr_0.9fr] gap-8">
+              <div>
+                <form className="bg-white rounded-lg p-6 md:p-8" style={{ border: "1px solid rgba(19, 34, 31, 0.12)" }}>
+                  <div className="grid gap-6">
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-bold text-ink-900 mb-2">Company Name *</label>
+                        <input type="text" className="w-full px-4 py-2 rounded-lg border border-light focus:outline-none focus:ring-2 focus:ring-copper-400" placeholder="Your company" required />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-bold text-ink-900 mb-2">Contact Person *</label>
+                        <input type="text" className="w-full px-4 py-2 rounded-lg border border-light focus:outline-none focus:ring-2 focus:ring-copper-400" placeholder="Your name" required />
+                      </div>
+                    </div>
 
-              <article className="surface-card p-5 md:p-7">
-                <h3 className="text-xl text-ink-900">Reach our team</h3>
-                <div className="mt-5 grid gap-4 text-sm">
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-bold text-ink-900 mb-2">Email *</label>
+                        <input type="email" className="w-full px-4 py-2 rounded-lg border border-light focus:outline-none focus:ring-2 focus:ring-copper-400" placeholder="your@email.com" required />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-bold text-ink-900 mb-2">Phone</label>
+                        <input type="tel" className="w-full px-4 py-2 rounded-lg border border-light focus:outline-none focus:ring-2 focus:ring-copper-400" placeholder="+234 (000) 000-0000" />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-bold text-ink-900 mb-2">Which Product? *</label>
+                      <select className="w-full px-4 py-2 rounded-lg border border-light focus:outline-none focus:ring-2 focus:ring-copper-400" required>
+                        <option value="">Choose a product</option>
+                        <option value="dried-split">Split Dried Ginger</option>
+                        <option value="whole-dried">Whole Dried Ginger</option>
+                        <option value="powder">Ginger Powder</option>
+                        <option value="organic">Organic Ginger</option>
+                      </select>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-bold text-ink-900 mb-2">How Much Do You Need? (kg) *</label>
+                        <input type="number" className="w-full px-4 py-2 rounded-lg border border-light focus:outline-none focus:ring-2 focus:ring-copper-400" placeholder="e.g., 5000" required />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-bold text-ink-900 mb-2">Where Will It Go? *</label>
+                        <input type="text" className="w-full px-4 py-2 rounded-lg border border-light focus:outline-none focus:ring-2 focus:ring-copper-400" placeholder="e.g., USA, Europe" required />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-bold text-ink-900 mb-2">What Quality Do You Need? (Optional)</label>
+                      <textarea className="w-full px-4 py-2 rounded-lg border border-light focus:outline-none focus:ring-2 focus:ring-copper-400" rows="3" placeholder="Any special requirements, certifications, or quality standards..."></textarea>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-bold text-ink-900 mb-2">Anything Else We Should Know?</label>
+                      <textarea className="w-full px-4 py-2 rounded-lg border border-light focus:outline-none focus:ring-2 focus:ring-copper-400" rows="3" placeholder="Other details or questions..."></textarea>
+                    </div>
+
+                    <button type="submit" className="btn-primary w-full">
+                      Send Quote Request
+                    </button>
+                  </div>
+                </form>
+              </div>
+
+              <article>
+                <h3 className="text-xl font-bold text-ink-900 mb-6">Quick Contact</h3>
+                <div className="grid gap-4 text-sm">
                   <a
                     href={`mailto:${siteConfig.contacts.salesEmail}`}
-                    className="surface-card p-4 inline-flex items-start gap-3"
+                    className="bg-white rounded-lg p-4 inline-flex items-start gap-3"
                   >
                     <Mail size={18} style={{ color: "var(--color-copper-700)" }} />
                     <span>
@@ -45,15 +96,15 @@ export default function Contact({ showFlow = true }) {
                   </a>
                   <a
                     href={`tel:${siteConfig.contacts.phoneLink}`}
-                    className="surface-card p-4 inline-flex items-start gap-3"
+                    className="bg-white rounded-lg p-4 inline-flex items-start gap-3"
                   >
                     <Phone size={18} style={{ color: "var(--color-copper-700)" }} />
                     <span>
-                      <strong className="block text-ink-900">Call Procurement Desk</strong>
+                      <strong className="block text-ink-900">Call Us</strong>
                       <span className="text-ink-600">{siteConfig.contacts.phoneDisplay}</span>
                     </span>
                   </a>
-                  <div className="surface-card p-4 inline-flex items-start gap-3">
+                  <div className="bg-white rounded-lg p-4 inline-flex items-start gap-3">
                     <MapPin size={18} style={{ color: "var(--color-copper-700)" }} />
                     <span>
                       <strong className="block text-ink-900">Office Address</strong>
@@ -68,6 +119,13 @@ export default function Contact({ showFlow = true }) {
                       </span>
                     </span>
                   </div>
+                </div>
+
+                <div className="mt-8 pt-8 border-t border-light">
+                  <h4 className="text-base font-bold text-ink-900 mb-4">We'll Get Back to You Fast</h4>
+                  <p className="text-sm text-ink-600">
+                    We respond to all requests within <strong>24 hours</strong> with what we can do and next steps.
+                  </p>
                 </div>
               </article>
             </div>

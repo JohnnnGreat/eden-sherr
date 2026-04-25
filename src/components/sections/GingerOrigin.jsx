@@ -16,7 +16,7 @@ export default function GingerOrigin() {
 
             <div className="mt-8 grid gap-5">
               {originHighlights.map((highlight, index) => (
-                <article key={highlight.title} className="bg-white rounded-lg p-6" style={{ boxShadow: "0 2px 8px rgba(19, 34, 31, 0.08)" }}>
+                <article key={highlight.title} className="bg-white rounded-lg p-6">
                   <div className="flex items-start gap-4">
                     <div className="flex-shrink-0">
                       <div className="flex items-center justify-center h-10 w-10 rounded-full bg-olive-100">
@@ -35,7 +35,7 @@ export default function GingerOrigin() {
             </div>
           </div>
 
-          <div className="rounded-xl overflow-hidden" style={{ boxShadow: "0 8px 24px rgba(19, 34, 31, 0.12)" }}>
+          <div className="rounded-xl overflow-hidden">
             <div className="relative aspect-[4/5] rounded-xl overflow-hidden">
               <Image
                 src="/images/v2/origin-kaduna-farm.jpg"

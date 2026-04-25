@@ -8,14 +8,15 @@ function ProductCard({ product }) {
   const pipeline = product.category.includes("Pipeline");
 
   return (
-    <article className={pipeline ? "surface-card-dark p-4" : "surface-card p-4"}>
+    <article className={pipeline ? "surface-card-dark p-4 group" : "surface-card p-4 group"} style={{ transition: "transform 0.3s ease" }}>
       <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
         <Image
           src={product.image}
           alt={product.alt}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-          style={{ objectFit: "cover" }}
+          style={{ objectFit: "cover", transition: "transform 0.4s ease" }}
+          className="group-hover:scale-110"
         />
       </div>
 

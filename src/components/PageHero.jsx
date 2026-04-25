@@ -1,3 +1,9 @@
+"use client";
+
+import { usePathname } from "next/navigation";
+import Link from "next/link";
+import { ChevronRight } from "lucide-react";
+
 export default function PageHero({
   label,
   title,
@@ -5,10 +11,21 @@ export default function PageHero({
   bgVariant = "light",
 }) {
   const dark = bgVariant === "dark";
+  const pathname = usePathname();
+
+  const breadcrumbMap = {
+    "/about": [{ label: "Home", href: "/" }, { label: "About" }],
+    "/origin": [{ label: "Home", href: "/" }, { label: "Origin" }],
+    "/products": [{ label: "Home", href: "/" }, { label: "Products" }],
+    "/standards": [{ label: "Home", href: "/" }, { label: "Standards" }],
+    "/contact": [{ label: "Home", href: "/" }, { label: "Contact" }],
+  };
+
+  const breadcrumbs = breadcrumbMap[pathname] || [];
 
   return (
     <section
-      className="section-space-tight border-b"
+      className="border-b"
       style={{
         borderColor: dark ? "rgba(255,255,255,0.14)" : "rgba(19,34,31,0.1)",
         background: dark
@@ -16,7 +33,28 @@ export default function PageHero({
           : "linear-gradient(180deg,#f8f4ec,#f1e8db)",
       }}
     >
-      <div className="container-shell">
+      {breadcrumbs.length > 0 && (
+        <div className="container-shell pt-4 pb-2">
+          <div className="flex items-center gap-2 text-xs">
+            {breadcrumbs.map((crumb, index) => (
+              <div key={index} className="flex items-center gap-2">
+                {crumb.href ? (
+                  <Link href={crumb.href} className={dark ? "text-white/60 hover:text-white" : "text-ink-600 hover:text-ink-900"} style={{ transition: "color 0.15s ease" }}>
+                    {crumb.label}
+                  </Link>
+                ) : (
+                  <span className={dark ? "text-white/80 font-medium" : "text-ink-900 font-medium"}>{crumb.label}</span>
+                )}
+                {index < breadcrumbs.length - 1 && (
+                  <ChevronRight size={14} className={dark ? "text-white/40" : "text-ink-400"} />
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div className="container-shell" style={{ paddingTop: breadcrumbs.length > 0 ? "1rem" : "", paddingBottom: "clamp(3rem, 6vw, 5rem)" }}>
         <div style={{ maxWidth: "72ch" }}>
           {label ? (
             <p
