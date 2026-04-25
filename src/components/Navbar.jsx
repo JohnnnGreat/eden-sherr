@@ -60,12 +60,9 @@ export default function Navbar() {
       </div>
 
       <header
-        className="sticky top-0 z-50 border-b border-light"
+        className="border-b border-light"
         style={{
-          background: scrolled
-            ? "rgba(246,241,232,0.93)"
-            : "rgba(246,241,232,0.78)",
-          backdropFilter: "blur(14px)",
+          background: "rgba(246,241,232,0.93)",
         }}
       >
         <div className="container-shell h-[4.6rem] flex items-center justify-between gap-8">

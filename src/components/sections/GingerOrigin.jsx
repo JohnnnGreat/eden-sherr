@@ -14,19 +14,28 @@ export default function GingerOrigin() {
               description="Origin quality starts in the field. We source from a region known for strong aroma and pungency, then protect those attributes through disciplined post-harvest handling."
             />
 
-            <div className="mt-8 grid gap-4">
-              {originHighlights.map((highlight) => (
-                <article key={highlight.title} className="surface-card p-5">
-                  <p className="text-base font-bold text-ink-900">{highlight.title}</p>
-                  <p className="mt-2 text-sm leading-7 text-ink-600">
-                    {highlight.detail}
-                  </p>
+            <div className="mt-8 grid gap-5">
+              {originHighlights.map((highlight, index) => (
+                <article key={highlight.title} className="bg-white rounded-lg p-6" style={{ boxShadow: "0 2px 8px rgba(19, 34, 31, 0.08)" }}>
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0">
+                      <div className="flex items-center justify-center h-10 w-10 rounded-full bg-olive-100">
+                        <span className="text-sm font-bold text-olive-700">{index + 1}</span>
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-base font-bold text-ink-900">{highlight.title}</p>
+                      <p className="mt-2 text-sm leading-7 text-ink-600">
+                        {highlight.detail}
+                      </p>
+                    </div>
+                  </div>
                 </article>
               ))}
             </div>
           </div>
 
-          <div className="surface-card p-2">
+          <div className="rounded-xl overflow-hidden" style={{ boxShadow: "0 8px 24px rgba(19, 34, 31, 0.12)" }}>
             <div className="relative aspect-[4/5] rounded-xl overflow-hidden">
               <Image
                 src="/images/v2/origin-kaduna-farm.jpg"

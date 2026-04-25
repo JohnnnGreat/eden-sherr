@@ -85,7 +85,7 @@ export const productPortfolio = [
     category: "Pipeline / On Request",
     summary:
       "Concentrated extract pathway being prepared for buyers needing high-impact ginger functionality.",
-    image: "/images/v2/origin-kaduna-farm.jpg",
+    image: "/images/second.jpg",
     alt: "Natural ginger source used for oleoresin extraction concept",
     specifications: [
       { label: "Form", value: "Concentrated extract" },

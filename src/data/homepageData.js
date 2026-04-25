@@ -11,15 +11,15 @@ export const homepageHero = {
 
 export const heroCarouselImages = [
   {
-    src: "/images/hd/hero-1-ginger-field.jpg",
+    src: "/images/v2/hero-ginger-field.jpg",
     alt: "Premium Nigerian ginger in field",
   },
   {
-    src: "/images/hd/hero-2-ginger-harvest.jpg",
+    src: "/images/ginger-hero.jpg",
     alt: "Ginger processing and preparation",
   },
   {
-    src: "/images/hd/hero-3-export-ready.jpg",
+    src: "/images/v2/origin-kaduna-farm.jpg",
     alt: "Export-ready ginger products",
   },
 ];
@@ -111,11 +111,11 @@ export const homepageProductHighlights = productPortfolio.slice(2, 5);
 
 export const aboutImages = [
   {
-    src: "/images/v2/hero-ginger-field.jpg",
+    src: "/images/ginger-new.jpg",
     alt: "Southern Kaduna farm zone supplying premium ginger",
   },
   {
-    src: "/images/v2/origin-kaduna-farm.jpg",
+    src: "/images/v2/ginger-new2.jpg",
     alt: "Ginger processing and quality control",
   },
   {
