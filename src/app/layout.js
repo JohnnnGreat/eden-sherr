@@ -1,112 +1,112 @@
-import { Figtree, Outfit } from "next/font/google";
+import { Manrope, Sora, Figtree } from "next/font/google";
 import "./globals.css";
+import { absoluteUrl, siteConfig } from "@/config/siteConfig";
+
+const sora = Sora({
+  subsets: ["latin"],
+  variable: "--font-sora",
+  display: "swap",
+});
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-manrope",
+  display: "swap",
+});
 
 const figtree = Figtree({
-  weight: ["600", "700", "800"],
   subsets: ["latin"],
   variable: "--font-figtree",
+  display: "swap",
 });
-
-const outfit = Outfit({
-  subsets: ["latin"],
-  variable: "--font-outfit",
-});
-
-const siteUrl = "https://www.edanandsherr.com";
 
 export const metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(siteConfig.siteUrl),
   title: {
-    default: "Edan & Sherr Limited | Premium Nigerian Ginger",
-    template: "%s | Edan & Sherr Limited",
+    default: `${siteConfig.name} | Premium Nigerian Ginger`,
+    template: `%s | ${siteConfig.name}`,
   },
-  description:
-    "Nigeria's premier ginger agro-processor. We supply premium dried split ginger and ginger powder to global buyers. EU-compliant, NAFDAC registered, fully traceable from farm to factory.",
+  description: siteConfig.description,
   keywords: [
-    "Nigerian ginger",
-    "premium ginger export",
-    "dried split ginger",
-    "ginger powder Nigeria",
+    "Nigerian ginger export",
     "Southern Kaduna ginger",
-    "ginger agro-processor",
-    "Nigeria spice export",
-    "EU compliant ginger",
-    "Edan and Sherr",
+    "dried split ginger",
+    "ginger powder supplier",
+    "ginger procurement Nigeria",
+    "traceable ginger exporter",
   ],
-  authors: [{ name: "Edan & Sherr Limited", url: siteUrl }],
-  creator: "Edan & Sherr Limited",
-  publisher: "Edan & Sherr Limited",
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: { index: true, follow: true, "max-snippet": -1 },
+  authors: [{ name: siteConfig.name, url: siteConfig.siteUrl }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  alternates: {
+    canonical: siteConfig.siteUrl,
   },
   openGraph: {
     type: "website",
     locale: "en_GB",
-    url: siteUrl,
-    siteName: "Edan & Sherr Limited",
-    title: "Edan & Sherr Limited | Premium Nigerian Ginger",
-    description:
-      "Nigeria's premier ginger agro-processor supplying premium dried split ginger and ginger powder to global markets.",
+    url: siteConfig.siteUrl,
+    siteName: siteConfig.name,
+    title: `${siteConfig.name} | Premium Nigerian Ginger`,
+    description: siteConfig.description,
     images: [
       {
-        url: "/Edan-%26-Sherr-Presentation-3.png",
+        url: "/images/v2/brand-signature.png",
         width: 2040,
         height: 1442,
-        alt: "Edan & Sherr Limited — Premium Nigerian Ginger",
+        alt: `${siteConfig.name} brand mark`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Edan & Sherr Limited | Premium Nigerian Ginger",
-    description:
-      "Nigeria's premier ginger agro-processor supplying premium dried split ginger and ginger powder to global markets.",
-    images: ["/Edan-%26-Sherr-Presentation-3.png"],
+    title: `${siteConfig.name} | Premium Nigerian Ginger`,
+    description: siteConfig.description,
+    images: ["/images/v2/brand-signature.png"],
   },
 };
 
-const jsonLd = {
+const organizationJsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "Organization",
-      "@id": `${siteUrl}/#organization`,
-      name: "Edan & Sherr Limited",
-      url: siteUrl,
+      "@id": absoluteUrl("/#organization"),
+      name: siteConfig.name,
+      legalName: siteConfig.legalName,
+      url: siteConfig.siteUrl,
       logo: {
         "@type": "ImageObject",
-        url: `${siteUrl}/Edan-%26-Sherr-Presentation-3.png`,
+        url: absoluteUrl("/images/v2/brand-signature.png"),
       },
       contactPoint: {
         "@type": "ContactPoint",
-        telephone: "+2348065321577",
-        email: "info@edanandsherr.com",
+        telephone: siteConfig.contacts.phoneLink,
+        email: siteConfig.contacts.salesEmail,
         contactType: "sales",
         areaServed: "Worldwide",
       },
       address: {
         "@type": "PostalAddress",
-        streetAddress: "No. 3 Okemisi Crescent, Off Oro Ago Street, Garki II",
-        addressLocality: "Abuja",
+        streetAddress: `${siteConfig.address.line1}, ${siteConfig.address.line2}, ${siteConfig.address.line3}`,
+        addressLocality: siteConfig.address.city,
         addressCountry: "NG",
       },
-      description:
-        "Nigeria's premier ginger agro-processor, processing and exporting premium dried split ginger and ginger powder to global markets.",
+      description: siteConfig.description,
       knowsAbout: [
-        "Ginger Processing",
-        "Agro-Processing",
-        "Spice Export",
-        "Nigerian Agriculture",
+        "Ginger processing",
+        "Spice export",
+        "Supply chain traceability",
+        "Food ingredient sourcing",
       ],
     },
     {
       "@type": "WebSite",
-      "@id": `${siteUrl}/#website`,
-      url: siteUrl,
-      name: "Edan & Sherr Limited",
-      publisher: { "@id": `${siteUrl}/#organization` },
+      "@id": absoluteUrl("/#website"),
+      url: siteConfig.siteUrl,
+      name: siteConfig.name,
+      publisher: {
+        "@id": absoluteUrl("/#organization"),
+      },
     },
   ],
 };
@@ -115,12 +115,12 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${figtree.variable} ${outfit.variable} h-full antialiased`}
+      className={`${sora.variable} ${manrope.variable} ${figtree.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-cream text-charcoal-900">
+      <body className="min-h-full flex flex-col">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
         {children}
       </body>

@@ -1,6 +1,6 @@
-export default function robots() {
-  const siteUrl = "https://www.edanandsherr.com";
+import { absoluteUrl } from "@/config/siteConfig";
 
+export default function robots() {
   return {
     rules: [
       {
@@ -9,6 +9,6 @@ export default function robots() {
         disallow: ["/sherr", "/api/"],
       },
     ],
-    sitemap: `${siteUrl}/sitemap.xml`,
+    sitemap: absoluteUrl("/sitemap.xml"),
   };
 }

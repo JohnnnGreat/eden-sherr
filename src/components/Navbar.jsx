@@ -1,302 +1,170 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
+import Link from "next/link";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { Mail, Menu, Phone, X } from "lucide-react";
+import { mainNavigation, siteConfig } from "@/config/siteConfig";
 
-const NAV_LINKS = [
-  { label: 'About', href: '/about' },
-  { label: 'Origin', href: '/origin' },
-  { label: 'Our Story', href: '/story' },
-  { label: 'Products', href: '/products' },
-  { label: 'Standards', href: '/standards' },
-  { label: 'Contact', href: '/contact' },
-];
+function ActiveLink({ href, label, onClick }) {
+  const pathname = usePathname();
+  const active = pathname === href;
 
-function LeafIcon() {
   return (
-    <svg
-      width="14"
-      height="14"
-      viewBox="0 0 14 14"
-      fill="none"
-      aria-hidden="true"
-      className="text-green-500"
+    <Link
+      href={href}
+      onClick={onClick}
+      className="nav-link"
+      style={active ? { color: "var(--color-ink-900)" } : undefined}
     >
-      <path
-        d="M7 13V7M7 7C7 4 4 2 1 1.5c0 3 1.5 5.5 4.5 5.5H7zm0 0c0-3 3-5 6-5.5 0 3-1.5 5.5-4.5 5.5H7z"
-        stroke="currentColor"
-        strokeWidth="1.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function MenuIcon() {
-  return (
-    <svg
-      width="22"
-      height="22"
-      viewBox="0 0 22 22"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M3 6h16M3 11h16M3 16h16"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-function CloseIcon() {
-  return (
-    <svg
-      width="22"
-      height="22"
-      viewBox="0 0 22 22"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M4 4l14 14M18 4L4 18"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-function PhoneIcon() {
-  return (
-    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
-      <path
-        d="M11.5 9.5v1.25a.833.833 0 0 1-.908.833A8.25 8.25 0 0 1 1.417 2.408.833.833 0 0 1 2.25 1.5H3.5a.833.833 0 0 1 .833.75c.075.608.217 1.208.425 1.783a.833.833 0 0 1-.188.875L4 5.475a6.667 6.667 0 0 0 3.525 3.525l.567-.567a.833.833 0 0 1 .875-.188c.575.208 1.175.35 1.783.425a.833.833 0 0 1 .75.83z"
-        stroke="currentColor"
-        strokeWidth="1.1"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function MailIcon() {
-  return (
-    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
-      <path
-        d="M2.167 2.167h8.666c.459 0 .834.375.834.833v6.5a.833.833 0 0 1-.834.833H2.167a.833.833 0 0 1-.834-.833V3a.833.833 0 0 1 .834-.833z"
-        stroke="currentColor"
-        strokeWidth="1.1"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M11.667 3 6.5 7.167 1.333 3"
-        stroke="currentColor"
-        strokeWidth="1.1"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
+      {label}
+    </Link>
   );
 }
 
 export default function Navbar() {
+  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
-  }, [menuOpen]);
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   return (
     <>
-      {/* ── Topbar ────────────────────────────────────────────── */}
-      <div className="bg-charcoal-900 text-white">
-        <div className="container-site flex items-center justify-between h-8">
-          <p className="text-caption" style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.6875rem' }}>
-            Rooted in Nigeria. Crafted for the world.
-          </p>
-          <div className="hidden sm:flex items-center gap-5">
-            <a
-              href="mailto:info@edanandsherr.com"
-              className="flex items-center gap-1.5 text-caption hover:text-white transition-colors"
-              style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.6875rem', textDecoration: 'none' }}
-            >
-              <MailIcon />
-              info@edanandsherr.com
+      <div className="w-full border-b topbar">
+        <div className="container-shell h-9 flex items-center justify-between topbar-text">
+          <p>{siteConfig.tagline}</p>
+          <div className="hidden md:flex items-center gap-5">
+            <a href={`mailto:${siteConfig.contacts.salesEmail}`} className="topbar-link">
+              <Mail size={12} />
+              {siteConfig.contacts.salesEmail}
             </a>
-            <a
-              href="tel:+2348065321577"
-              className="flex items-center gap-1.5 text-caption hover:text-white transition-colors"
-              style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.6875rem', textDecoration: 'none' }}
-            >
-              <PhoneIcon />
-              +234 806 532 1577
+            <a href={`tel:${siteConfig.contacts.phoneLink}`} className="topbar-link">
+              <Phone size={12} />
+              {siteConfig.contacts.phoneDisplay}
             </a>
           </div>
         </div>
       </div>
 
-      {/* ── Main Nav ──────────────────────────────────────────── */}
       <header
-        className="sticky top-0 z-40 transition-all duration-300"
+        className="sticky top-0 z-50 border-b border-light"
         style={{
-          backgroundColor: scrolled ? 'rgba(250, 247, 244, 0.95)' : '#ffffff',
-          backdropFilter: scrolled ? 'blur(12px)' : 'none',
-          borderBottom: '1px solid rgba(58, 51, 53, 0.08)',
-          boxShadow: scrolled ? '0 1px 20px rgba(58, 51, 53, 0.06)' : 'none',
+          background: scrolled
+            ? "rgba(246,241,232,0.93)"
+            : "rgba(246,241,232,0.78)",
+          backdropFilter: "blur(14px)",
         }}
       >
-        <nav className="container-site flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link href="/" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}>
+        <div className="container-shell h-[4.6rem] flex items-center justify-between gap-8">
+          <Link
+            href="/"
+            className="inline-flex items-center"
+            aria-label={`${siteConfig.name} home`}
+          >
             <Image
-              src="/Edan-%26-Sherr-Presentation-3.png"
-              alt="Edan & Sherr Limited"
-              width={130}
+              src="/images/v2/brand-signature.png"
+              alt={`${siteConfig.name} logo`}
+              width={138}
               height={48}
-              style={{ objectFit: 'contain', objectPosition: 'left' }}
               priority
             />
           </Link>
 
-          {/* Desktop nav links */}
-          <ul className="hidden md:flex items-center gap-7 list-none m-0 p-0">
-            {NAV_LINKS.map(({ label, href }) => (
-              <li key={label}>
-                <a
-                  href={href}
-                  className="text-body-sm font-medium text-charcoal-600 hover:text-charcoal-900 transition-colors duration-150"
-                  style={{ textDecoration: 'none', fontWeight: 500 }}
-                >
-                  {label}
-                </a>
-              </li>
+          <nav className="hidden md:flex items-center gap-6">
+            {mainNavigation.map((item) => (
+              <ActiveLink key={item.href} href={item.href} label={item.label} />
             ))}
-          </ul>
+          </nav>
 
-          {/* Desktop CTA */}
-          <Link
-            href="/contact"
-            className="btn-primary hidden md:inline-flex"
-            style={{ padding: '0.625rem 1.375rem', fontSize: '0.875rem' }}
-          >
-            Get in Touch
-          </Link>
-
-          {/* Mobile hamburger */}
-          <button
-            className="md:hidden flex items-center justify-center text-charcoal-900"
-            onClick={() => setMenuOpen(true)}
-            aria-label="Open menu"
-            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '0.25rem' }}
-          >
-            <MenuIcon />
-          </button>
-        </nav>
-      </header>
-
-      {/* ── Mobile Full-screen Overlay ─────────────────────────── */}
-      {menuOpen && (
-        <div
-          className="fixed inset-0 z-50 flex flex-col bg-cream"
-          style={{ overflowY: 'auto' }}
-        >
-          {/* Overlay header */}
-          <div
-            className="flex items-center justify-between px-6 h-16"
-            style={{ borderBottom: '1px solid rgba(58,51,53,0.08)' }}
-          >
-            <Link
-              href="/"
-              onClick={() => setMenuOpen(false)}
-              style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}
-            >
-              <Image
-                src="/Edan-%26-Sherr-Presentation-3.png"
-                alt="Edan & Sherr Limited"
-                width={120}
-                height={44}
-                style={{ objectFit: 'contain', objectPosition: 'left' }}
-              />
+          <div className="hidden md:block">
+            <Link href="/contact" className="btn-primary">
+              Request RFQ
             </Link>
-            <button
-              className="flex items-center justify-center text-charcoal-900"
-              onClick={() => setMenuOpen(false)}
-              aria-label="Close menu"
-              style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '0.25rem' }}
-            >
-              <CloseIcon />
-            </button>
           </div>
 
-          {/* Overlay links */}
-          <nav className="flex flex-col px-6 py-10 flex-1">
-            <ul className="list-none m-0 p-0 space-y-1">
-              {NAV_LINKS.map(({ label, href }) => (
-                <li key={label}>
-                  <a
-                    href={href}
-                    onClick={() => setMenuOpen(false)}
-                    className="font-display text-charcoal-900 block py-3"
-                    style={{
-                      fontSize: 'clamp(1.75rem, 6vw, 2.25rem)',
-                      letterSpacing: '-0.015em',
-                      textDecoration: 'none',
-                      borderBottom: '1px solid rgba(58,51,53,0.07)',
-                    }}
-                  >
-                    {label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-10 flex flex-col gap-4">
-            <Link 
-              href="/contact" 
-              onClick={() => setMenuOpen(false)} 
-              className="btn-primary text-center"
-            >
-              Get in Touch
-            </Link>
-              <div className="flex flex-col gap-2 mt-2">
-                <a
-                  href="mailto:info@edanandsherr.com"
-                  className="flex items-center gap-2 text-body-sm text-charcoal-600"
-                  style={{ textDecoration: 'none' }}
-                >
-                  <MailIcon />
-                  info@edanandsherr.com
-                </a>
-                <a
-                  href="tel:+2348065321577"
-                  className="flex items-center gap-2 text-body-sm text-charcoal-600"
-                  style={{ textDecoration: 'none' }}
-                >
-                  <PhoneIcon />
-                  +234 806 532 1577
-                </a>
-              </div>
-            </div>
-          </nav>
+          <button
+            type="button"
+            className="md:hidden inline-flex items-center justify-center rounded-md p-2"
+            aria-label="Open menu"
+            onClick={() => setOpen(true)}
+          >
+            <Menu size={22} />
+          </button>
         </div>
-      )}
+      </header>
+
+      {open ? (
+        <div
+          className="fixed inset-0 z-[80]"
+          style={{ background: "rgba(7,13,12,0.7)" }}
+        >
+          <div
+            className="absolute right-0 top-0 h-full w-[min(88vw,380px)] p-6"
+            style={{
+              background: "linear-gradient(170deg,#f7f2e9,#f0e6d7)",
+              borderLeft: "1px solid rgba(19,34,31,0.15)",
+            }}
+          >
+            <div className="flex items-center justify-between">
+              <Image
+                src="/images/v2/brand-signature.png"
+                alt={`${siteConfig.name} logo`}
+                width={124}
+                height={42}
+              />
+              <button
+                type="button"
+                className="inline-flex items-center justify-center rounded-md p-2"
+                onClick={() => setOpen(false)}
+                aria-label="Close menu"
+              >
+                <X size={22} />
+              </button>
+            </div>
+
+            <nav className="mt-8 flex flex-col gap-4">
+              {mainNavigation.map((item) => (
+                <ActiveLink
+                  key={item.href}
+                  href={item.href}
+                  label={item.label}
+                  onClick={() => setOpen(false)}
+                />
+              ))}
+            </nav>
+
+            <div className="mt-8">
+              <Link href="/contact" className="btn-primary w-full" onClick={() => setOpen(false)}>
+                Request RFQ
+              </Link>
+            </div>
+
+            <div className="mt-8 text-sm flex flex-col gap-2 text-ink-700">
+              <a href={`mailto:${siteConfig.contacts.salesEmail}`} className="inline-flex items-center gap-2">
+                <Mail size={16} />
+                {siteConfig.contacts.salesEmail}
+              </a>
+              <a href={`tel:${siteConfig.contacts.phoneLink}`} className="inline-flex items-center gap-2">
+                <Phone size={16} />
+                {siteConfig.contacts.phoneDisplay}
+              </a>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </>
   );
 }

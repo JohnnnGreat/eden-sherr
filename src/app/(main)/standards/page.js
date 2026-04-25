@@ -1,25 +1,27 @@
-import Quality from "@/components/sections/Quality";
-import Certifications from "@/components/sections/Certifications";
-import Contact from "@/components/sections/Contact";
 import PageHero from "@/components/PageHero";
+import Certifications from "@/components/sections/Certifications";
+import Quality from "@/components/sections/Quality";
+import { absoluteUrl, routeMetadata } from "@/config/siteConfig";
 
 export const metadata = {
-  title: "Quality Standards | Edan & Sherr Limited",
-  description: "Learn about our rigorous quality control, traceability systems, and our roadmap to global certifications.",
+  title: routeMetadata["/standards"].title,
+  description: routeMetadata["/standards"].description,
+  alternates: {
+    canonical: absoluteUrl("/standards"),
+  },
 };
 
 export default function StandardsPage() {
   return (
     <main>
-      <PageHero 
-        label="Excellence"
-        title="Quality You Can Verify"
-        description="Traceability is at the heart of everything we do. From GPS-registered farms to batch-coded processing."
-        bgVariant="green"
+      <PageHero
+        label="Standards"
+        title="Risk-aware quality and compliance model"
+        description="From intake controls to documentation support, our systems are structured to match procurement and quality-team expectations."
+        bgVariant="dark"
       />
       <Quality />
       <Certifications />
-      <Contact />
     </main>
   );
 }

@@ -96,9 +96,11 @@ export default function BusinessCardClient() {
                   </div>
                   <div className="flex-1 text-left">
                      <p className="text-charcoal-900 font-medium text-[15px] leading-tight mt-0.5">
-                        No. 3 Okemisi Crescent
+                        Plot 765 Cadastral Zone
                         <br />
-                        Off Oro Ago Street, Garki II, Abuja
+                        Adamu Ismaila Crescent
+                        <br />
+                        Idu Industrial Estate, Abuja
                      </p>
                      <p className="text-charcoal-400 text-xs tracking-wide">Office</p>
                   </div>

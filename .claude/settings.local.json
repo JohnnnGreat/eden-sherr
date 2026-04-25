@@ -3,7 +3,11 @@
     "allow": [
       "Bash(python3.exe --version)",
       "Bash(python.exe --version)",
-      "Bash(py --version)"
+      "Bash(py --version)",
+      "Bash(taskkill /PID 30888 /F)",
+      "Bash(timeout 8)",
+      "Bash(curl -s http://localhost:3000)",
+      "PowerShell(Get-Process | Where-Object { $_.ProcessName -eq \"node\" } | Stop-Process -Force)"
     ],
     "additionalDirectories": [
       "c:\\Users\\JohnOssai\\edan-and-sherr\\src\\app"

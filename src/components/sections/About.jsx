@@ -1,159 +1,110 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect } from "react";
 import Image from "next/image";
-import { motion, useInView } from "framer-motion";
-import { Leaf, Settings, FlaskConical, Globe, ArrowRight } from "lucide-react";
-import SectionHeader from "@/components/SectionHeader";
 import Link from "next/link";
-
-const ease = [0.25, 0.1, 0.25, 1];
-
-const highlights = [
-   {
-      Icon: Leaf,
-      title: "Farm-to-Factory Traceability",
-      description:
-         "Every batch linked to registered farms in Southern Kaduna with full chain-of-custody records.",
-      bg: "rgba(117, 168, 93, 0.12)",
-      color: "#75a85d",
-   },
-   {
-      Icon: Settings,
-      title: "Precision Processing",
-      description:
-         "State-of-the-art drying, milling, and steam-treatment facilities calibrated to international specs.",
-      bg: "rgba(58, 51, 53, 0.08)",
-      color: "#3a3335",
-   },
-   {
-      Icon: FlaskConical,
-      title: "Rigorous Quality Testing",
-      description:
-         "In-house and third-party lab verification for moisture, microbials, aflatoxins, and gingerol content.",
-      bg: "rgba(180, 67, 108, 0.1)",
-      color: "#b4436c",
-   },
-   {
-      Icon: Globe,
-      title: "Export-Ready Compliance",
-      description:
-         "NAFDAC, NEPC, and phytosanitary documentation in place for EU, US, and Asian market entry.",
-      bg: "rgba(192, 52, 95, 0.12)",
-      color: "#c0345f",
-   },
-];
+import { ArrowRight } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import SectionHeader from "@/components/SectionHeader";
+import { capabilityModules, aboutImages } from "@/data/homepageData";
 
 export default function About({ isPreview = false }) {
-   const ref = useRef(null);
-   const isInView = useInView(ref, { once: true, margin: "0px 0px -100px 0px" });
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: false,
+      offset: 100,
+    });
+  }, []);
 
-   return (
-      <section
-         id="about"
-         className="py-section-y bg-white"
-         ref={ref}
-         aria-labelledby="about-heading"
-      >
-         <div className="container-site">
-            <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-               {/* ── LEFT: Image with green offset border ── */}
-               <motion.div
-                  initial={{ opacity: 0, x: -44 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.7, ease }}
-               >
-                  {/*
-                   * Outer wrapper carries paddingTop + paddingLeft to create room
-                   * for the green border div that sits at top-left (behind the image).
-                   */}
-                  <div style={{ position: "relative", paddingTop: 20, paddingLeft: 20 }}>
-                     {/* Green offset border — behind the image */}
-                     <div
-                        aria-hidden="true"
-                        style={{
-                           position: "absolute",
-                           top: 0,
-                           left: 0,
-                           right: 20,
-                           bottom: 20,
-                           borderRadius: "0.75rem",
-                           border: "1.5px solid rgba(117, 168, 93, 0.38)",
-                        }}
-                     />
+  const modules = isPreview ? capabilityModules.slice(0, 3) : capabilityModules;
 
-                     {/* Image frame */}
-                     <div
-                        className="img-frame"
-                        style={{ position: "relative", aspectRatio: "3 / 4", width: "100%" }}
-                     >
-                        <Image
-                           src="/images/ginger-about.jpg"
-                           alt="Agricultural landscape in Nigeria — ginger farming region"
-                           fill
-                           sizes="(max-width: 1024px) 100vw, 50vw"
-                           style={{ objectFit: "cover" }}
-                        />
-                     </div>
+  return (
+    <section className="relative h-screen bg-sand-50 z-0 overflow-hidden">
+      <div className="h-full grid lg:grid-cols-[1fr_1fr]">
+        {/* Full-height image on the left, from browser edge */}
+        <div className="relative hidden lg:block overflow-hidden z-0" data-aos="fade-right" data-aos-delay="0">
+          <Swiper
+            modules={[Pagination, Autoplay]}
+            pagination={{ clickable: true }}
+            autoplay={{ delay: 4000, disableOnInteraction: false }}
+            className="h-full w-full"
+          >
+            {aboutImages.map((image, index) => (
+              <SwiperSlide key={index} className="h-full w-full">
+                <div className="relative w-full h-full">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    priority={index === 0}
+                    sizes="50vw"
+                    style={{ objectFit: "cover" }}
+                  />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+
+        {/* Content on the right */}
+        <div className="h-full flex flex-col justify-center px-8 lg:px-12 py-12" data-aos="fade-left" data-aos-delay="100">
+          <SectionHeader
+            label="About Edan & Sherr"
+            title="From origin strength to procurement confidence"
+            description="We combine deep local sourcing knowledge with process discipline so international buyers can source Nigerian ginger with less risk and more visibility."
+          />
+
+          <div className="mt-7 space-y-6">
+            {modules.map((module, index) => (
+              <div
+                key={module.title}
+                className="flex gap-4"
+                data-aos="fade-up"
+                data-aos-delay={`${index * 100}`}
+              >
+                <div className="flex-shrink-0">
+                  <div className="flex items-center justify-center h-8 w-8 rounded-full bg-copper-100">
+                    <span className="text-sm font-bold text-copper-700">
+                      {index + 1}
+                    </span>
                   </div>
-               </motion.div>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-base font-bold text-ink-900">
+                    {module.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-6 text-ink-600">
+                    {module.summary}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
 
-               {/* ── RIGHT: Content ── */}
-               <div>
-                  <motion.div
-                     initial={{ opacity: 0, y: 28 }}
-                     animate={isInView ? { opacity: 1, y: 0 } : {}}
-                     transition={{ duration: 0.65, delay: 0.15, ease }}
-                  >
-                     <SectionHeader
-                        id="about-heading"
-                        label="About Us"
-                        title="Unlocking the Full Value of Nigerian Ginger"
-                     />
+          {!isPreview && (
+            <p className="section-copy mt-6">
+              Our focus is practical: preserve quality at source, process with
+              control, and provide the commercial clarity buyers need before they
+              commit to long-term supply relationships.
+            </p>
+          )}
 
-                     <p
-                        className="text-body-md mt-6"
-                        style={{ color: "#6e5b67", lineHeight: 1.75 }}
-                     >
-                        Edan &amp; Sherr was founded on a simple conviction: Nigerian ginger is
-                        among the best in the world — yet its full potential has often 
-                        gone unrealised. What was missing was a reliable bridge: a processing 
-                        facility capable of meeting international specifications, and a 
-                        supply chain built for global commerce. That is what Edan &amp; Sherr 
-                        was created to provide — a processing and supply chain that honours 
-                        the farmer, respects the crop, and delivers a product worthy of 
-                        the global market.
-                     </p>
- 
-                     {!isPreview && (
-                        <p
-                           className="text-body-md mt-4"
-                           style={{ color: "#6e5b67", lineHeight: 1.75 }}
-                        >
-                           From Southern Kaduna, Nigeria&apos;s premier ginger belt, we work directly
-                           with smallholder farming families providing fair farm-gate pricing
-                           and transparent trade. Our processing facilities transform raw
-                           material into agricultural products that meet international safety 
-                           and quality standards.
-                        </p>
-                     )}
-
-                     {isPreview && (
-                        <div className="mt-8">
-                           <Link
-                              href="/about"
-                              className="link-arrow text-green-700 font-bold uppercase tracking-widest text-xs"
-                           >
-                              Learn More About Our Mission <ArrowRight size={14} className="ml-1" />
-                           </Link>
-                        </div>
-                     )}
-                  </motion.div>
-
-
-               </div>
+          {isPreview && (
+            <div className="mt-8">
+              <Link href="/about" className="btn-secondary inline-flex items-center gap-2">
+                Learn More
+                <ArrowRight size={16} />
+              </Link>
             </div>
-         </div>
-      </section>
-   );
+          )}
+        </div>
+      </div>
+    </section>
+  );
 }

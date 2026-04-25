@@ -1,19 +1,22 @@
-import Contact from "@/components/sections/Contact";
 import PageHero from "@/components/PageHero";
+import Contact from "@/components/sections/Contact";
+import { absoluteUrl, routeMetadata } from "@/config/siteConfig";
 
 export const metadata = {
-  title: "Contact Us | Edan & Sherr Limited",
-  description: "Get in touch with us for inquiries, partnerships, or to request product specifications.",
+  title: routeMetadata["/contact"].title,
+  description: routeMetadata["/contact"].description,
+  alternates: {
+    canonical: absoluteUrl("/contact"),
+  },
 };
 
 export default function ContactPage() {
   return (
     <main>
-       <PageHero 
-        label="Inquire"
-        title="Get in Touch"
-        description="Whether you are looking for product specifications or exploring partnership opportunities, we are ready to discuss how we can work together."
-        bgVariant="green"
+      <PageHero
+        label="Contact / RFQ"
+        title="Start your procurement conversation"
+        description="Share your specification and destination market. We will respond with practical supply guidance and next-step options."
       />
       <Contact />
     </main>

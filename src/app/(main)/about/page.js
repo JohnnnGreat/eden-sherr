@@ -1,22 +1,26 @@
-import About from "@/components/sections/About";
-import Contact from "@/components/sections/Contact";
 import PageHero from "@/components/PageHero";
+import About from "@/components/sections/About";
+import Story from "@/components/sections/Story";
+import { absoluteUrl, routeMetadata } from "@/config/siteConfig";
 
 export const metadata = {
-  title: "About Us | Edan & Sherr Limited",
-  description: "Learn about Edan & Sherr, our commitment to premium Nigerian ginger, and our mission to unlock its full potential.",
+  title: routeMetadata["/about"].title,
+  description: routeMetadata["/about"].description,
+  alternates: {
+    canonical: absoluteUrl("/about"),
+  },
 };
 
 export default function AboutPage() {
   return (
     <main>
-      <PageHero 
+      <PageHero
         label="Our Company"
-        title="Unlocking the Potential of Nigerian Ginger"
-        description="A bridge between the rich soils of Southern Kaduna and the global marketplace, built on transparency and excellence."
+        title="Built to make Nigerian ginger globally reliable"
+        description="Edan & Sherr was established to connect Southern Kaduna's product strength with international procurement standards."
       />
       <About />
-      <Contact />
+      <Story detailed />
     </main>
   );
 }

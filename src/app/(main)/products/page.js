@@ -1,22 +1,24 @@
-import Products from "@/components/sections/Products";
-import Contact from "@/components/sections/Contact";
 import PageHero from "@/components/PageHero";
+import Products from "@/components/sections/Products";
+import { absoluteUrl, routeMetadata } from "@/config/siteConfig";
 
 export const metadata = {
-  title: "Our Products | Edan & Sherr Limited",
-  description: "Explore our premium ginger products, including fresh rhizomes, dried split ginger, and ginger powder.",
+  title: routeMetadata["/products"].title,
+  description: routeMetadata["/products"].description,
+  alternates: {
+    canonical: absoluteUrl("/products"),
+  },
 };
 
 export default function ProductsPage() {
   return (
     <main>
-      <PageHero 
-        label="Our Products"
-        title="Premium Ginger Solutions"
-        description="Agricultural products crafted for global commerce, from raw rhizomes to advanced extracts."
+      <PageHero
+        label="Our Product Range"
+        title="Ginger products built for procurement teams"
+        description="Each product is presented with clear specifications, use cases, and traceability so you can source with confidence."
       />
       <Products />
-      <Contact />
     </main>
   );
 }

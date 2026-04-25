@@ -1,22 +1,24 @@
-import GingerOrigin from "@/components/sections/GingerOrigin";
-import Contact from "@/components/sections/Contact";
 import PageHero from "@/components/PageHero";
+import GingerOrigin from "@/components/sections/GingerOrigin";
+import { absoluteUrl, routeMetadata } from "@/config/siteConfig";
 
 export const metadata = {
-  title: "Why Nigerian Ginger | Edan & Sherr Limited",
-  description: "Discover why ginger from Southern Kaduna is considered among the finest in the world, with its bold aroma and intense pungency.",
+  title: routeMetadata["/origin"].title,
+  description: routeMetadata["/origin"].description,
+  alternates: {
+    canonical: absoluteUrl("/origin"),
+  },
 };
 
 export default function OriginPage() {
   return (
     <main>
-      <PageHero 
+      <PageHero
         label="The Origin"
-        title="The Terroir of Southern Kaduna"
-        description="Where unique soil chemistry and ideal high-altitude conditions create a crop of unmatched character and potency."
+        title="Southern Kaduna terroir and supply reality"
+        description="This region produces ginger with distinct aroma and pungency. Our role is to preserve that advantage through disciplined sourcing and handling."
       />
       <GingerOrigin />
-      <Contact />
     </main>
   );
 }

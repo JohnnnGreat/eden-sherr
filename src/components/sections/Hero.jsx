@@ -1,172 +1,120 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-
-// Shared easing curve
-const ease = [0.25, 0.1, 0.25, 1];
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import { homepageHero, heroCarouselImages, heroFeaturedProducts } from "@/data/homepageData";
 
 export default function Hero() {
-   return (
-      <section
-         className="relative overflow-hidden"
-         aria-label="Hero"
-         style={{
-            background: `
-          radial-gradient(ellipse 120% 90% at 62% 40%, #fffdf9 0%, #faf5ec 38%, #f2e9da 72%, #e8deca 100%)
-        `,
-         }}
+  return (
+    <section className="w-full h-screen overflow-hidden">
+      <Swiper
+        modules={[Autoplay, Pagination]}
+        autoplay={{ delay: 5000, disableOnInteraction: false }}
+        pagination={{ clickable: true }}
+        loop={true}
+        className="h-full w-full"
       >
-         {/* Subtle green warmth — top left */}
-         <div
-            aria-hidden="true"
-            style={{
-               position: "absolute",
-               inset: 0,
-               background:
-                  "radial-gradient(ellipse 60% 55% at 8% 15%, rgba(117,168,93,0.07) 0%, transparent 70%)",
-               pointerEvents: "none",
-            }}
-         />
+        {/* First slide: Background carousel hero */}
+        <SwiperSlide className="h-full relative">
+          <div className="h-full w-full relative">
+            {heroCarouselImages.map((image, index) => (
+              <div
+                key={index}
+                className="absolute inset-0 transition-opacity duration-1000"
+                style={{ opacity: 0 }}
+              >
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  priority={index === 0}
+                  sizes="100vw"
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
+            ))}
+            <Image
+              src={heroCarouselImages[0].src}
+              alt={heroCarouselImages[0].alt}
+              fill
+              priority
+              sizes="100vw"
+              style={{ objectFit: "cover" }}
+            />
+            <div className="absolute inset-0 bg-black/40" />
 
-         {/* ── Content ─────────────────────────────────────────── */}
-         <div className="container-site relative py-section-y">
-            <div className="grid lg:grid-cols-2 gap-14 lg:gap-24 items-center">
-               {/* ── LEFT COLUMN ─────────────────────────────────── */}
-               <motion.div
-                  initial={{ opacity: 0, x: -48 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.75, ease }}
-               >
-                  {/* Badge */}
-                  <div
-                     className="inline-flex items-center gap-2 rounded-full mb-7"
-                     style={{
-                        backgroundColor: "#f3f8ee",
-                        color: "#3e642e",
-                        padding: "0.4rem 1rem",
-                     }}
-                  >
-                     <span
-                        aria-hidden="true"
-                        style={{
-                           width: 7,
-                           height: 7,
-                           borderRadius: "50%",
-                           backgroundColor: "#75a85d",
-                           display: "inline-block",
-                           flexShrink: 0,
-                        }}
-                     />
-                     <span className="text-body-sm font-medium">Premium Nigerian Ginger</span>
-                  </div>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="container-shell text-center text-white max-w-2xl px-4">
+                <p className="text-sm font-bold tracking-widest uppercase opacity-90 mb-4">
+                  {homepageHero.eyebrow}
+                </p>
+                <h1 className="display-title leading-tight mb-6 text-white">
+                  {homepageHero.title}
+                </h1>
+                <p className="text-lg leading-relaxed mb-8 opacity-90">
+                  {homepageHero.subtitle}
+                </p>
 
-                  {/* Headline */}
-                  <h1
-                     className="text-display-lg text-charcoal-900"
-                     style={{ textWrap: "balance" }}
-                  >
-                     Premium Nigerian Ginger,
-                     <br />
-                     Processed to{" "}
-                     <em
-                        className="text-green-500"
-                        style={{ fontStyle: "italic" }}
-                     >
-                        Excellence
-                     </em>
-                  </h1>
-
-                  {/* Subtitle */}
-                  <p className="section-body mt-6">
-                     We produce premium ginger products for buyers who demand consistency,
-                     traceability, and exceptional quality — from farm to freight.
-                  </p>
-
-                  {/* CTA buttons */}
-                  <div className="flex flex-wrap gap-4 mt-10">
-                     <a
-                        href="#products"
-                        className="btn-primary"
-                     >
-                        Explore Products
-                        <ArrowRight
-                           size={17}
-                           aria-hidden="true"
-                        />
-                     </a>
-                     <a
-                        href="#contact"
-                        className="btn-secondary"
-                     >
-                        Request a Sample
-                     </a>
-                  </div>
-               </motion.div>
-
-               {/* ── RIGHT COLUMN ────────────────────────────────── */}
-               <motion.div
-                  initial={{ opacity: 0, x: 48 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.75, delay: 0.18, ease }}
-                  style={{ position: "relative" }}
-               >
-                  {/*
-                   * Outer wrapper: position: relative — NO overflow hidden.
-                   * This is the anchor for the floating cards.
-                   * Cards can safely extend outside the image frame.
-                   */}
-                  <div style={{ position: "relative", paddingInline: "1.25rem" }}>
-                     {/* Image frame — overflow hidden isolates the photo crop */}
-                     <div
-                        style={{
-                           position: "relative",
-                           aspectRatio: "4 / 5",
-                           borderRadius: "1rem",
-                           overflow: "hidden",
-                           boxShadow:
-                              "0 24px 64px -12px rgba(58, 51, 53, 0.22), 0 4px 16px -4px rgba(58, 51, 53, 0.1)",
-                        }}
-                     >
-                        <Image
-                           src="/images/ginger-hero.jpg"
-                           alt="Premium dried ginger root from Southern Kaduna, Nigeria"
-                           fill
-                           sizes="(max-width: 768px) 100vw, 50vw"
-                           style={{ objectFit: "cover" }}
-                           priority
-                        />
-                     </div>
-
-                     {/* ── Floating card: bottom-left ── */}
-                     <div
-                        style={{
-                           position: "absolute",
-                           bottom: 28,
-                           left: 0,
-                           backgroundColor: "#ffffff",
-                           borderRadius: "0.75rem",
-                           padding: "1rem 1.25rem",
-                           boxShadow:
-                              "0 8px 32px -4px rgba(58, 51, 53, 0.14), 0 2px 8px rgba(58, 51, 53, 0.06)",
-                           minWidth: 156,
-                        }}
-                     >
-                        <p className="text-label-md">Origin</p>
-                        <p
-                           className="text-charcoal-900"
-                           style={{ fontWeight: 600, fontSize: "1rem", marginTop: "0.25rem" }}
-                        >
-                           Southern Kaduna
-                        </p>
-                     </div>
-
-
-                  </div>
-               </motion.div>
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                  <Link href={homepageHero.primaryCta.href} className="btn-primary">
+                    {homepageHero.primaryCta.label}
+                    <ArrowRight size={16} />
+                  </Link>
+                  <Link href={homepageHero.secondaryCta.href} className="btn-secondary">
+                    {homepageHero.secondaryCta.label}
+                  </Link>
+                </div>
+              </div>
             </div>
-         </div>
-      </section>
-   );
+          </div>
+        </SwiperSlide>
+
+        {/* Product slides */}
+        {heroFeaturedProducts.map((product) => (
+          <SwiperSlide key={product.id} className="h-full">
+            <div className="h-full w-full flex items-center bg-sand-50">
+              <div className="container-shell h-full flex items-center gap-12 lg:gap-16">
+                <div className="flex-1 flex flex-col justify-center">
+                  <p className="kicker mb-4">{product.badge || "Featured"}</p>
+                  <h1 className="display-title mb-6 text-ink-900">
+                    {product.title}
+                  </h1>
+                  <p className="section-copy mb-8">
+                    {product.description}
+                  </p>
+                  <div className="flex flex-wrap gap-4">
+                    <Link href="/contact" className="btn-primary">
+                      Request Specs
+                      <ArrowRight size={16} />
+                    </Link>
+                    <Link href="/products" className="btn-secondary">
+                      View All Products
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="flex-1 hidden lg:flex items-center justify-end">
+                  <div className="relative w-full max-w-md aspect-square">
+                    <Image
+                      src={product.image}
+                      alt={product.title}
+                      fill
+                      priority
+                      sizes="(max-width: 1024px) 100vw, 45vw"
+                      style={{ objectFit: "contain" }}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </section>
+  );
 }

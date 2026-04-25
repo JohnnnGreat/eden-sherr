@@ -8,7 +8,7 @@ ORG:Edan & Sherr Limited
 TEL;TYPE=WORK,VOICE:+2348065321577
 EMAIL;TYPE=WORK:sessien@edanandsherr.com
 URL:https://www.edanandsherr.com
-ADR;TYPE=WORK:;;No. 3 Okemisi Crescent\\, Off Oro Ago Street;Garki II\\, Abuja;;;Nigeria
+ADR;TYPE=WORK:;;Plot 765 Cadastral Zone\\, Adamu Ismaila Crescent\\, Idu Industrial Estate;Abuja;;;Nigeria
 END:VCARD`;
 
    return new Response(vcardData, {
