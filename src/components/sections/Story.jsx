@@ -8,7 +8,10 @@ export default function Story({ isPreview = false, detailed = false }) {
   const paragraphs = isPreview ? founderNarrative.slice(0, 2) : founderNarrative;
 
   return (
-    <section className={isPreview ? "h-screen flex flex-col justify-center py-8" : "section-space"}>
+    <section
+      className={isPreview ? "h-screen flex flex-col justify-center py-8" : "section-space"}
+      style={{ background: "linear-gradient(to bottom, var(--color-sand-100), #ffffff)" }}
+    >
       <div className="container-shell">
         {isPreview ? (
           <div className="mb-6 text-center">

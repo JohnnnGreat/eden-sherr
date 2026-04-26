@@ -17,7 +17,7 @@ export default function Footer() {
         <div className="surface-card-dark p-7 md:p-9">
           <div className="grid md:grid-cols-[1.3fr_1fr] gap-8 items-end">
             <div>
-              <p className="kicker text-copper-300">
+              <p className="kicker" style={{ color: "var(--color-olive-500)" }}>
                 Let's Connect
               </p>
               <h2 className="section-title mt-3 text-white max-w-96">

@@ -21,11 +21,11 @@ function ProductCard({ product }) {
       </div>
 
       <div className="mt-4">
-        <span className={pipeline ? "badge badge-copper" : "badge badge-olive"}>
+        <span className={pipeline ? "badge badge-olive-inverse" : "badge badge-olive"}>
           {product.category}
         </span>
         <h3
-          className="mt-3 text-xl"
+          className="mt-3 text-xl font-bold"
           style={{ color: pipeline ? "#ffffff" : "var(--color-ink-900)" }}
         >
           {product.title}

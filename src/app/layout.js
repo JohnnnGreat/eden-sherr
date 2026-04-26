@@ -1,6 +1,7 @@
 import { Manrope, Sora, Figtree } from "next/font/google";
 import "./globals.css";
 import { absoluteUrl, siteConfig } from "@/config/siteConfig";
+import NextTopLoader from "nextjs-toploader";
 
 const sora = Sora({
   subsets: ["latin"],
@@ -118,6 +119,7 @@ export default function RootLayout({ children }) {
       className={`${sora.variable} ${manrope.variable} ${figtree.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <NextTopLoader color="var(--color-olive-500)" showSpinner={false} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}

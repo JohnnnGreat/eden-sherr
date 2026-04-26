@@ -27,7 +27,7 @@ const controls = [
 export default function Quality({ isPreview = false }) {
   return (
     <section
-      className="section-space"
+      className="section-space mx-3 mb-3 rounded-2xl"
       style={{
         background:
           "linear-gradient(165deg, var(--color-ink-950), var(--color-ink-900))",
@@ -36,7 +36,7 @@ export default function Quality({ isPreview = false }) {
       <div className="container-shell">
         <SectionHeader
           label="Standards & Control"
-          title="Proof-oriented quality architecture"
+          title="Quality you can verify, not just trust"
           description="Our quality model is designed to help buyers verify origin, process discipline, and release conditions before shipment."
           align="center"
           tone="inverse"

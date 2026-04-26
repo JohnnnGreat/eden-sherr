@@ -1,9 +1,46 @@
+"use client";
+
+import { useState } from "react";
 import { Mail, MapPin, Phone } from "lucide-react";
 import SectionHeader from "@/components/SectionHeader";
 import { procurementFlow } from "@/data/homepageData";
 import { siteConfig } from "@/config/siteConfig";
 
 export default function Contact({ showFlow = true }) {
+  const [status, setStatus] = useState("idle"); // idle | loading | success | error
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setStatus("loading");
+
+    const form = e.currentTarget;
+    const data = {
+      company: form.company.value,
+      contact: form.contact.value,
+      email: form.email.value,
+      phone: form.phone.value,
+      product: form.product.value,
+      quantity: form.quantity.value,
+      destination: form.destination.value,
+      quality: form.quality.value,
+      notes: form.notes.value,
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) throw new Error("Failed");
+      setStatus("success");
+      form.reset();
+    } catch {
+      setStatus("error");
+    }
+  }
+
   return (
     <section className="section-space">
       <div className="container-shell">
@@ -18,64 +55,83 @@ export default function Contact({ showFlow = true }) {
 
             <div className="mt-9 grid lg:grid-cols-[1.1fr_0.9fr] gap-8">
               <div>
-                <form className="bg-white rounded-lg p-6 md:p-8" style={{ border: "1px solid rgba(19, 34, 31, 0.12)" }}>
+                <form
+                  onSubmit={handleSubmit}
+                  className="bg-white rounded-lg p-6 md:p-8"
+                  style={{ border: "1px solid rgba(19, 34, 31, 0.12)" }}
+                >
                   <div className="grid gap-6">
                     <div className="grid md:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-sm font-bold text-ink-900 mb-2">Company Name *</label>
-                        <input type="text" className="w-full px-4 py-2 rounded-lg border border-light focus:outline-none focus:ring-2 focus:ring-copper-400" placeholder="Your company" required />
+                        <input name="company" type="text" className="w-full px-4 py-2 rounded-lg border border-light focus:outline-none focus:ring-2 focus:ring-copper-400" placeholder="Your company" required />
                       </div>
                       <div>
                         <label className="block text-sm font-bold text-ink-900 mb-2">Contact Person *</label>
-                        <input type="text" className="w-full px-4 py-2 rounded-lg border border-light focus:outline-none focus:ring-2 focus:ring-copper-400" placeholder="Your name" required />
+                        <input name="contact" type="text" className="w-full px-4 py-2 rounded-lg border border-light focus:outline-none focus:ring-2 focus:ring-copper-400" placeholder="Your name" required />
                       </div>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-sm font-bold text-ink-900 mb-2">Email *</label>
-                        <input type="email" className="w-full px-4 py-2 rounded-lg border border-light focus:outline-none focus:ring-2 focus:ring-copper-400" placeholder="your@email.com" required />
+                        <input name="email" type="email" className="w-full px-4 py-2 rounded-lg border border-light focus:outline-none focus:ring-2 focus:ring-copper-400" placeholder="your@email.com" required />
                       </div>
                       <div>
                         <label className="block text-sm font-bold text-ink-900 mb-2">Phone</label>
-                        <input type="tel" className="w-full px-4 py-2 rounded-lg border border-light focus:outline-none focus:ring-2 focus:ring-copper-400" placeholder="+234 (000) 000-0000" />
+                        <input name="phone" type="tel" className="w-full px-4 py-2 rounded-lg border border-light focus:outline-none focus:ring-2 focus:ring-copper-400" placeholder="+234 (000) 000-0000" />
                       </div>
                     </div>
 
                     <div>
                       <label className="block text-sm font-bold text-ink-900 mb-2">Which Product? *</label>
-                      <select className="w-full px-4 py-2 rounded-lg border border-light focus:outline-none focus:ring-2 focus:ring-copper-400" required>
+                      <select name="product" className="w-full px-4 py-2 rounded-lg border border-light focus:outline-none focus:ring-2 focus:ring-copper-400" required>
                         <option value="">Choose a product</option>
-                        <option value="dried-split">Split Dried Ginger</option>
-                        <option value="whole-dried">Whole Dried Ginger</option>
-                        <option value="powder">Ginger Powder</option>
-                        <option value="organic">Organic Ginger</option>
+                        <option value="Split Dried Ginger">Split Dried Ginger</option>
+                        <option value="Whole Dried Ginger">Whole Dried Ginger</option>
+                        <option value="Ginger Powder">Ginger Powder</option>
+                        <option value="Organic Ginger">Organic Ginger</option>
                       </select>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-sm font-bold text-ink-900 mb-2">How Much Do You Need? (kg) *</label>
-                        <input type="number" className="w-full px-4 py-2 rounded-lg border border-light focus:outline-none focus:ring-2 focus:ring-copper-400" placeholder="e.g., 5000" required />
+                        <input name="quantity" type="number" className="w-full px-4 py-2 rounded-lg border border-light focus:outline-none focus:ring-2 focus:ring-copper-400" placeholder="e.g., 5000" required />
                       </div>
                       <div>
                         <label className="block text-sm font-bold text-ink-900 mb-2">Where Will It Go? *</label>
-                        <input type="text" className="w-full px-4 py-2 rounded-lg border border-light focus:outline-none focus:ring-2 focus:ring-copper-400" placeholder="e.g., USA, Europe" required />
+                        <input name="destination" type="text" className="w-full px-4 py-2 rounded-lg border border-light focus:outline-none focus:ring-2 focus:ring-copper-400" placeholder="Enter Delivery Address" required />
                       </div>
                     </div>
 
                     <div>
                       <label className="block text-sm font-bold text-ink-900 mb-2">What Quality Do You Need? (Optional)</label>
-                      <textarea className="w-full px-4 py-2 rounded-lg border border-light focus:outline-none focus:ring-2 focus:ring-copper-400" rows="3" placeholder="Any special requirements, certifications, or quality standards..."></textarea>
+                      <textarea name="quality" className="w-full px-4 py-2 rounded-lg border border-light focus:outline-none focus:ring-2 focus:ring-copper-400" rows="3" placeholder="Any special requirements, certifications, or quality standards..."></textarea>
                     </div>
 
                     <div>
                       <label className="block text-sm font-bold text-ink-900 mb-2">Anything Else We Should Know?</label>
-                      <textarea className="w-full px-4 py-2 rounded-lg border border-light focus:outline-none focus:ring-2 focus:ring-copper-400" rows="3" placeholder="Other details or questions..."></textarea>
+                      <textarea name="notes" className="w-full px-4 py-2 rounded-lg border border-light focus:outline-none focus:ring-2 focus:ring-copper-400" rows="3" placeholder="Other details or questions..."></textarea>
                     </div>
 
-                    <button type="submit" className="btn-primary w-full">
-                      Send Quote Request
+                    {status === "success" && (
+                      <p className="text-sm font-medium" style={{ color: "var(--color-olive-700)" }}>
+                        Your request was sent. We'll get back to you within 24 hours.
+                      </p>
+                    )}
+                    {status === "error" && (
+                      <p className="text-sm font-medium" style={{ color: "var(--color-copper-700)" }}>
+                        Something went wrong. Please try again or email us directly.
+                      </p>
+                    )}
+
+                    <button
+                      type="submit"
+                      className="btn-primary w-full"
+                      disabled={status === "loading"}
+                    >
+                      {status === "loading" ? "Sending…" : "Send Quote Request"}
                     </button>
                   </div>
                 </form>

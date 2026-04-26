@@ -60,7 +60,7 @@ export default function Navbar() {
       </div>
 
       <header
-        className="border-b border-light"
+        className=""
         style={{
           background: "rgba(246,241,232,0.93)",
         }}
@@ -74,8 +74,8 @@ export default function Navbar() {
             <Image
               src="/images/v2/brand-signature.png"
               alt={`${siteConfig.name} logo`}
-              width={138}
-              height={48}
+              width={116}
+              height={40}
               priority
             />
           </Link>

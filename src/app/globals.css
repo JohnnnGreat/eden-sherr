@@ -228,6 +228,11 @@
     background: rgba(98, 147, 72, 0.16);
   }
 
+  .badge-olive-inverse {
+    color: var(--color-olive-300);
+    background: rgba(98, 147, 72, 0.22);
+  }
+
   .badge-copper {
     color: var(--color-copper-800);
     background: rgba(198, 106, 52, 0.15);
