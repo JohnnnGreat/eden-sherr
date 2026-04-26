@@ -4,7 +4,7 @@ export const productPortfolio = [
     title: "Dried Split Ginger",
     category: "Core Export Product",
     summary:
-      "Premium dried ginger with controlled moisture and superior aroma retention.",
+      "Dried ginger with controlled moisture and strong aroma retention.",
     description:
       "Selected roots dried under controlled conditions to preserve quality and heat.",
     image: "/images/v2/product-dried-split.jpg",
@@ -25,7 +25,7 @@ export const productPortfolio = [
     title: "Ginger Powder",
     category: "Core Export Product",
     summary:
-      "Fine-milled ginger powder to your exact mesh and quality specifications.",
+      "Fine-milled ginger powder to your target mesh and quality specifications.",
     description:
       "Custom-ground from premium dried ginger for food and nutraceutical applications.",
     image: "/images/v2/product-ginger-powder.jpg",

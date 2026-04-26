@@ -27,8 +27,8 @@ export default function About({ isPreview = false }) {
   return (
     <section className="relative h-screen bg-sand-50 z-0 overflow-hidden">
       <div className="h-full grid lg:grid-cols-[1fr_1fr]">
-        {/* Full-height image on the left, from browser edge */}
-        <div className="relative hidden lg:block overflow-hidden z-0" data-aos="fade-right" data-aos-delay="0">
+        {/* Full-height image on the left with gradient overlay and button */}
+        <div className="relative hidden lg:flex lg:flex-col lg:justify-end overflow-hidden z-0" data-aos="fade-right" data-aos-delay="0">
           <Swiper
             modules={[Pagination, Autoplay]}
             pagination={{ clickable: true }}
@@ -46,10 +46,24 @@ export default function About({ isPreview = false }) {
                     sizes="50vw"
                     style={{ objectFit: "cover" }}
                   />
+                  {/* Gradient overlay - dark at bottom, transparent at top */}
+                  <div className="absolute inset-0" style={{
+                    background: "linear-gradient(to top, rgba(19, 34, 31, 0.7) 0%, rgba(19, 34, 31, 0.4) 30%, transparent 100%)"
+                  }}></div>
                 </div>
               </SwiperSlide>
             ))}
           </Swiper>
+
+          {/* Button positioned at bottom of image */}
+          {isPreview && (
+            <div className="absolute bottom-8 left-8 z-10">
+              <Link href="/about" className="btn-secondary inline-flex items-center gap-2">
+                Learn More
+                <ArrowRight size={16} />
+              </Link>
+            </div>
+          )}
         </div>
 
         {/* Content on the right */}
@@ -93,15 +107,6 @@ export default function About({ isPreview = false }) {
               control, and provide the commercial clarity buyers need before they
               commit to long-term supply relationships.
             </p>
-          )}
-
-          {isPreview && (
-            <div className="mt-8">
-              <Link href="/about" className="btn-secondary inline-flex items-center gap-2">
-                Learn More
-                <ArrowRight size={16} />
-              </Link>
-            </div>
           )}
         </div>
       </div>

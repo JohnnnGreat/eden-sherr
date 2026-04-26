@@ -27,7 +27,7 @@ const controls = [
 export default function Quality({ isPreview = false }) {
   return (
     <section
-      className="section-space mx-3 mb-3 rounded-2xl"
+      className="section-space mx-3 my-3 rounded-2xl"
       style={{
         background:
           "linear-gradient(165deg, var(--color-ink-950), var(--color-ink-900))",

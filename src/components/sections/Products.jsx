@@ -15,8 +15,12 @@ function ProductCard({ product }) {
           alt={product.alt}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-          style={{ objectFit: "cover", transition: "transform 0.4s ease" }}
+          style={{ objectFit: "cover", transition: "transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)" }}
           className="group-hover:scale-110"
+        />
+        <div
+          className="absolute inset-0 opacity-0 group-hover:opacity-100"
+          style={{ background: "linear-gradient(to top, rgba(10,20,18,0.45), transparent)", transition: "opacity 0.4s ease" }}
         />
       </div>
 

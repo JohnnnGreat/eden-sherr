@@ -25,31 +25,31 @@ export default function OriginPage() {
 
           <div className="grid lg:grid-cols-3 gap-8">
             <div className="bg-white rounded-lg p-6 md:p-8">
-              <h3 className="text-lg font-bold text-ink-900 mb-4">Superior Potency</h3>
+              <h3 className="text-lg font-bold text-ink-900 mb-4">Aroma & Potency Profile</h3>
               <p className="text-sm leading-7 text-ink-600">
-                Nigerian ginger contains significantly higher <strong>oleoresin (4–6%) and gingerol content</strong> than ginger from India, China, or any other major producing country. These compounds give ginger its heat, flavor, and medicinal properties.
+                Nigerian ginger from Southern Kaduna is known for its notably high <strong>oleoresin and gingerol content</strong>, which contribute to a strong aroma and heat profile valued by ingredient buyers across food and industrial applications.
               </p>
             </div>
 
             <div className="bg-white rounded-lg p-6 md:p-8">
-              <h3 className="text-lg font-bold text-ink-900 mb-4">Sourcing Excellence</h3>
+              <h3 className="text-lg font-bold text-ink-900 mb-4">Our Sourcing Approach</h3>
               <p className="text-sm leading-7 text-ink-600">
-                We source from Nigeria's Kaduna and Nassarawa states, where volcanic soil and climate conditions produce rhizomes with exceptionally high active compound levels. Our supply chain handles aggregation, cleaning, drying, and quality testing before export.
+                We source from farming communities in Southern Kaduna, where soil and climate conditions support above-average active compound levels. Our supply chain covers aggregation, cleaning, drying, and quality screening before export.
               </p>
             </div>
 
             <div className="bg-white rounded-lg p-6 md:p-8">
-              <h3 className="text-lg font-bold text-ink-900 mb-4">Diverse Applications</h3>
+              <h3 className="text-lg font-bold text-ink-900 mb-4">Application Fit</h3>
               <p className="text-sm leading-7 text-ink-600">
-                For spice trade: superior flavor intensity per kg. For pharma/nutraceutical buyers: better extraction yields and potent end products. We supply ginger powder for food processing and organic-certified options for premium markets.
+                For spice trade: strong flavour intensity per kg. For pharma and nutraceutical buyers: competitive extraction yields from a high-compound origin. We supply dried ginger and powder formats for food processing applications.
               </p>
             </div>
           </div>
 
           <div className="mt-10 bg-white rounded-lg p-6 md:p-8">
-            <h3 className="text-base font-bold text-ink-900 mb-4">Preferred by Global Buyers</h3>
+            <h3 className="text-base font-bold text-ink-900 mb-4">Why Buyers Choose This Origin</h3>
             <p className="text-sm leading-7 text-ink-600 max-w-3xl">
-              Nigerian ginger is the preferred origin for pharmaceutical manufacturers, essential oil producers, and spice blenders who need maximum potency. Edan & Sherr connects this superior origin to international procurement teams seeking reliable quality and traceability.
+              Nigerian ginger is recognised as a high-potency origin by pharmaceutical manufacturers, essential oil producers, and spice blenders. Edan & Sherr works to connect this origin to international procurement teams seeking verifiable quality and traceability.
             </p>
           </div>
         </div>

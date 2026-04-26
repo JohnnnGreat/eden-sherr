@@ -180,7 +180,7 @@ export default function Contact({ showFlow = true }) {
                 <div className="mt-8 pt-8 border-t border-light">
                   <h4 className="text-base font-bold text-ink-900 mb-4">We'll Get Back to You Fast</h4>
                   <p className="text-sm text-ink-600">
-                    We respond to all requests within <strong>24 hours</strong> with what we can do and next steps.
+                    We aim to respond to all requests within <strong>1 business day</strong> with what we can do and next steps.
                   </p>
                 </div>
               </article>
