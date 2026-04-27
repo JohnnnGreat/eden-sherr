@@ -22,18 +22,68 @@ export default function About({ isPreview = false }) {
     });
   }, []);
 
-  const modules = isPreview ? capabilityModules.slice(0, 3) : capabilityModules;
+  if (isPreview) {
+    return (
+      <section className="relative h-[70vh] bg-sand-50 z-0 overflow-hidden w-full">
+        {/* Background Swiper */}
+        <div className="absolute inset-0 z-0">
+          <Swiper
+            modules={[Pagination, Autoplay]}
+            pagination={{ clickable: true }}
+            autoplay={{ delay: 5000, disableOnInteraction: false }}
+            className="h-full w-full"
+          >
+            {[
+              { src: "/images/about/about1.jpg", alt: "About Edan & Sherr 1" },
+              { src: "/images/about/about2.jpg", alt: "About Edan & Sherr 2" }
+            ].map((image, index) => (
+              <SwiperSlide key={index} className="h-full w-full">
+                <div className="relative w-full h-full">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    priority={index === 0}
+                    style={{ objectFit: "cover" }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-sand-50/85 via-sand-50/40 to-transparent w-full md:w-3/4"></div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+
+        {/* Content Overlay */}
+        <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="h-full flex flex-col justify-center w-full lg:w-5/12 py-12" data-aos="fade-right" data-aos-delay="100">
+            <SectionHeader
+              label="About Edan & Sherr"
+              title="From origin strength to procurement confidence"
+              description="Nigerian ginger, traceable from Southern Kaduna farms to your specification — with the processing discipline and documentation support global buyers require."
+            />
+
+            <div className="mt-8" data-aos="fade-up" data-aos-delay="200">
+              <Link href="/about" className="btn-secondary inline-flex items-center gap-2">
+                Our Story
+                <ArrowRight size={16} />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
-    <section className="relative h-screen bg-sand-50 z-0 overflow-hidden">
+    <section className="relative min-h-screen bg-sand-50 z-0 overflow-hidden">
       <div className="h-full grid lg:grid-cols-[1fr_1fr]">
-        {/* Full-height image on the left with gradient overlay and button */}
-        <div className="relative hidden lg:flex lg:flex-col lg:justify-end overflow-hidden z-0" data-aos="fade-right" data-aos-delay="0">
+        {/* Full-height image on the left with gradient overlay */}
+        <div className="relative hidden lg:flex lg:flex-col lg:justify-end overflow-hidden z-0 min-h-[50vh] lg:min-h-screen" data-aos="fade-right" data-aos-delay="0">
           <Swiper
             modules={[Pagination, Autoplay]}
             pagination={{ clickable: true }}
             autoplay={{ delay: 4000, disableOnInteraction: false }}
-            className="h-full w-full"
+            className="h-full w-full absolute inset-0"
           >
             {aboutImages.map((image, index) => (
               <SwiperSlide key={index} className="h-full w-full">
@@ -54,20 +104,10 @@ export default function About({ isPreview = false }) {
               </SwiperSlide>
             ))}
           </Swiper>
-
-          {/* Button positioned at bottom of image */}
-          {isPreview && (
-            <div className="absolute bottom-8 left-8 z-10">
-              <Link href="/about" className="btn-secondary inline-flex items-center gap-2">
-                Learn More
-                <ArrowRight size={16} />
-              </Link>
-            </div>
-          )}
         </div>
 
         {/* Content on the right */}
-        <div className="h-full flex flex-col justify-center px-8 lg:px-12 py-12" data-aos="fade-left" data-aos-delay="100">
+        <div className="h-full flex flex-col justify-center px-8 lg:px-12 py-12 lg:py-24" data-aos="fade-left" data-aos-delay="100">
           <SectionHeader
             label="About Edan & Sherr"
             title="From origin strength to procurement confidence"
@@ -75,7 +115,7 @@ export default function About({ isPreview = false }) {
           />
 
           <div className="mt-7 space-y-6">
-            {modules.map((module, index) => (
+            {capabilityModules.map((module, index) => (
               <div
                 key={module.title}
                 className="flex gap-4"
@@ -101,13 +141,11 @@ export default function About({ isPreview = false }) {
             ))}
           </div>
 
-          {!isPreview && (
-            <p className="section-copy mt-6">
-              Our focus is practical: preserve quality at source, process with
-              control, and provide the commercial clarity buyers need before they
-              commit to long-term supply relationships.
-            </p>
-          )}
+          <p className="section-copy mt-6">
+            Our focus is practical: preserve quality at source, process with
+            control, and provide the commercial clarity buyers need before they
+            commit to long-term supply relationships.
+          </p>
         </div>
       </div>
     </section>

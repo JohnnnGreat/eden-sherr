@@ -8,7 +8,13 @@
       "Bash(timeout 8)",
       "Bash(curl -s http://localhost:3000)",
       "PowerShell(Get-Process | Where-Object { $_.ProcessName -eq \"node\" } | Stop-Process -Force)",
-      "WebFetch(domain:www.origindirectgroup.com)"
+      "WebFetch(domain:www.origindirectgroup.com)",
+      "Bash(git checkout *)",
+      "Bash(git reset *)",
+      "Bash(git stash *)",
+      "Bash(pnpm install *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)"
     ],
     "additionalDirectories": [
       "c:\\Users\\JohnOssai\\edan-and-sherr\\src\\app"

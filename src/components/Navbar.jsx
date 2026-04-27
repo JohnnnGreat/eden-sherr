@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { Mail, Menu, Phone, X } from "lucide-react";
+import { ChevronDown, Mail, Menu, Phone, X } from "lucide-react";
 import { mainNavigation, siteConfig } from "@/config/siteConfig";
 
 function ActiveLink({ href, label, onClick }) {
@@ -20,6 +20,72 @@ function ActiveLink({ href, label, onClick }) {
     >
       {label}
     </Link>
+  );
+}
+
+function DropdownNavItem({ item }) {
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+  const active = pathname === item.href || item.children.some((c) => pathname === c.href);
+
+  useEffect(() => {
+    function handleClick(e) {
+      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className="nav-link inline-flex items-center gap-1"
+        style={active ? { color: "var(--color-ink-900)" } : undefined}
+      >
+        {item.label}
+        <ChevronDown
+          size={13}
+          style={{
+            transition: "transform 0.2s ease",
+            transform: open ? "rotate(180deg)" : "rotate(0deg)",
+          }}
+        />
+      </button>
+
+      {open && (
+        <div
+          className="absolute top-full left-0 mt-2 min-w-[160px] py-1.5 z-50"
+          style={{
+            background: "rgba(246,241,232,0.98)",
+            border: "1px solid rgba(19,34,31,0.1)",
+            boxShadow: "0 8px 24px rgba(10,20,18,0.1)",
+          }}
+        >
+          {item.children.map((child) => (
+            <Link
+              key={child.href}
+              href={child.href}
+              onClick={() => setOpen(false)}
+              className="block px-4 py-2 text-sm nav-link transition-colors"
+              style={
+                pathname === child.href
+                  ? { color: "var(--color-ink-900)", fontWeight: 600, background: "var(--color-sand-100)" }
+                  : undefined
+              }
+              onMouseEnter={(e) => { e.currentTarget.style.background = "var(--color-sand-100)"; }}
+              onMouseLeave={(e) => {
+                if (pathname !== child.href) e.currentTarget.style.background = "";
+              }}
+            >
+              {child.label}
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -81,9 +147,13 @@ export default function Navbar() {
           </Link>
 
           <nav className="hidden md:flex items-center gap-6">
-            {mainNavigation.map((item) => (
-              <ActiveLink key={item.href} href={item.href} label={item.label} />
-            ))}
+            {mainNavigation.map((item) =>
+              item.children ? (
+                <DropdownNavItem key={item.href} item={item} />
+              ) : (
+                <ActiveLink key={item.href} href={item.href} label={item.label} />
+              )
+            )}
           </nav>
 
           <div className="hidden md:block">
@@ -133,14 +203,30 @@ export default function Navbar() {
             </div>
 
             <nav className="mt-8 flex flex-col gap-4">
-              {mainNavigation.map((item) => (
-                <ActiveLink
-                  key={item.href}
-                  href={item.href}
-                  label={item.label}
-                  onClick={() => setOpen(false)}
-                />
-              ))}
+              {mainNavigation.map((item) =>
+                item.children ? (
+                  <div key={item.href}>
+                    <ActiveLink href={item.href} label={item.label} onClick={() => setOpen(false)} />
+                    <div className="mt-2 ml-4 flex flex-col gap-3 border-l-2 pl-3" style={{ borderColor: "rgba(19,34,31,0.12)" }}>
+                      {item.children.map((child) => (
+                        <ActiveLink
+                          key={child.href}
+                          href={child.href}
+                          label={child.label}
+                          onClick={() => setOpen(false)}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <ActiveLink
+                    key={item.href}
+                    href={item.href}
+                    label={item.label}
+                    onClick={() => setOpen(false)}
+                  />
+                )
+              )}
             </nav>
 
             <div className="mt-8">

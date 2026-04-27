@@ -42,8 +42,14 @@ export const siteConfig = {
 
 export const mainNavigation = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Origin", href: "/origin" },
+  {
+    label: "About",
+    href: "/about",
+    children: [
+      { label: "Our Story", href: "/about" },
+      { label: "Origin", href: "/origin" },
+    ],
+  },
   { label: "Products", href: "/products" },
   { label: "Standards", href: "/standards" },
   { label: "Contact", href: "/contact" },
