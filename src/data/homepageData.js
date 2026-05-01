@@ -11,7 +11,7 @@ export const homepageHero = {
 
 export const heroCarouselImages = [
   {
-    src: "/images/v2/hero-ginger-field.jpg",
+    src: "/2.jpg",
     alt: "Premium Nigerian ginger in field",
   },
   {
