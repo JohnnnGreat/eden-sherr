@@ -7,8 +7,8 @@ export default function Certifications() {
       <div className="container-shell">
         <SectionHeader
           label="Certification Roadmap"
-          title="Transparent progression toward global standards"
-          description="We communicate quality maturity in phases so buyers can align sourcing decisions with current and upcoming certification milestones."
+          title="Progression towards Global standards"
+          description="We are committed to achieving the certifications that matter most to international buyers. A transparent view of where we stand."
           align="center"
         />
 

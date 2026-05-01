@@ -15,8 +15,8 @@ export default function ContactPage() {
     <main>
       <PageHero
         label="Contact Us"
-        title="Get a Quote or Place an Order"
-        description="Tell us what you need and we'll help. Share the product, quantity, and where it's going, and we'll get back to you with pricing and options."
+        title="Request the quote"
+        description="Tell us what you need and we'll help."
       />
       <Contact />
     </main>

@@ -1,8 +1,9 @@
 export const founderNarrative = [
-  "I did not come to ginger through trend reports. I came through the land, through family, and through years of watching farming communities in Southern Kaduna build value with very little recognition.",
-  "Nigeria produces ginger with striking aroma, heat, and character. What has often been missing is not product quality but the processing and trade infrastructure needed for global buyer confidence.",
-  "Edan & Sherr was founded to close that gap: protect quality at source, process with discipline, and present Nigerian ginger to the world in a format international procurement teams can trust.",
-  "Our direction is practical and long-term. We want farmers to benefit from stable demand, and buyers to receive consistent product backed by transparent, verifiable process controls.",
+  "The story didn't start through business. It began from the land — through a grandfather who devoted his life to it, and generations of farming families who understood, long before the world did, just how extraordinary Nigeria's ginger truly is.",
+  "This is not just a market opportunity. It is the land I grew up in, and the story of the people who shaped it.",
+  "My grandfather, one of the finest farmers of his time, devoted his life to the land. After him came my parents, uncles, cousins, and countless others — men and women who worked tirelessly in rich red soils under open skies, cultivating a crop that carries both heritage and pride. Season after season, they produced ginger of remarkable strength and character. What I still believe to be the boldest ginger in the world.",
+  "Yet despite its quality, much of its true value remained unrealised. I watched as each generation, in its own way, tried to bring this extraordinary resource to the global stage — often constrained by limitations beyond their control.",
+  "That is where the story begins to change. Edan & Sherr Limited was founded with a clear vision: to unlock the full value of Nigeria's world-class ginger and share its true potential with the world."
 ];
 
 export const originHighlights = [

@@ -15,9 +15,9 @@ export default function AboutPage() {
   return (
     <main>
       <PageHero
-        label="Our Company"
-        title="Connecting Nigerian ginger to global procurement standards"
-        description="Edan & Sherr was established to connect Southern Kaduna's product strength with international procurement standards."
+        label="Our company"
+        title="Processing Nigerian Ginger to Global standard"
+        description="Edan & Sherr was established to process Nigeran Ginger and deliver it at the standard the global markets demand."
       />
       <About />
       <Story detailed />

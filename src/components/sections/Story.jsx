@@ -16,13 +16,12 @@ export default function Story({ isPreview = false, detailed = false }) {
         {isPreview ? (
           <div className="mb-6 text-center">
             <p className="kicker text-copper-700">Founder's Story</p>
-            <h2 className="mt-2 text-2xl md:text-3xl font-bold text-ink-900">A heritage-led mission with global intent</h2>
+            <h2 className="mt-2 text-2xl md:text-3xl font-bold text-ink-900">A heritage led mission</h2>
           </div>
         ) : (
           <SectionHeader
             label="Founder's Story"
-            title="A heritage-led mission with global intent"
-            description="Our story begins with land, farming families, and a determination to present Nigerian ginger to international markets at the quality it deserves."
+            title="A heritage led mission"
             align="center"
           />
         )}
@@ -68,7 +67,7 @@ export default function Story({ isPreview = false, detailed = false }) {
           </div>
         </div>
 
-        {!isPreview && detailed ? (
+        {/* {!isPreview && detailed ? (
           <div className="mt-8 surface-card p-6">
             <p className="kicker">Vision Statement</p>
             <p className="mt-3 section-copy">
@@ -77,7 +76,7 @@ export default function Story({ isPreview = false, detailed = false }) {
               while creating long-term value across the supply chain.
             </p>
           </div>
-        ) : null}
+        ) : null} */}
       </div>
     </section>
   );

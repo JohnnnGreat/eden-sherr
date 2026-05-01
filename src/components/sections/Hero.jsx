@@ -80,7 +80,7 @@ export default function Hero() {
             <div className="h-full w-full flex items-center bg-sand-50">
               <div className="container-shell h-full flex items-center gap-12 lg:gap-16">
                 <div className="flex-1 flex flex-col justify-center">
-                  <p className="kicker mb-4">{product.badge || "Featured"}</p>
+                  {/* <p className="kicker mb-4">{product.badge || "Featured"}</p> */}
                   <h1 className="display-title mb-6 text-ink-900">
                     {product.title}
                   </h1>

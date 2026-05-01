@@ -2,9 +2,9 @@ import { productPortfolio } from "@/data/productData";
 
 export const homepageHero = {
   eyebrow: "Premium Nigerian Ginger",
-  title: "Reliable sourcing for global ingredient buyers",
+  title: "Nature’s finest ginger processed for global markets.",
   subtitle:
-    "We help importers, processors, and ingredient brands source premium Nigerian ginger with stronger traceability, cleaner documentation, and reliable quality control.",
+    "We produce premium Nigerian ginger products for buyers who demand consistency, traceability, and exceptional quality — from farm to freight.",
   primaryCta: { label: "Request Product Specs", href: "/contact" },
   secondaryCta: { label: "View Products", href: "/products" },
 };
@@ -134,16 +134,16 @@ export const standardsRoadmap = [
   },
   {
     phase: "In Progress",
-    title: "HACCP Program Formalization",
+    title: "HACCP",
     status: "In Progress",
     notes:
-      "Hazard analysis and critical controls are being documented for broader buyer assurance.",
+      "Hazard Analysis and Critical Control Point Formulated across all processing lines",
   },
   {
     phase: "Next",
-    title: "ISO 22000 / FSSC 22000 Pathway",
+    title: "ISO 22000 / FSSC 22000",
     status: "Planned",
     notes:
-      "Structured progression toward internationally recognized food safety management systems.",
+      "Food safety management system planned as next milestone",
   },
 ];

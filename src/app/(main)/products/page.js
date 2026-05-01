@@ -14,9 +14,9 @@ export default function ProductsPage() {
   return (
     <main>
       <PageHero
-        label="Our Product Range"
-        title="Ginger products built for procurement teams"
-        description="Each product is presented with clear specifications, use cases, and traceability so you can source with confidence."
+        label="Our Products"
+        title="Nigerian ginger with exceptionally high oleoresin and gingerol content."
+        description="We offer it in multiple forms to meet the needs of varied users. Samples and full datasheets available on requests."
       />
       <Products />
     </main>

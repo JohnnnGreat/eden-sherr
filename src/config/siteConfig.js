@@ -4,7 +4,7 @@ export const siteConfig = {
   siteUrl: SITE_URL,
   name: "Edan & Sherr Limited",
   legalName: "Edan & Sherr Limited",
-  tagline: "Rooted in Nigeria. Built for global buyers.",
+  tagline: "Rooted in Nigeria. Crafted for the World",
   legal: {
     rightsText: "All rights reserved.",
     jurisdiction: "Nigeria",

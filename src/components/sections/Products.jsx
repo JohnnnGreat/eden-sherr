@@ -5,10 +5,47 @@ import SectionHeader from "@/components/SectionHeader";
 import { productPageNotes, productPortfolio } from "@/data/productData";
 
 function ProductCard({ product }) {
-  const pipeline = product.category.includes("Pipeline");
+  const pipeline = product.category === "Coming soon";
+
+  if (pipeline) {
+    return (
+      <article className="surface-card-dark p-6 flex flex-col h-full" style={{ transition: "transform 0.3s ease" }}>
+        <div className="flex justify-between items-start mb-6">
+          <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-xl shadow-inner">
+            {product.icon}
+          </div>
+          <span className="text-[10px] tracking-widest uppercase px-3 py-1 rounded-full border border-white/20 text-white/80">
+            Coming Soon
+          </span>
+        </div>
+        
+        <h3 className="text-xl font-medium text-white mb-3" style={{ fontFamily: "var(--font-heading)" }}>
+          {product.title}
+        </h3>
+        <p className="text-sm leading-6 text-white/70 mb-8 flex-1">
+          {product.summary}
+        </p>
+
+        <div className="mt-auto">
+          <div className="border-t border-white/10 pt-4 mb-6">
+            {product.specifications.map((spec) => (
+              <div key={spec.label} className="flex items-center justify-between py-2 text-xs">
+                <span className="text-white/50">{spec.label}</span>
+                <span className="text-white/90 font-medium text-right">{spec.value}</span>
+              </div>
+            ))}
+          </div>
+          
+          <Link href="/contact" className="text-[11px] font-bold tracking-widest uppercase text-white/80 hover:text-white transition-colors flex items-center gap-1.5">
+            Register Interest <ArrowRight size={12} />
+          </Link>
+        </div>
+      </article>
+    );
+  }
 
   return (
-    <article className={pipeline ? "surface-card-dark p-4 group" : "surface-card p-4 group"} style={{ transition: "transform 0.3s ease" }}>
+    <article className="surface-card p-4 group flex flex-col h-full" style={{ transition: "transform 0.3s ease" }}>
       <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
         <Image
           src={product.image}
@@ -24,50 +61,31 @@ function ProductCard({ product }) {
         />
       </div>
 
-      <div className="mt-4">
-        <span className={pipeline ? "badge badge-olive-inverse" : "badge badge-olive"}>
-          {product.category}
-        </span>
-        <h3
-          className="mt-3 text-xl font-bold"
-          style={{ color: pipeline ? "#ffffff" : "var(--color-ink-900)" }}
-        >
+      <div className="mt-4 flex flex-col flex-1">
+        {product.category && (
+          <div className="mb-2">
+            <span className="badge badge-olive">
+              {product.category}
+            </span>
+          </div>
+        )}
+        <h3 className="text-xl font-bold text-ink-900">
           {product.title}
         </h3>
-        <p
-          className="mt-2 text-sm leading-7"
-          style={{
-            color: pipeline ? "rgba(255,255,255,0.74)" : "var(--color-ink-600)",
-          }}
-        >
+        <p className="mt-2 text-sm leading-7 text-ink-600 flex-1">
           {product.summary}
         </p>
 
-        <div
-          className="mt-4 rounded-lg p-3"
-          style={{
-            border: pipeline
-              ? "1px solid rgba(255,255,255,0.14)"
-              : "1px solid rgba(19,34,31,0.14)",
-          }}
-        >
+        <div className="mt-4 rounded-lg p-3 border border-ink-200" style={{ borderColor: "rgba(19,34,31,0.14)" }}>
           {product.specifications.map((spec) => (
             <div
               key={spec.label}
               className="flex items-start justify-between gap-3 py-1.5 text-sm"
             >
-              <span
-                style={{
-                  color: pipeline
-                    ? "rgba(255,255,255,0.65)"
-                    : "var(--color-ink-600)",
-                }}
-              >
+              <span className="text-ink-600">
                 {spec.label}
               </span>
-              <strong
-                style={{ color: pipeline ? "#ffffff" : "var(--color-ink-900)" }}
-              >
+              <strong className="text-ink-900">
                 {spec.value}
               </strong>
             </div>
@@ -84,12 +102,14 @@ export default function Products({ isPreview = false }) {
   return (
     <section className="section-space bg-sand-50">
       <div className="container-shell">
-        <SectionHeader
-          label="Our Product Range"
-          title={productPageNotes.title}
-          description={productPageNotes.description}
-          align="center"
-        />
+        {isPreview && (
+          <SectionHeader
+            label="Our Products"
+            title={productPageNotes.title}
+            description={productPageNotes.description}
+            align="center"
+          />
+        )}
 
         <div className="mt-10 grid md:grid-cols-2 xl:grid-cols-3 gap-5">
           {products.map((product) => (

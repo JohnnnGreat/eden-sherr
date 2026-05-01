@@ -27,7 +27,7 @@ export default function About({ isPreview = false }) {
       <section className="relative h-[70vh] bg-sand-50 z-0 overflow-hidden w-full">
         {/* Background Swiper */}
         <div className="absolute inset-0 z-0">
-          <Swiper
+          {/* <Swiper
             modules={[Pagination, Autoplay]}
             pagination={{ clickable: true }}
             autoplay={{ delay: 5000, disableOnInteraction: false }}
@@ -50,16 +50,26 @@ export default function About({ isPreview = false }) {
                 </div>
               </SwiperSlide>
             ))}
-          </Swiper>
+          </Swiper> */}
+          <div className="relative w-full h-full">
+            <Image
+              src="/images/about/about2.jpg"
+              alt="About Edan & Sherr"
+              fill
+              priority
+              style={{ objectFit: "cover" }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-sand-50/85 via-sand-50/40 to-transparent w-full md:w-3/4"></div>
+          </div>
         </div>
 
         {/* Content Overlay */}
         <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="h-full flex flex-col justify-center w-full lg:w-5/12 py-12" data-aos="fade-right" data-aos-delay="100">
             <SectionHeader
-              label="About Edan & Sherr"
-              title="From origin strength to procurement confidence"
-              description="Nigerian ginger, traceable from Southern Kaduna farms to your specification — with the processing discipline and documentation support global buyers require."
+              label="Our company"
+              title="Processing Nigerian Ginger to Global standard"
+              description="Edan & Sherr was established to process Nigeran Ginger and deliver it at the standard the global markets demand."
             />
 
             <div className="mt-8" data-aos="fade-up" data-aos-delay="200">
@@ -79,7 +89,7 @@ export default function About({ isPreview = false }) {
       <div className="h-full grid lg:grid-cols-[1fr_1fr]">
         {/* Full-height image on the left with gradient overlay */}
         <div className="relative hidden lg:flex lg:flex-col lg:justify-end overflow-hidden z-0 min-h-[50vh] lg:min-h-screen" data-aos="fade-right" data-aos-delay="0">
-          <Swiper
+          {/* <Swiper
             modules={[Pagination, Autoplay]}
             pagination={{ clickable: true }}
             autoplay={{ delay: 4000, disableOnInteraction: false }}
@@ -96,25 +106,48 @@ export default function About({ isPreview = false }) {
                     sizes="50vw"
                     style={{ objectFit: "cover" }}
                   />
-                  {/* Gradient overlay - dark at bottom, transparent at top */}
                   <div className="absolute inset-0" style={{
                     background: "linear-gradient(to top, rgba(19, 34, 31, 0.7) 0%, rgba(19, 34, 31, 0.4) 30%, transparent 100%)"
                   }}></div>
                 </div>
               </SwiperSlide>
             ))}
-          </Swiper>
+          </Swiper> */}
+          <div className="h-full w-full absolute inset-0">
+            <div className="relative w-full h-full">
+              <Image
+                src={aboutImages[0].src}
+                alt={aboutImages[0].alt}
+                fill
+                priority
+                sizes="50vw"
+                style={{ objectFit: "cover" }}
+              />
+              <div className="absolute inset-0" style={{
+                background: "linear-gradient(to top, rgba(19, 34, 31, 0.7) 0%, rgba(19, 34, 31, 0.4) 30%, transparent 100%)"
+              }}></div>
+            </div>
+          </div>
         </div>
 
         {/* Content on the right */}
         <div className="h-full flex flex-col justify-center px-8 lg:px-12 py-12 lg:py-24" data-aos="fade-left" data-aos-delay="100">
           <SectionHeader
             label="About Edan & Sherr"
-            title="From origin strength to procurement confidence"
-            description="We combine deep local sourcing knowledge with process discipline so international buyers can source Nigerian ginger with less risk and more visibility."
+            title="Exceptional ginger meets international standards."
+            description="Edan & Sherr is a Nigerian ginger processing company built for the global market."
           />
 
-          <div className="mt-7 space-y-6">
+          <div className="mt-6 space-y-6 section-copy">
+            <p>
+              The company was built on a simple conviction: Nigerian ginger is among the finest in the world — yet its true value has not been fully utilised. What has been missing is a processing facility capable of preparing it to international standard, and a supply chain built to get it there. We provide that missing piece.
+            </p>
+            <p>
+              We work directly with over 100 smallholder farming families in Southern Kaduna, Nigeria’s premier ginger belt, offering fair farm-gate pricing and guaranteed offtake. Our processing facility transforms that raw material into export-grade products that meet EU, US, and Asian regulatory standards.
+            </p>
+          </div>
+
+          {/* <div className="mt-7 space-y-6">
             {capabilityModules.map((module, index) => (
               <div
                 key={module.title}
@@ -145,7 +178,7 @@ export default function About({ isPreview = false }) {
             Our focus is practical: preserve quality at source, process with
             control, and provide the commercial clarity buyers need before they
             commit to long-term supply relationships.
-          </p>
+          </p> */}
         </div>
       </div>
     </section>

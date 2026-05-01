@@ -2,16 +2,17 @@ export const productPortfolio = [
   {
     id: "dried-split-ginger",
     title: "Dried Split Ginger",
-    category: "Core Export Product",
+    category: "", // Remove core export product tag
     summary:
-      "Dried ginger with controlled moisture and strong aroma retention.",
+      "Selected roots dried under controlled process to preserve quality and pungency.",
     description:
-      "Selected roots dried under controlled conditions to preserve quality and heat.",
-    image: "/images/v2/product-dried-split.jpg",
+      "Selected roots dried under controlled process to preserve quality and pungency.",
+    image: "/images/v2/product-dried-split.jpg", // Note: Need to add Lab certified as per picture
     alt: "Dried split ginger pieces arranged in export-ready quality",
     specifications: [
       { label: "Moisture", value: "<= 12%" },
       { label: "Foreign Matter", value: "<= 1%" },
+      { label: "Certification", value: "EU pesticide, Aflatoxin tested, Lab certified" },
       { label: "Packaging", value: "25kg / 50kg PP bags" },
     ],
     applications: [
@@ -23,17 +24,17 @@ export const productPortfolio = [
   {
     id: "ginger-powder",
     title: "Ginger Powder",
-    category: "Core Export Product",
+    category: "", // Remove core export product tag
     summary:
       "Fine-milled ginger powder to your target mesh and quality specifications.",
     description:
-      "Custom-ground from premium dried ginger for food and nutraceutical applications.",
-    image: "/images/v2/product-ginger-powder.jpg",
+      "Finely milled from premium dried ginger for food, nutraceuticals and pharmaceutical applications",
+    image: "/images/v2/product-ginger-powder.jpg", // Needs image update (remove banana)
     alt: "Milled ginger powder in premium grade format",
     specifications: [
       { label: "Moisture", value: "<= 10%" },
       { label: "Mesh", value: "Buyer specification" },
-      { label: "Batch ID", value: "Traceable lot coding" },
+      { label: "Quality", value: "Low Microbial count, Lab certified and traceable" },
     ],
     applications: [
       "Food manufacturing",
@@ -43,11 +44,11 @@ export const productPortfolio = [
   },
   {
     id: "fresh-rhizomes",
-    title: "Fresh Ginger Rhizomes",
-    category: "Seasonal Supply",
+    title: "Freshly Harvested Rhizomes",
+    category: "", // Remove seasonal supply tag
     summary:
-      "Freshly harvested rhizomes sourced from partner farms for buyers requiring raw ginger inputs.",
-    image: "/images/v2/hero-ginger-field.jpg",
+      "Freshly harvested rhizomes.",
+    image: "/images/v2/hero-ginger-field.jpg", // Needs image update
     alt: "Fresh ginger rhizomes from Southern Kaduna farms",
     specifications: [
       { label: "Origin", value: "Southern Kaduna" },
@@ -63,15 +64,15 @@ export const productPortfolio = [
   {
     id: "ginger-oil",
     title: "Ginger Oil",
-    category: "Pipeline / On Request",
+    category: "Coming soon",
+    icon: "💧",
     summary:
-      "Steam-distilled ginger oil under development for flavor, aroma, and specialist ingredient applications.",
+      "Steam-distilled essential oil from Nigerian ginger. High in zingiberene and volatile compounds. Used in flavour manufacturing, cosmetics, and pharmaceutical applications.",
     image: "/images/ginger-oil.jpg",
     alt: "Ginger processing source image representing oil extraction pipeline",
     specifications: [
       { label: "Method", value: "Steam distillation" },
-      { label: "Use", value: "Flavor and fragrance applications" },
-      { label: "Status", value: "Commercial pipeline" },
+      { label: "Grade", value: "Food & cosmetic" },
     ],
     applications: [
       "Flavor systems",
@@ -82,15 +83,15 @@ export const productPortfolio = [
   {
     id: "ginger-oleoresin",
     title: "Ginger Oleoresin",
-    category: "Pipeline / On Request",
+    category: "Coming soon",
+    icon: "🔬",
     summary:
-      "Concentrated extract pathway being prepared for buyers needing high-impact ginger functionality.",
+      "Concentrated extract with high gingerol content and consistent batch-to-batch profile. Available in food and pharmaceutical grades for flavour manufacturers and nutraceutical producers.",
     image: "/images/second.jpg",
     alt: "Natural ginger source used for oleoresin extraction concept",
     specifications: [
-      { label: "Form", value: "Concentrated extract" },
-      { label: "Use", value: "Industrial flavor systems" },
-      { label: "Status", value: "Commercial pipeline" },
+      { label: "Gingerol content", value: "High - food grade" },
+      { label: "Application", value: "Food & pharma" },
     ],
     applications: [
       "Functional beverages",
@@ -98,11 +99,30 @@ export const productPortfolio = [
       "Nutraceutical ingredient systems",
     ],
   },
+  {
+    id: "crystallised-ginger",
+    title: "Crystallised Ginger",
+    category: "Coming soon",
+    icon: "✨",
+    summary:
+      "Candied ginger produced from premium Nigerian rhizomes. Sought after by confectionery manufacturers, premium food brands, and specialty ingredient distributors worldwide.",
+    image: "/images/v2/product-dried-split.jpg", // placeholder
+    alt: "Candied ginger pieces",
+    specifications: [
+      { label: "Form", value: "Pieces / slices" },
+      { label: "Application", value: "Confectionery & food" },
+    ],
+    applications: [
+      "Confectionery",
+      "Premium food brands",
+      "Specialty ingredient distributors",
+    ],
+  },
 ];
 
 export const productPageNotes = {
-  title: "Ginger products built for procurement teams",
+  title: "Nigerian ginger with exceptionally high oleoresin and gingerol content.",
   description:
-    "Our product cards are structured around procurement priorities: technical specs, format, traceability, and commercial use case.",
-  cta: "Request Product Specifications",
+    "We offer it in multiple forms to meet the needs of varied users. Samples and full datasheets available on requests.",
+  cta: "Request the quote",
 };

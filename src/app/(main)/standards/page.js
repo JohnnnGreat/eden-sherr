@@ -16,8 +16,8 @@ export default function StandardsPage() {
     <main>
       <PageHero
         label="Standards"
-        title="Risk-aware quality and compliance model"
-        description="From intake controls to documentation support, our systems are structured to match procurement and quality-team expectations."
+        title="Built for the demands of global trade"
+        description="From intake controls to documentation support, our systems are structured to match quality expectations."
         bgVariant="dark"
       />
       <Quality />

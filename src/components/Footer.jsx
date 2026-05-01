@@ -21,10 +21,10 @@ export default function Footer() {
                 Let's Connect
               </p>
               <h2 className="section-title mt-3 text-white max-w-96">
-                Partner with a trusted ginger origin
+                Ready to Source Premium Nigerian Ginger?
               </h2>
               <p className="mt-4 footer-text-secondary max-w-2xl">
-                Tell us what you need—format, quality standards, destination market. We'll respond with clear options and a transparent path forward that works for your sourcing timeline.
+                Tell us what you need — product format, quality standards, destination market — and we will respond with clear options.
               </p>
             </div>
 
@@ -33,7 +33,7 @@ export default function Footer() {
                 href={`mailto:${siteConfig.contacts.salesEmail}`}
                 className="btn-primary"
               >
-                Start Sourcing
+                Request the quote
               </a>
               <a href={`tel:${siteConfig.contacts.phoneLink}`} className="btn-secondary">
                 Talk to Us
