@@ -11,17 +11,17 @@ import { homepageHero, heroCarouselImages, heroFeaturedProducts } from "@/data/h
 
 export default function Hero() {
   return (
-    <section className="w-full h-screen overflow-hidden">
+    <section className="w-full min-h-[100svh] overflow-hidden">
       <Swiper
         modules={[Autoplay, Pagination]}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
         pagination={{ clickable: true }}
         loop={true}
-        className="h-full w-full"
+        className="min-h-[100svh] w-full"
       >
         {/* First slide: Background carousel hero */}
-        <SwiperSlide className="h-full relative">
-          <div className="h-full w-full relative">
+        <SwiperSlide className="min-h-[100svh] relative">
+          <div className="min-h-[100svh] w-full relative">
             {heroCarouselImages.map((image, index) => (
               <div
                 key={index}
@@ -76,9 +76,9 @@ export default function Hero() {
 
         {/* Product slides */}
         {heroFeaturedProducts.map((product) => (
-          <SwiperSlide key={product.id} className="h-full">
-            <div className="h-full w-full flex items-center bg-sand-50">
-              <div className="container-shell h-full flex items-center gap-12 lg:gap-16">
+          <SwiperSlide key={product.id} className="min-h-[100svh]">
+            <div className="min-h-[100svh] w-full flex items-center bg-sand-50">
+              <div className="container-shell min-h-[100svh] flex items-center gap-12 lg:gap-16">
                 <div className="flex-1 flex flex-col justify-center">
                   {/* <p className="kicker mb-4">{product.badge || "Featured"}</p> */}
                   <h1 className="display-title mb-6 text-ink-900">

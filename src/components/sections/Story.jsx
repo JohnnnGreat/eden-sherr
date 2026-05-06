@@ -9,7 +9,7 @@ export default function Story({ isPreview = false, detailed = false }) {
 
   return (
     <section
-      className={isPreview ? "h-screen flex flex-col justify-center py-8" : "section-space"}
+      className={isPreview ? "min-h-[70svh] md:min-h-screen flex flex-col justify-center py-10 md:py-12" : "section-space"}
       style={{ background: "linear-gradient(to bottom, var(--color-sand-100), #ffffff)" }}
     >
       <div className="container-shell">

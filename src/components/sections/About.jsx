@@ -24,7 +24,7 @@ export default function About({ isPreview = false }) {
 
   if (isPreview) {
     return (
-      <section className="relative h-[70vh] bg-sand-50 z-0 overflow-hidden w-full">
+      <section className="relative min-h-[70svh] bg-sand-50 z-0 overflow-hidden w-full">
         {/* Background Swiper */}
         <div className="absolute inset-0 z-0">
           {/* <Swiper
@@ -64,8 +64,8 @@ export default function About({ isPreview = false }) {
         </div>
 
         {/* Content Overlay */}
-        <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="h-full flex flex-col justify-center w-full lg:w-5/12 py-12" data-aos="fade-right" data-aos-delay="100">
+        <div className="relative z-10 min-h-[70svh] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="min-h-[70svh] flex flex-col justify-center w-full lg:w-5/12 py-12" data-aos="fade-right" data-aos-delay="100">
             <SectionHeader
               label="Our company"
               title="Processing Nigerian Ginger to Global standard"

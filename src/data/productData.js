@@ -51,7 +51,7 @@ export const productPortfolio = [
     image: "/gingerpng.png",
     alt: "Fresh ginger rhizomes from Southern Kaduna farms",
     specifications: [
-      { label: "Origin", value: "Southern Kaduna" },
+      // { label: "Origin", value: "Southern Kaduna" },
       { label: "Format", value: "Whole rhizomes" },
       { label: "Availability", value: "Season-based scheduling" },
     ],
