@@ -49,7 +49,7 @@ export default function Contact({ showFlow = true }) {
               align="center"
             /> */}
 
-            <div className="mt-9 grid lg:grid-cols-[1.1fr_0.9fr] gap-8">
+            <div className="mt-9 max-w-2xl mx-auto">
               <div>
                 <form
                   onSubmit={handleSubmit}
@@ -84,7 +84,7 @@ export default function Contact({ showFlow = true }) {
 
                     <div>
                       <label className="block text-xs font-bold text-ink-900 mb-2 uppercase tracking-wider">Message *</label>
-                      <textarea name="notes" className="w-full px-4 py-3 rounded-lg border border-light focus:outline-none focus:ring-2 focus:ring-copper-400" rows="5" placeholder="Tell us about your volume requirements, packaging preferences, and delivery timeline..." required></textarea>
+                      <textarea name="notes" className="w-full px-4 py-3 rounded-lg border border-light focus:outline-none focus:ring-2 focus:ring-copper-400" rows="5" placeholder="" required></textarea>
                     </div>
 
                     {status === "success" && (
@@ -108,54 +108,6 @@ export default function Contact({ showFlow = true }) {
                   </div>
                 </form>
               </div>
-
-              <article>
-                <h3 className="text-xl font-bold text-ink-900 mb-6">Quick Contact</h3>
-                <div className="grid gap-4 text-sm">
-                  <a
-                    href={`mailto:${siteConfig.contacts.salesEmail}`}
-                    className="bg-white rounded-lg p-4 inline-flex items-start gap-3"
-                  >
-                    <Mail size={18} style={{ color: "var(--color-copper-700)" }} />
-                    <span>
-                      <strong className="block text-ink-900">Email Sales</strong>
-                      <span className="text-ink-600">{siteConfig.contacts.salesEmail}</span>
-                    </span>
-                  </a>
-                  <a
-                    href={`tel:${siteConfig.contacts.phoneLink}`}
-                    className="bg-white rounded-lg p-4 inline-flex items-start gap-3"
-                  >
-                    <Phone size={18} style={{ color: "var(--color-copper-700)" }} />
-                    <span>
-                      <strong className="block text-ink-900">Call Us</strong>
-                      <span className="text-ink-600">{siteConfig.contacts.phoneDisplay}</span>
-                    </span>
-                  </a>
-                  <div className="bg-white rounded-lg p-4 inline-flex items-start gap-3">
-                    <MapPin size={18} style={{ color: "var(--color-copper-700)" }} />
-                    <span>
-                      <strong className="block text-ink-900">Office Address</strong>
-                      <span className="text-ink-600">
-                        {siteConfig.address.line1}
-                        <br />
-                        {siteConfig.address.line2}
-                        <br />
-                        {siteConfig.address.line3}
-                        <br />
-                        {siteConfig.address.city}, {siteConfig.address.country}
-                      </span>
-                    </span>
-                  </div>
-                </div>
-
-                <div className="mt-8 pt-8 border-t border-light">
-                  <h4 className="text-base font-bold text-ink-900 mb-4">We'll Get Back to You Fast</h4>
-                  <p className="text-sm text-ink-600">
-                    We aim to respond to all requests within <strong>1 business day</strong> with what we can do and next steps.
-                  </p>
-                </div>
-              </article>
             </div>
           </>
         )}

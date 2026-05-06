@@ -32,8 +32,7 @@ export default function Story({ isPreview = false, detailed = false }) {
               className={isPreview ? "text-lg md:text-xl leading-8" : "text-xl md:text-2xl leading-10"}
               style={{ color: "var(--color-ink-900)" }}
             >
-              "We are not inventing quality in this origin. We are making it
-              visible, verifiable, and commercially ready."
+              "The story didn't start through business. It began from the land — through a grandfather who devoted his life to it, and generations of farming families who understood, long before the world did, just how extraordinary Nigeria's ginger truly is."
             </blockquote>
 
             <div className={isPreview ? "mt-3 grid gap-2" : "mt-6 grid gap-4"}>

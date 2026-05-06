@@ -90,6 +90,15 @@ function ProductCard({ product }) {
               </strong>
             </div>
           ))}
+          {product.tags && product.tags.length > 0 && (
+            <div className="flex flex-wrap gap-1.5 mt-3 pt-3 border-t" style={{ borderColor: "rgba(19,34,31,0.10)" }}>
+              {product.tags.map((tag) => (
+                <span key={tag} className="text-[11px] font-medium px-2.5 py-1 rounded-full bg-olive-100 text-olive-800">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </article>

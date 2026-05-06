@@ -29,15 +29,9 @@ export default function Footer() {
             </div>
 
             <div className="flex flex-col sm:flex-row md:flex-col gap-3 md:justify-self-end">
-              <a
-                href={`mailto:${siteConfig.contacts.salesEmail}`}
-                className="btn-primary"
-              >
-                Request the quote
-              </a>
-              <a href={`tel:${siteConfig.contacts.phoneLink}`} className="btn-secondary">
-                Talk to Us
-              </a>
+              <Link href="/contact" className="btn-primary">
+                Send an Enquiry
+              </Link>
             </div>
           </div>
         </div>

@@ -7,14 +7,14 @@ export const productPortfolio = [
       "Selected roots dried under controlled process to preserve quality and pungency.",
     description:
       "Selected roots dried under controlled process to preserve quality and pungency.",
-    image: "/images/v2/product-dried-split.jpg", // Note: Need to add Lab certified as per picture
+    image: "/images/dried-ginger.png", // Note: Need to add Lab certified as per picture
     alt: "Dried split ginger pieces arranged in export-ready quality",
     specifications: [
       { label: "Moisture", value: "<= 12%" },
       { label: "Foreign Matter", value: "<= 1%" },
-      { label: "Certification", value: "EU pesticide, Aflatoxin tested, Lab certified" },
       { label: "Packaging", value: "25kg / 50kg PP bags" },
     ],
+    tags: ["EU Pesticide Tested", "Aflatoxin Tested", "Lab Certified"],
     applications: [
       "Industrial spice blending",
       "Dry ingredient processing",
@@ -29,13 +29,13 @@ export const productPortfolio = [
       "Fine-milled ginger powder to your target mesh and quality specifications.",
     description:
       "Finely milled from premium dried ginger for food, nutraceuticals and pharmaceutical applications",
-    image: "/images/v2/product-ginger-powder.jpg", // Needs image update (remove banana)
+    image: "/gingerpw2.png",
     alt: "Milled ginger powder in premium grade format",
     specifications: [
       { label: "Moisture", value: "<= 10%" },
       { label: "Mesh", value: "Buyer specification" },
-      { label: "Quality", value: "Low Microbial count, Lab certified and traceable" },
     ],
+    tags: ["Low Microbial Count", "Lab Certified", "Traceable"],
     applications: [
       "Food manufacturing",
       "Nutraceutical formulations",
@@ -44,11 +44,11 @@ export const productPortfolio = [
   },
   {
     id: "fresh-rhizomes",
-    title: "Freshly Harvested Rhizomes",
+    title: "Fresh Ginger Rhizomes",
     category: "", // Remove seasonal supply tag
     summary:
       "Freshly harvested rhizomes.",
-    image: "/images/v2/hero-ginger-field.jpg", // Needs image update
+    image: "/gingerpng.png",
     alt: "Fresh ginger rhizomes from Southern Kaduna farms",
     specifications: [
       { label: "Origin", value: "Southern Kaduna" },
@@ -106,7 +106,7 @@ export const productPortfolio = [
     icon: "✨",
     summary:
       "Candied ginger produced from premium Nigerian rhizomes. Sought after by confectionery manufacturers, premium food brands, and specialty ingredient distributors worldwide.",
-    image: "/images/v2/product-dried-split.jpg", // placeholder
+    image: "/images/dried-ginger.png", // placeholder
     alt: "Candied ginger pieces",
     specifications: [
       { label: "Form", value: "Pieces / slices" },
