@@ -1,5 +1,4 @@
 export const founderNarrative = [
-  "The story didn't start through business. It began from the land — through a grandfather who devoted his life to it, and generations of farming families who understood, long before the world did, just how extraordinary Nigeria's ginger truly is.",
   "This is not just a market opportunity. It is the land I grew up in, and the story of the people who shaped it.",
   "My grandfather, one of the finest farmers of his time, devoted his life to the land. After him came my parents, uncles, cousins, and countless others — men and women who worked tirelessly in rich red soils under open skies, cultivating a crop that carries both heritage and pride. Season after season, they produced ginger of remarkable strength and character. What I still believe to be the boldest ginger in the world.",
   "Yet despite its quality, much of its true value remained unrealised. I watched as each generation, in its own way, tried to bring this extraordinary resource to the global stage — often constrained by limitations beyond their control.",
