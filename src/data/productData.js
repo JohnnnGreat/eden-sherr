@@ -124,5 +124,5 @@ export const productPageNotes = {
   title: "Nigerian ginger with exceptionally high oleoresin and gingerol content.",
   description:
     "We offer it in multiple forms to meet the needs of varied users. Samples and full datasheets available on requests.",
-  cta: "Request the quote",
+  cta: "Request Product Specification",
 };
